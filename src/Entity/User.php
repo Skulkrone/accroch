@@ -2,52 +2,70 @@
 
 namespace App\Entity;
 
+
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @ORM\Table(name="user")
+ * @UniqueEntity(fields="email", message="Email déjà pris")
+ * @UniqueEntity(fields="username", message="Username déjà pris")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @var int
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
-    private $Name;
-
+    private $fullName;
+ 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @var string
+     *
+     * @ORM\Column(type="string", unique=true)
+     * @Assert\NotBlank()
      */
-    private $Username;
-
+    private $username;
+ 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @var string
+     *
+     * @ORM\Column(type="string", unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
-    private $Email;
-
+    private $email;
+ 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @var string
+     *
+     * @ORM\Column(type="string", length=64)
      */
-    private $Password;
-
+    private $password;
+ 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var array
+     *
+     * @ORM\Column(type="json")
      */
-    private $ImageUser;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $Role;
-
+    private $roles = [];
+    
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Shop", mappedBy="fkUserId")
      */
@@ -70,82 +88,114 @@ class User
         $this->fkInvoicesUserId = new ArrayCollection();
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function setFullName(string $fullName): void
     {
-        return $this->Name;
+        $this->fullName = $fullName;
     }
 
-    public function setName(string $Name): self
+    public function getFullName(): ?string
     {
-        $this->Name = $Name;
-
-        return $this;
+        return $this->fullName;
     }
 
     public function getUsername(): ?string
     {
-        return $this->Username;
+        return $this->username;
     }
 
-    public function setUsername(string $Username): self
+    public function setUsername(string $username): void
     {
-        $this->Username = $Username;
-
-        return $this;
+        $this->username = $username;
     }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): void
     {
-        $this->Email = $Email;
-
-        return $this;
+        $this->email = $email;
     }
 
     public function getPassword(): ?string
     {
-        return $this->Password;
+        return $this->password;
     }
 
-    public function setPassword(string $Password): self
+    public function setPassword(string $password): void
     {
-        $this->Password = $Password;
-
-        return $this;
+        $this->password = $password;
     }
 
-    public function getImageUser(): ?string
+    /**
+     * Retourne les rôles de l'user
+     */
+    public function getRoles(): array
     {
-        return $this->ImageUser;
+        $roles = $this->roles;
+
+        // Afin d'être sûr qu'un user a toujours au moins 1 rôle
+        if (empty($roles)) {
+            $roles[] = 'ROLE_USER';
+        }
+
+        return array_unique($roles);
     }
 
-    public function setImageUser(?string $ImageUser): self
+    public function setRoles(array $roles): void
     {
-        $this->ImageUser = $ImageUser;
-
-        return $this;
+        $this->roles = $roles;
     }
 
-    public function getRole(): ?string
+    /**
+     * Retour le salt qui a servi à coder le mot de passe
+     *
+     * {@inheritdoc}
+     */
+    public function getSalt(): ?string
     {
-        return $this->Role;
+        // See "Do you need to use a Salt?" at https://symfony.com/doc/current/cookbook/security/entity_provider.html
+        // we're using bcrypt in security.yml to encode the password, so
+        // the salt value is built-in and you don't have to generate one
+
+        return null;
     }
 
-    public function setRole(string $Role): self
+    /**
+     * Removes sensitive data from the user.
+     *
+     * {@inheritdoc}
+     */
+    public function eraseCredentials(): void
     {
-        $this->Role = $Role;
-
-        return $this;
+        // Nous n'avons pas besoin de cette methode car nous n'utilions pas de plainPassword
+        // Mais elle est obligatoire car comprise dans l'interface UserInterface
+        // $this->plainPassword = null;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function serialize(): string
+    {
+        return serialize([$this->id, $this->username, $this->password]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function unserialize($serialized): void
+    {
+        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+    }
+
+    
 
     /**
      * @return Collection|Shop[]
@@ -239,4 +289,9 @@ class User
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->id;
+    }
+
 }

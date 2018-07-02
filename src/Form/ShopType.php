@@ -20,9 +20,9 @@ class ShopType extends AbstractType
             'class' => User::class,
             'query_builder' => function (EntityRepository $er) {
              return $er->createQueryBuilder('e')
-             ->orderBy('e.Username', 'ASC');
+             ->orderBy('e.username', 'ASC');
             },
-            'choice_label' => 'Username',
+            'choice_label' => 'username',
             'label'=> 'Login : ',
              ))
         ;
