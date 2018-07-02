@@ -8,7 +8,40 @@
         <p class="lead"></p>
     </div>
 
-    <div class="container">
+    {% if app.user %}
+        <div class="container">
+        <div class="card-deck mb-6 text-center">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Annonces</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">Mes annonces</h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li></li>
+                    </ul>
+                    
+                    <button type="button" class="btn btn-lg btn-block btn-primary"><a href="{{ path('announcements_show', {'id': app.user.id}) }}">Consulter mes annonces</a></button>
+                    
+                </div>
+            </div>
+
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Boutiques</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">Mes boutiques</h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li></li>
+                    </ul>
+                    <button type="button" class="btn btn-lg btn-block btn-primary"><a href="{{ path('shop_show', {'id': app.user.id}) }}">Consulter mes boutiques</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <div class="container">
         <div class="card-deck mb-6 text-center">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
@@ -37,4 +70,5 @@
             </div>
         </div>
     </div>
+    {% endif %}
 {% endblock %}
