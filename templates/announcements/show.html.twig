@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Announcements{% endblock %}
+
+{% block body %}
+    <h1>Announcements</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ announcement.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ announcement.Description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ announcement.Price }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{{ announcement.Size }}</td>
+            </tr>
+            <tr>
+                <th>Weight</th>
+                <td>{{ announcement.Weight }}</td>
+            </tr>
+            <tr>
+                <th>Quality</th>
+                <td>{{ announcement.Quality }}</td>
+            </tr>
+            <tr>
+                <th>Specifications</th>
+                <td>{{ announcement.Specifications }}</td>
+            </tr>
+            <tr>
+                <th>ImageAnnouncements</th>
+                <td>{{ announcement.ImageAnnouncements }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('announcements_index') }}">back to list</a>
+
+    <a href="{{ path('announcements_edit', {'id': announcement.id}) }}">edit</a>
+
+    {{ include('announcements/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marketers index{% endblock %}
+
+{% block body %}
+    <h1>Marketers index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for marketer in marketers %}
+            <tr>
+                <td>{{ marketer.id }}</td>
+                <td>{{ marketer.Label }}</td>
+                <td>{{ marketer.Description }}</td>
+                <td>
+                    <a href="{{ path('marketers_show', {'id': marketer.id}) }}">show</a>
+                    <a href="{{ path('marketers_edit', {'id': marketer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('marketers_new') }}">Create new</a>
+{% endblock %}

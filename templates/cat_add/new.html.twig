@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CatAdd{% endblock %}
+
+{% block body %}
+    <h1>Create new CatAdd</h1>
+
+    {{ include('cat_add/_form.html.twig') }}
+
+    <a href="{{ path('cat_add_index') }}">back to list</a>
+{% endblock %}
