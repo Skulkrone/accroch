@@ -31,6 +31,9 @@ button a {
 button a:hover {
     color: #007bff;
 }
+.text-muted {
+    text-align: center;
+}
 
 .btn-primary:hover {
     color: #007bff;

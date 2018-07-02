@@ -25,7 +25,8 @@
                     <a class="p-2 text-dark" href="/banner">Bannière Pub</a>
                     <a class="p-2 text-dark" href="/invoices">Factures</a>
                 </nav>
-                <a class="btn btn-outline-primary" href="/register">Inscription</a>
+                <a class="btn btn-outline-primary" href="/register">Inscription</a>&nbsp&nbsp
+                <a class="btn btn-outline-primary" href="/logout">Déconnexion</a>
             </div>
         {% endblock %}
         {% block body %}
@@ -72,6 +73,18 @@
                 <p></p>
             </footer>
         {% endblock %}
-    {% block javascripts %}{% endblock %}
-</body>
+        {% block javascripts %}
+            <script>window.jQuery || document.write('<script src="{{ asset('assets/js/vendor/jquery-slim.min.js')}}"><\/script>')</script>
+            <script src="{{ asset('assets/js/vendor/popper.min.js')}}"></script>
+            <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+            <script src="{{ asset('assets/js/vendor/holder.min.js')}}"></script>
+            <script>
+                Holder.addTheme('thumb', {
+                    bg: '#55595c',
+                    fg: '#eceeef',
+                    text: 'Thumbnail'
+                });
+            </script>
+        {% endblock %}
+    </body>
 </html>
