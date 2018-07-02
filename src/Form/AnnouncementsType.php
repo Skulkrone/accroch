@@ -3,9 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Announcements;
+use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AnnouncementsType extends AbstractType
 {
@@ -19,7 +22,15 @@ class AnnouncementsType extends AbstractType
             ->add('Quality')
             ->add('Specifications')
             ->add('ImageAnnouncements')
-            ->add('fkUserId')
+            ->add('fkUserId', EntityType::class, array(
+            'class' => User::class,
+            'query_builder' => function (EntityRepository $er) {
+             return $er->createQueryBuilder('e')
+             ->orderBy('e.Username', 'ASC');
+            },
+            'choice_label' => 'Username',
+            'label'=> 'Login : ',
+             ))
         ;
     }
 

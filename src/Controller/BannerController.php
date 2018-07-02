@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Banner;
-use App\Form\Banner1Type;
+use App\Form\BannerType;
 use App\Repository\BannerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +29,7 @@ class BannerController extends Controller
     public function new(Request $request): Response
     {
         $banner = new Banner();
-        $form = $this->createForm(Banner1Type::class, $banner);
+        $form = $this->createForm(BannerType::class, $banner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -59,7 +59,7 @@ class BannerController extends Controller
      */
     public function edit(Request $request, Banner $banner): Response
     {
-        $form = $this->createForm(Banner1Type::class, $banner);
+        $form = $this->createForm(BannerType::class, $banner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

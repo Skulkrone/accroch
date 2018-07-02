@@ -4,8 +4,6 @@
 }
 body {
     font-family: 'Arial', sans-serif;
-    background-size: cover;
-    color:white;
     text-align: center;
     font-size: 18px;
 }
@@ -100,7 +98,7 @@ table.table td a {
     transition:all 0.3s ease-in 0s;
 }
 table.table td a:hover {
-    color: orangered;
+    color: yellowgreen;
 }
 div {
     text-align: center;
@@ -123,17 +121,23 @@ td span {
     color: red;
     text-transform: uppercase;
 }
-a {
+nav a {
     text-transform: uppercase;
     text-decoration: none;
     color: #fff;
     transition:all 0.3s ease-in 0s;
     cursor: pointer;
 }
-a:hover {
+nav a:hover, a:hover {
     color: yellowgreen;
 }
-
+a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+    transition:all 0.3s ease-in 0s;
+    cursor: pointer;
+}
 
 
 textarea {
