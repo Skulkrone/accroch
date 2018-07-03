@@ -9,7 +9,7 @@
 
         <!-- compatibilité Mac et Iphone -->
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Accroch'.com{% endblock %}</title>
         {% block head_css %}
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         {% endblock %}
@@ -25,45 +25,44 @@
     </head>
     <body>
         {% block navigation %}
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-info border-bottom box-shadow">
                 <h5 class="my-0 mr-md-auto font-weight-normal">Accroch'.com</h5>
                 <nav class="my-2 my-md-0 mr-md-3">
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a class="p-2 text-dark" href="/">Accueil</a>
-                        <a class="p-2 text-dark" href="/user">User</a>
-                        <a class="p-2 text-dark" href="/announcements">Annonce</a>
-                        <a class="p-2 text-dark" href="/shop">Boutique</a>
-                        <a class="p-2 text-dark" href="/cat/shop">Catégorie Produits de la Boutique</a>
-                        <a class="p-2 text-dark" href="/products">Produits</a>
-                        <a class="p-2 text-dark" href="/marketers">Annonceurs</a>
-                        <a class="p-2 text-dark" href="/cat/add">Catégorie Bannière</a>
-                        <a class="p-2 text-dark" href="/banner">Bannière Pub</a>
-                        <a class="p-2 text-dark" href="/invoices">Factures</a>
+                        <a class="p-2 text-white" href="/">Accueil</a>
+                        <a class="p-2 text-white" href="/user">User</a>
+                        <a class="p-2 text-white" href="/announcements">Annonce</a>
+                        <a class="p-2 text-white" href="/shop">Boutique</a>
+                        <a class="p-2 text-white" href="/cat/shop">Catégorie Produits de la Boutique</a>
+                        <a class="p-2 text-white" href="/products">Produits</a>
+                        <a class="p-2 text-white" href="/marketers">Annonceurs</a>
+                        <a class="p-2 text-white" href="/cat/add">Catégorie Bannière</a>
+                        <a class="p-2 text-white" href="/banner">Bannière Pub</a>
+                        <a class="p-2 text-white" href="/invoices">Factures</a>
                     {% elseif is_granted('ROLE_USER') %}
-                        <a class="p-2 text-dark" href="/">Accueil</a>
-                        <a class="p-2 text-dark" href="/user">User</a>
-                        <a class="p-2 text-dark" href="/announcements">Annonce</a>
-                        <a class="p-2 text-dark" href="/shop">Boutique</a>
-                        <a class="p-2 text-dark" href="/products">Produits</a>
-                        <a class="p-2 text-dark" href="/invoices">Factures</a>
+                        <a class="p-2 text-white" href="/">Accueil</a>
+                        <a class="p-2 text-white" href="/user">User</a>
+                        <a class="p-2 text-white" href="/announcements">Annonce</a>
+                        <a class="p-2 text-white" href="/shop">Boutique</a>
+                        <a class="p-2 text-white" href="/products">Produits</a>
+                        <a class="p-2 text-white" href="/invoices">Factures</a>
                     {% else %}
-                        <a class="p-2 text-dark" href="/">Accueil</a>
-                        <a class="p-2 text-dark" href="{{ path('announcements_index') }}">Annonces</a>
+                        <a class="p-2 text-white" href="/">Accueil</a>
+                        <a class="p-2 text-white" href="{{ path('announcements_index') }}">Annonces</a>
                     {% endif %}
                 </nav>
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn btn-outline-primary" href="/logout">Déconnexion</a>
+                    <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
                 {% elseif is_granted('ROLE_USER') %}
-                    <a class="btn btn-outline-primary" href="/register">Inscription</a>&nbsp&nbsp
-                    <a class="btn btn-outline-primary" href="/logout">Déconnexion</a>
+                    <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
+                    <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
                 {% else %}
-                    <a class="btn btn-outline-primary" href="/register">Inscription</a>&nbsp&nbsp
-                    <a class="btn btn-outline-primary" href="/login">Connexion</a>
+                    <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
+                    <a class="btn btn-outline-light" href="/login">Connexion</a>
                 {% endif %}
             </div>
         {% endblock %}
-        {% block body %}
-        {% endblock %}
+        {% block body %}{% endblock %}
         {% block footer %}
             <footer class="pt-4 my-md-5 pt-md-5 border-top">
                 <div class="row">
@@ -72,7 +71,7 @@
                         <large class="d-block mb-3 text-muted">&copy; Laurent aka <a href="https://www.skulkrone-design.fr/" target="_blank" title="Skulkrone-Design">Skulkrone</a> | Accroch'.com</large>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Features</h5>
+                        <h5 class="display-5 text-bold">Features</h5>
                         <ul class="list-unstyled text-small">
                             <li><a class="text-muted" href="#">Cool stuff</a></li>
                             <li><a class="text-muted" href="#">Random feature</a></li>
@@ -101,9 +100,6 @@
                         </ul>
                     </div>
                 </div>
-            </footer>
-            <footer>
-                <p></p>
             </footer>
         {% endblock %}
 

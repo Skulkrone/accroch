@@ -6,13 +6,15 @@ html {
     font-size: 16px;
   }
 }
-
+body {
+    background: url(../../image/store-1586117_1920.jpg) no-repeat;
+    backface-visibility: visible;
+}
 h1 {
     text-align: center;
-    margin: 64pt 0;
+    margin: 32pt 0 72pt 0;
 }
 button.save {
-    
     margin: 32pt auto;
 }
 button.btn {
@@ -40,12 +42,19 @@ button a {
 }
 
 button a:hover {
-    color: #007bff;
+    text-decoration: none;
+    color: #fff;
+}
+button:hover {
+    background: #007bff;
 }
 .text-muted {
     text-align: center;
+    color: #fff!important;
 }
-
+.pricing-header {
+    max-width: 750px;
+}
 .btn-primary:hover {
     color: #007bff;
     background-color: #fff;
@@ -73,7 +82,26 @@ option {
 .table {
     width: 40%;
     margin: 0 auto 1rem auto;
+    background: rgba(255,255,255,0.7);
+}
+.card {
+    background: rgba(255,255,255,0.9);
 }
 .table th {
     width: 20%;
+}
+
+.card-title {
+    margin: 0 0 .75rem 0;
+}
+
+.border-top {
+    border-top: 1px solid #17a2b8!important;
+}
+footer {
+    background: rgba(23,162,184,0.7);
+    
+}
+large.d-block a {
+    color: #000;
 }

@@ -41,6 +41,21 @@
                         </td>
                     </tr>
 
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <tr>
+                        <td>{{ announcement.id }}</td>
+                        <td>{{ announcement.Description }}</td>
+                        <td>{{ announcement.Price }}</td>
+                        <td>{{ announcement.Size }}</td>
+                        <td>{{ announcement.Weight }}</td>
+                        <td>{{ announcement.Quality }}</td>
+                        <td>{{ announcement.Specifications }}</td>
+                        <td>{{ announcement.ImageAnnouncements }}</td>
+                        <td>
+                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}">show</a>
+                            <a href="{{ path('announcements_edit', {'id': announcement.id}) }}">edit</a>
+                        </td>
+                    </tr>
                 {% elseif app.user == false %}
                     <tr>
                         <td>{{ announcement.id }}</td>
@@ -53,9 +68,7 @@
                         <td>{{ announcement.ImageAnnouncements }}</td>
                     </tr>
                 {% endif %}
-                <!--<tr>
-                    <td colspan="9">no records found</td>
-                </tr>-->
+
 
             {% endfor %}
 
