@@ -40,3 +40,9 @@ button a:hover {
     background-color: #fff;
     border-color: #007bff;
 }
+
+div.lien {
+    text-align: center;
+    margin: auto;
+    text-transform: uppercase;
+}

@@ -22,7 +22,7 @@ class Invoices
     private $Date;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $Cost;
 

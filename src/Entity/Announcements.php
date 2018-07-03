@@ -24,17 +24,17 @@ class Announcements
     private $Description;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $Price;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=30)
      */
     private $Size;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=30)
      */
     private $Weight;
 

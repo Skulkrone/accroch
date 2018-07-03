@@ -24,7 +24,7 @@ class Products
     private $Label;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $Price;
 

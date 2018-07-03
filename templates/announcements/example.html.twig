@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Announcements index{% endblock %}
+
+{% block body %}
+    <h1>Announcements index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Size</th>
+                <th>Weight</th>
+                <th>Quality</th>
+                <th>Specifications</th>
+                <th>ImageAnnouncements</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for announcement in announcements %}
+                <tr>
+                    <td>{{ announcement.id }}</td>
+                    <td>{{ announcement.Description }}</td>
+                    <td>{{ announcement.Price }}</td>
+                    <td>{{ announcement.Size }}</td>
+                    <td>{{ announcement.Weight }}</td>
+                    <td>{{ announcement.Quality }}</td>
+                    <td>{{ announcement.Specifications }}</td>
+                    <td>{{ announcement.ImageAnnouncements }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+    <div class="lien">
+        <a href="/register">Inscription</a>
+    </div>
+{% endblock %}

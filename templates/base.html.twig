@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
+        <!-- Caractère -->
+        <meta charset="UTF-8" />
+
+        <!-- Compatibilité Internet explorer 9 et + -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- compatibilité Mac et Iphone -->
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
@@ -13,25 +20,38 @@
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
                 <h5 class="my-0 mr-md-auto font-weight-normal">Accroch'.com</h5>
                 <nav class="my-2 my-md-0 mr-md-3">
-                    <a class="p-2 text-dark" href="/">Accueil</a>
-                    <a class="p-2 text-dark" href="/user">User</a>
-                    <a class="p-2 text-dark" href="/announcements">Annonce</a>
-                    <a class="p-2 text-dark" href="/shop">Boutique</a>
-                    <a class="p-2 text-dark" href="/cat/shop">Catégorie Produits de la Boutique</a>
-                    <a class="p-2 text-dark" href="/products">Produits</a>
-                    <a class="p-2 text-dark" href="/marketers">Annonceurs</a>
-                    <a class="p-2 text-dark" href="/cat/add">Catégorie Bannière</a>
-                    <a class="p-2 text-dark" href="/banner">Bannière Pub</a>
-                    <a class="p-2 text-dark" href="/invoices">Factures</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a class="p-2 text-dark" href="/">Accueil</a>
+                        <a class="p-2 text-dark" href="/user">User</a>
+                        <a class="p-2 text-dark" href="/announcements">Annonce</a>
+                        <a class="p-2 text-dark" href="/shop">Boutique</a>
+                        <a class="p-2 text-dark" href="/cat/shop">Catégorie Produits de la Boutique</a>
+                        <a class="p-2 text-dark" href="/products">Produits</a>
+                        <a class="p-2 text-dark" href="/marketers">Annonceurs</a>
+                        <a class="p-2 text-dark" href="/cat/add">Catégorie Bannière</a>
+                        <a class="p-2 text-dark" href="/banner">Bannière Pub</a>
+                        <a class="p-2 text-dark" href="/invoices">Factures</a>
+                    {% elseif is_granted('ROLE_USER') %}
+                        <a class="p-2 text-dark" href="/">Accueil</a>
+                        <a class="p-2 text-dark" href="/user">User</a>
+                        <a class="p-2 text-dark" href="/announcements">Annonce</a>
+                        <a class="p-2 text-dark" href="/shop">Boutique</a>
+                        <a class="p-2 text-dark" href="/products">Produits</a>
+                        <a class="p-2 text-dark" href="/invoices">Factures</a>
+                    {% else %}
+                        <a class="p-2 text-dark" href="/">Accueil</a>
+                        <a class="p-2 text-dark" href="{{ path('announcements_index') }}">Annonces</a>
+                    {% endif %}
                 </nav>
-                {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-outline-primary" href="/logout">Déconnexion</a>
+                {% elseif is_granted('ROLE_USER') %}
+                    <a class="btn btn-outline-primary" href="/register">Inscription</a>&nbsp&nbsp
                     <a class="btn btn-outline-primary" href="/logout">Déconnexion</a>
                 {% else %}
                     <a class="btn btn-outline-primary" href="/register">Inscription</a>&nbsp&nbsp
-                     <a class="btn btn-outline-primary" href="/login">Connexion</a>&nbsp&nbsp
-                    <a class="btn btn-outline-primary" href="/logout">Déconnexion</a>
+                    <a class="btn btn-outline-primary" href="/login">Connexion</a>
                 {% endif %}
-
             </div>
         {% endblock %}
         {% block body %}
@@ -78,18 +98,12 @@
                 <p></p>
             </footer>
         {% endblock %}
-        {% block javascripts %}
-            <script>window.jQuery || document.write('<script src="{{ asset('assets/js/vendor/jquery-slim.min.js')}}"><\/script>')</script>
-            <script src="{{ asset('assets/js/vendor/popper.min.js')}}"></script>
-            <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
-            <script src="{{ asset('assets/js/vendor/holder.min.js')}}"></script>
-            <script>
-                Holder.addTheme('thumb', {
-                    bg: '#55595c',
-                    fg: '#eceeef',
-                    text: 'Thumbnail'
-                });
-            </script>
-        {% endblock %}
+
     </body>
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/bootstrap.min.js')}}" />
+    {% endblock %}
 </html>
+
+

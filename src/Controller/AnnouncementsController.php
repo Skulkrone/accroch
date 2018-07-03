@@ -22,7 +22,16 @@ class AnnouncementsController extends Controller
     {
         return $this->render('announcements/index.html.twig', ['announcements' => $announcementsRepository->findAll()]);
     }
-
+    
+    /**
+     * @Route("/example", name="announcements_example", methods="GET")
+     */
+    public function example(AnnouncementsRepository $announcementsRepository): Response
+    {
+        return $this->render('announcements/example.html.twig', ['announcements' => $announcementsRepository->findAll()]);
+    }
+    
+    
     /**
      * @Route("/new", name="announcements_new", methods="GET|POST")
      */
@@ -87,4 +96,6 @@ class AnnouncementsController extends Controller
 
         return $this->redirectToRoute('announcements_index');
     }
+    
+    
 }

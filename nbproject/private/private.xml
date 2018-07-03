@@ -1,21 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/new.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Controller/RegistrationController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/Security/login.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/config/packages/security.yaml</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Controller/SecurityController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Controller/DefaultController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/public/assets/css/pricing.css</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/Admin/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/Registration/_form.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/default/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/Registration/register.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
-        </group>
-    </open-files>
 </project-private>
