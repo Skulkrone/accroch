@@ -7,6 +7,17 @@ html {
   }
 }
 
+h1 {
+    text-align: center;
+    margin: 64pt 0;
+}
+button.save {
+    
+    margin: 32pt auto;
+}
+button.btn {
+    display: block;
+}
 .container {
   max-width: 960px;
 }
@@ -45,4 +56,24 @@ div.lien {
     text-align: center;
     margin: auto;
     text-transform: uppercase;
+}
+
+.form-group {
+    width: 20%;
+    margin: 0 auto 1rem auto;
+}
+option {
+    width: 50%;
+}
+.form-control {
+    padding: 0pt 4pt;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+}
+.table {
+    width: 40%;
+    margin: 0 auto 1rem auto;
+}
+.table th {
+    width: 20%;
 }
