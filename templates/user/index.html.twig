@@ -1,36 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Espace Client{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1 class="text-bold text-white">Espace Client</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>FullName</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>Id</th>
+                    {% endif %}
+                <th>Nom / Prénom</th>
                 <th>Username</th>
                 <th>Email</th>
-                <th>Password</th>
-                <th>Roles</th>
+                <th>Mot de Passe</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
             {% for user in users %}
-                <tr>
-                    <td>{{ user.id }}</td>
-                    <td>{{ user.fullName }}</td>
-                    <td>{{ user.username }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.password }}</td>
-                    <td>{{ user.roles[0] }}</td>
-                    <td>
-                        <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                        <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-                    </td>
-                </tr>
+                {% if user.id is same as(app.user.id) %}
+                    <tr>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>{{ user.id }}</td>
+                        {% endif %}
+                        <td>{{ user.fullName }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.password }}</td>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <td>{{ user.roles[0] }}</td>
+                        {% endif %}
+                        <td>
+                            <a href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% elseif is_granted('ROLE_ADMIN') %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.fullName }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.password }}</td>
+                        <td>{{ user.roles[0] }}</td>
+                        <td>
+                            <a href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>
+                            <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% endif %}
             {% else %}
                 <tr>
                     <td colspan="7">no records found</td>
@@ -38,8 +58,9 @@
             {% endfor %}
         </tbody>
     </table>
-        
-    <div class="lien">
-        <a href="{{ path('user_new') }}">Create new</a>
-    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="lien">
+            <a href="{{ path('user_new') }}">Créer un nouvel utilisateur</a>
+        </div>
+    {% endif %}
 {% endblock %}

@@ -20,9 +20,9 @@ button.save {
 button.btn {
     display: block;
 }
-.container {
+/*.container {
     max-width: 960px;
-}
+}*/
 
 .pricing-header {
     max-width: 700px;
@@ -94,13 +94,15 @@ button.btn {
 .table {
     width: 50%;
     margin: 0 auto 1rem auto;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.9);
+    border-radius: 10px;
 }
 .card {
     background: rgba(255,255,255,0.9);
 }
 .table th {
     width: 40%;
+    border-top: none;
 }
 
 .card-title {

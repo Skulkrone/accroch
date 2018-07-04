@@ -26,11 +26,11 @@
     <body>
         {% block navigation %}
             <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-info border-bottom box-shadow">
-                <h5 class="my-0 mr-md-auto font-weight-normal">Accroch'.com</h5>
+                <h5 class="my-0 mr-md-auto font-weight-normal">Accroch'.com (emplacement logo)</h5>
                 <nav class="my-2 my-md-0 mr-md-3">
                     {% if is_granted('ROLE_ADMIN') %}
                         <a class="p-2 text-white" href="/">Accueil</a>
-                        <a class="p-2 text-white" href="/user">User</a>
+                        <a class="p-2 text-white" href="/user">Espace Client</a>
                         <a class="p-2 text-white" href="/announcements">Annonce</a>
                         <a class="p-2 text-white" href="/shop">Boutique</a>
                         <a class="p-2 text-white" href="/cat/shop">Catégorie Produits de la Boutique</a>
@@ -39,22 +39,22 @@
                         <a class="p-2 text-white" href="/cat/add">Catégorie Bannière</a>
                         <a class="p-2 text-white" href="/banner">Bannière Pub</a>
                         <a class="p-2 text-white" href="/invoices">Factures</a>
+                    {% elseif is_granted('ROLE_ADD') %}
+                        <a class="p-2 text-white" href="/">Accueil</a>
+                        <a class="p-2 text-white" href="/user">Espace Client</a>
+                        <a class="p-2 text-white" href="/marketers">Annonceurs</a>
                     {% elseif is_granted('ROLE_USER') %}
                         <a class="p-2 text-white" href="/">Accueil</a>
-                        <a class="p-2 text-white" href="/user">User</a>
+                        <a class="p-2 text-white" href="/user">Espace Client</a>
                         <a class="p-2 text-white" href="/announcements">Annonce</a>
                         <a class="p-2 text-white" href="/shop">Boutique</a>
                         <a class="p-2 text-white" href="/products">Produits</a>
-                        <a class="p-2 text-white" href="/invoices">Factures</a>
                     {% else %}
                         <a class="p-2 text-white" href="/">Accueil</a>
                         <a class="p-2 text-white" href="{{ path('announcements_index') }}">Annonces</a>
                     {% endif %}
                 </nav>
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
-                {% elseif is_granted('ROLE_USER') %}
-                    <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
+                {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
                     <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
                 {% else %}
                     <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
@@ -62,52 +62,52 @@
                 {% endif %}
             </div>
         {% endblock %}
-        {% block body %}{% endblock %}
-        {% block footer %}
-            <footer class="pt-4 my-md-5 pt-md-5 border-top">
-                <div class="row">
-                    <div class="col-12 col-md">
-                        <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                        <large class="d-block mb-3 text-muted">&copy; Laurent aka <a href="https://www.skulkrone-design.fr/" target="_blank" title="Skulkrone-Design">Skulkrone</a> | Accroch'.com</large>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5 class="display-5 text-bold">Features</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Cool stuff</a></li>
-                            <li><a class="text-muted" href="#">Random feature</a></li>
-                            <li><a class="text-muted" href="#">Team feature</a></li>
-                            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                            <li><a class="text-muted" href="#">Another one</a></li>
-                            <li><a class="text-muted" href="#">Last time</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>Resources</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Resource</a></li>
-                            <li><a class="text-muted" href="#">Resource name</a></li>
-                            <li><a class="text-muted" href="#">Another resource</a></li>
-                            <li><a class="text-muted" href="#">Final resource</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-6 col-md">
-                        <h5>About</h5>
-                        <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Team</a></li>
-                            <li><a class="text-muted" href="#">Locations</a></li>
-                            <li><a class="text-muted" href="#">Privacy</a></li>
-                            <li><a class="text-muted" href="#">Terms</a></li>
-                        </ul>
-                    </div>
+    {% block body %}{% endblock %}
+    {% block footer %}
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+                    <large class="d-block mb-3 text-muted">&copy; Laurent aka <a href="https://www.skulkrone-design.fr/" target="_blank" title="Skulkrone-Design">Skulkrone</a> | Accroch'.com</large>
                 </div>
-            </footer>
-        {% endblock %}
-
-    </body>
-
-    {% block javascripts %}
-        <script src="{{ asset('assets/js/bootstrap.min.js')}}" />
+                <div class="col-6 col-md">
+                    <h5 class="display-5 text-bold">Features</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Cool stuff</a></li>
+                        <li><a class="text-muted" href="#">Random feature</a></li>
+                        <li><a class="text-muted" href="#">Team feature</a></li>
+                        <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                        <li><a class="text-muted" href="#">Another one</a></li>
+                        <li><a class="text-muted" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Resource</a></li>
+                        <li><a class="text-muted" href="#">Resource name</a></li>
+                        <li><a class="text-muted" href="#">Another resource</a></li>
+                        <li><a class="text-muted" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Team</a></li>
+                        <li><a class="text-muted" href="#">Locations</a></li>
+                        <li><a class="text-muted" href="#">Privacy</a></li>
+                        <li><a class="text-muted" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
     {% endblock %}
+
+</body>
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/bootstrap.min.js')}}" />
+{% endblock %}
 </html>
 
 

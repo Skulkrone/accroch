@@ -29,6 +29,7 @@ class RegistrationController extends Controller
             // Par defaut l'utilisateur aura toujours le rôle ROLE_USER
             if ($typerRole == 1){
                 $user->setRoles(['ROLE_ADMIN']);
+                return $this->redirectToRoute('admin');
             } elseif ($typerRole == 2){
                 $user->setRoles(['ROLE_USER']);
             } elseif ($typerRole == 3){

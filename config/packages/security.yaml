@@ -1,15 +1,21 @@
 security:
     encoders:
-        App\Entity\User: bcrypt
+        App\Entity\User:
+            algorithm: bcrypt
+            cost:      15
+     # encoders:
+         # App\Entity\User: bcrypt
  
     providers:
         database_users:
             entity: { class: App\Entity\User, property: username }
- 
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+            
+        
  
         main:
             # les urls auxquels s'appliquent ce firewall, dans ce cas, ce sont toutes les urls
@@ -18,6 +24,8 @@ security:
             # La connexion n'est pas requise sur toutes les pages
             # par exemple la page d'accueil
             anonymous: true
+            
+            
  
             form_login:
                 # Le nom de la route de la page de connexion

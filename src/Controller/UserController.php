@@ -23,6 +23,14 @@ class UserController extends Controller
     {
         return $this->render('user/index.html.twig', ['users' => $userRepository->findAll()]);
     }
+    
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function admin()
+    {
+        return $this->render('Admin/index.html.twig');
+    }
 
     /**
      * @Route("/new", name="user_new", methods="GET|POST")
@@ -58,18 +66,20 @@ class UserController extends Controller
     /**
      * @Route("/{id}/edit", name="user_edit", methods="GET|POST")
      */
-    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder, User $user): Response
     {
-        $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            $this->getDoctrine()->getManager()->flush();
-            
+                        
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
+            
+            // On enregistre l'utilisateur dans la base
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
 
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }
