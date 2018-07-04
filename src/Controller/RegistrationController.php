@@ -20,20 +20,27 @@ class RegistrationController extends Controller
         $form = $this->createForm(UserType::class, $user);
  
         $form->handleRequest($request);
+        $typerRole= $form->get('typeRoles')->getData();
         if ($form->isSubmitted() && $form->isValid()) {
  
             $password = $passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($password);
  
             // Par defaut l'utilisateur aura toujours le rôle ROLE_USER
-            $user->setRoles(['ROLE_USER']);
+            if ($typerRole == 1){
+                $user->setRoles(['ROLE_ADMIN']);
+            } elseif ($typerRole == 2){
+                $user->setRoles(['ROLE_USER']);
+            } elseif ($typerRole == 3){
+                $user->setRoles(['ROLE_ADD']);
+            }
  
             // On enregistre l'utilisateur dans la base
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
  
-            return $this->redirectToRoute('security_login');
+            return $this->redirectToRoute('default');
         }
  
         return $this->render(

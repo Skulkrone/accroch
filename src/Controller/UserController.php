@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
@@ -57,13 +58,18 @@ class UserController extends Controller
     /**
      * @Route("/{id}/edit", name="user_edit", methods="GET|POST")
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+        $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $this->getDoctrine()->getManager()->flush();
+            
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
 
             return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
         }

@@ -58,7 +58,9 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=64)
      */
     private $password;
- 
+    
+    private $typeRoles;
+    
     /**
      * @var array
      *
@@ -293,5 +295,15 @@ class User implements UserInterface, \Serializable
     {
         return $this->id;
     }
+    
+    public function getTypeRoles()
+    {
+        $typeRoles = $this->typeRoles;
+        return $typeRoles;
+    }
 
+    public function setTypeRoles($typeRoles): void
+    {
+        $this->typeRoles = $typeRoles;
+    }
 }
