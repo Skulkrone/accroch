@@ -3,20 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Repository/UserRepository.php</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Entity/User.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/show.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/index.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/default/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/_delete_form.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/public/assets/css/pricing.css</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/edit.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/edit.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/show.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/_delete_form.html.twig</file>
         </group>
     </open-files>
 </project-private>
