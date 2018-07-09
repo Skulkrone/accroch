@@ -1,15 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Shop index{% endblock %}
+{% block title %}
+    {% for shop in shops %}
+        {{ shop.Label }} - Boutique 
+    {% endfor %}
+{% endblock %}
 
 {% block body %}
-    <h1>Shop index</h1>
+    <h1>Ma Boutique</h1>
 
     <table class="table">
         <thead class="thead-inverse">
             <tr>
                 <th>Id</th>
                 <th>Label</th>
+                <th>Image</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,9 +23,10 @@
                 <tr>
                     <td>{{ shop.id }}</td>
                     <td>{{ shop.Label }}</td>
+                    <td><img class="card-img-top" src="{{ shop.ShopImage }}" alt="Responsive image"></td>
                     <td>
-                        <a href="{{ path('shop_show', {'id': shop.id}) }}">show</a>
-                        <a href="{{ path('shop_edit', {'id': shop.id}) }}">edit</a>
+                        <a href="{{ path('shop_show', {'id': shop.id}) }}">Afficher</a>
+                        <a href="{{ path('shop_edit', {'id': shop.id}) }}">Modifier</a>
                     </td>
                 </tr>
             {% else %}
@@ -30,8 +36,8 @@
             {% endfor %}
         </tbody>
     </table>
-        
+
     <div class="lien">
-        <a href="{{ path('shop_new') }}">Create new</a>
+        <a href="{{ path('products_new') }}" class="text-dark">Ajouter des produits à la boutique</a>
     </div>
 {% endblock %}

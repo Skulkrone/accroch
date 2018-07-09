@@ -29,12 +29,12 @@ class Announcements
     private $Price;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="text")
      */
     private $Size;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="integer")
      */
     private $Weight;
 

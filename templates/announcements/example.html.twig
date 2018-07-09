@@ -1,44 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Announcements index{% endblock %}
+{% block title %}Annonces{% endblock %}
 
 {% block body %}
-    <h1>Announcements index</h1>
+    <h1 class="text-bold text-white">Annonces</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Size</th>
-                <th>Weight</th>
-                <th>Quality</th>
-                <th>Specifications</th>
-                <th>ImageAnnouncements</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for announcement in announcements %}
-                <tr>
-                    <td>{{ announcement.id }}</td>
-                    <td>{{ announcement.Description }}</td>
-                    <td>{{ announcement.Price }}</td>
-                    <td>{{ announcement.Size }}</td>
-                    <td>{{ announcement.Weight }}</td>
-                    <td>{{ announcement.Quality }}</td>
-                    <td>{{ announcement.Specifications }}</td>
-                    <td>{{ announcement.ImageAnnouncements }}</td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="9">no records found</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-        
-    <div class="lien">
-        <a href="/register">Inscription</a>
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-9">
+
+                <div class="row">
+                    {% for announcement in announcements %}
+                        {% if is_granted(['ROLE_USER','ROLE_ADD']) %}
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top" src="{{ announcement.ImageAnnouncements }}" alt=""></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Description }}</a>
+                                        </h4>
+                                        <h5>{{ announcement.Price }} €</h5>
+                                        <p class="card-text">{{ announcement.Specifications }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% elseif app.user == false %}
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    <a href="#"><img class="card-img-top" src="{{ announcement.ImageAnnouncements }}" alt=""></a>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Description }}</a>
+                                        </h4>
+                                        <h5>{{ announcement.Price }} €</h5>
+                                        <p class="card-text">{{ announcement.Specifications }}</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
     </div>
+    <!-- /.col-lg-9 -->
+
+</div>
+<!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<div class="lien">
+    <a href="/register">Inscription</a>
+</div>
 {% endblock %}

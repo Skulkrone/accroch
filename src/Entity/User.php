@@ -83,6 +83,11 @@ class User implements UserInterface, \Serializable
      */
     private $fkInvoicesUserId;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $Avatar;
+
     public function __construct()
     {
         $this->fkShopId = new ArrayCollection();
@@ -305,5 +310,17 @@ class User implements UserInterface, \Serializable
     public function setTypeRoles($typeRoles): void
     {
         $this->typeRoles = $typeRoles;
+    }
+
+    public function getAvatar(): ?string
+    {
+        return $this->Avatar;
+    }
+
+    public function setAvatar(?string $Avatar): self
+    {
+        $this->Avatar = $Avatar;
+
+        return $this;
     }
 }

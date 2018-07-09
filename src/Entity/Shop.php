@@ -34,6 +34,11 @@ class Shop
      */
     private $fkCatShopId;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $ShopImage;
+
     public function __construct()
     {
         $this->fkCatShopId = new ArrayCollection();
@@ -95,6 +100,18 @@ class Shop
                 $fkCatShopId->setFkShopId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getShopImage(): ?string
+    {
+        return $this->ShopImage;
+    }
+
+    public function setShopImage(?string $ShopImage): self
+    {
+        $this->ShopImage = $ShopImage;
 
         return $this;
     }
