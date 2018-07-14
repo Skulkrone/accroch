@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @Route("/shop")
@@ -33,6 +34,17 @@ class ShopController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $shop->getLogo();
+            $file = $shop->getShopImage();
+            
+            /*$fileName = $this->generateUniqueFilename().'.'.$file->guessExtension();
+            
+            $file->move($this->getParameter('images_directory'), $fileName);
+            
+            $shop->setLogo($fileName);
+            $shop->setShopImage($fileName);*/
+            
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($shop);
             $em->flush();
@@ -44,6 +56,13 @@ class ShopController extends Controller
             'shop' => $shop,
             'form' => $form->createView(),
         ]);
+    }
+    
+    /**
+     * @return string
+     */
+    private function generateUniqueFilename() {
+        return md5(uniqid());
     }
 
     /**

@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Products</h1>
-
+    {{ dump(product) }}
     <table class="table">
         <tbody>
             <tr>
@@ -23,6 +23,13 @@
                 <th>ImageProducts</th>
                 <td>{{ product.ImageProducts }}</td>
             </tr>
+            {% for cat in product.fkCatShopId %}
+                {{ dump(cat) }}
+                <tr>
+                    <th>Produits</th>
+                    <td></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

@@ -62,11 +62,15 @@
                 {% endif %}
             </div>
         {% endblock %}
-    {% block body %}{% endblock %}
+        
+    {% block body %}
+    
+    {% endblock %}
+    
     {% block footer %}
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <div class="row">
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-2">
                     <h5 class="display-5 text-bold">Features</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="#">Cool stuff</a></li>
@@ -77,7 +81,7 @@
                         <li><a class="text-muted" href="#">Last time</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-2">
                     <h5>Resources</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="#">Resource</a></li>
@@ -86,7 +90,7 @@
                         <li><a class="text-muted" href="#">Final resource</a></li>
                     </ul>
                 </div>
-                <div class="col-6 col-md-4">
+                <div class="col-6 col-md-2">
                     <h5>A propos</h5>
                     <ul class="list-unstyled text-small">
                         <li><a class="text-muted" href="https://www.skulkrone-design.fr/" target="_blank" title="Skulkrone-Design">&copy; 2018 Skulkrone-Design</a></li>

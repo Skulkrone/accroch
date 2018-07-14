@@ -17,7 +17,6 @@ class CatShopType extends AbstractType
         $builder
             ->add('Label')
             ->add('Description')
-            ->add('ImageCatShop')
             ->add('fkShopId', EntityType::class, array(
             'class' => Shop::class,
             'query_builder' => function (EntityRepository $er) {

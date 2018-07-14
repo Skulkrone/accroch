@@ -37,7 +37,7 @@ class ShopRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Shop
+    : 
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')
@@ -47,4 +47,15 @@ class ShopRepository extends ServiceEntityRepository
         ;
     }
     */
+    /*public function findOneByShops($id) {
+        return $this->createQueryBuilder('a')
+                        ->leftJoin('a.fkCatShopId', 'cs')
+                        ->where('a.fkarticles = :id')->setParameter('id', $id)
+                        ->addSelect('cs')
+                        //->orderBy('a.fkarticle', 'ASC')
+                        ->getQuery()
+                        //->getSQL()
+                        ->getResult()
+        ;
+    }*/
 }

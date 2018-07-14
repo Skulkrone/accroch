@@ -5,6 +5,8 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ShopRepository")
@@ -19,7 +21,7 @@ class Shop
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60)
      */
     private $Label;
 
@@ -31,13 +33,21 @@ class Shop
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\CatShop", mappedBy="fkShopId")
+     * 
      */
     private $fkCatShopId;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="string", length=60, nullable=false)
+     * @Assert\File(mimeTypes={"image/png", "image/jpg", "image/jpeg"})
      */
     private $ShopImage;
+
+    /**
+     * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\File(mimeTypes={"image/png", "image/jpg", "image/jpeg", "image/gif"})
+     */
+    private $Logo;
 
     public function __construct()
     {
@@ -112,6 +122,25 @@ class Shop
     public function setShopImage(?string $ShopImage): self
     {
         $this->ShopImage = $ShopImage;
+
+        return $this;
+    }
+    
+    function __toString(){
+        // to show the name of the Category in the select
+        return $this->fkCatShopId;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->Logo;
+    }
+
+    public function setLogo(?string $Logo): self
+    {
+        $this->Logo = $Logo;
 
         return $this;
     }

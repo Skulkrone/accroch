@@ -1,5 +1,6 @@
+
 html {
-    font-size: 14px;
+    font-size: 16px;
 }
 @media (min-width: 768px) {
     html {
@@ -10,6 +11,8 @@ html {
 body {
     background: url(../../image/store-1586117_1920-002.jpg) no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+    height: auto;
 }
 h1 {
     text-align: center;
@@ -101,8 +104,9 @@ button.btn {
 .table {
     width: 50%;
     margin: 0 auto 1rem auto;
-    background: rgba(255,255,255,0.9);
-    border-radius: 10px;
+    background: rgba(52,58,64,0.9);
+    border-radius: 2px;
+    color: #fff;
 }
 .table-user {
     width: 20%;
@@ -115,7 +119,7 @@ button.btn {
     background: rgba(255,255,255,0.9);
 }
 .table th {
-    width: 40%;
+    width: 20%;
     border-top: none;
 }
 
@@ -133,7 +137,7 @@ footer.mb-md-5, footer.my-md-5 {
     margin-bottom: 0!important;
 }
 footer {
-    background: rgba(222,184,135,0.7);
+    background: rgba(222,184,135,1);
 }
 large.d-block a {
     color: #000;
@@ -150,7 +154,7 @@ div.backgroung-menu {
     margin-right: 0;
     margin-left: 0;
     justify-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 .col-sm {
 

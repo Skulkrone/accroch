@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New CatShop{% endblock %}
+{% block title %}Créer Nouvelle Catégorie pour Boutiques{% endblock %}
 
 {% block body %}
-    <h1>Create new CatShop</h1>
+    <h1>Créer Nouvelle Catégorie pour Boutiques</h1>
 
     {{ include('cat_shop/_form.html.twig') }}
-
-    <a href="{{ path('cat_shop_index') }}">back to list</a>
+    
+    <div class='lien'>
+        <a href="{{ path('cat_shop_index') }}">Retour</a>
+    </div>
 {% endblock %}

@@ -29,7 +29,7 @@ class Announcements
     private $Price;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=60)
      */
     private $Size;
 
@@ -49,7 +49,7 @@ class Announcements
     private $Specifications;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=60)
      */
     private $ImageAnnouncements;
 
@@ -110,12 +110,12 @@ class Announcements
         return $this;
     }
 
-    public function getSize(): ?int
+    public function getSize(): ?string
     {
         return $this->Size;
     }
 
-    public function setSize(int $Size): self
+    public function setSize(string $Size): self
     {
         $this->Size = $Size;
 
