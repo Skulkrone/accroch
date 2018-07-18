@@ -4,14 +4,15 @@
 
 {% block body %}
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="text-light size">Bienvenue chez <img src="../../image/logo.png" alt="" title=""> <br /> 
+        <h1 class="text-white size">Bienvenue chez <img src="../../image/logo.png" alt="" title=""> <br /> 
             {% if app.user %}
                 {{ app.user.username }} !
             {% else %}
             {% endif %}
         </h1>
         <p class="lead"></p>
-    </div>
+    </div><br />
+    <br />
 
     {% if app.user %}
         <div class="container">

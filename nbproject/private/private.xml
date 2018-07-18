@@ -3,19 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Entity/Shop.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/RegistrationController.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Entity/User.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/cat_shop/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/public/assets/css/pricing.css</file>
-            <file>file:/C:/wamp64/www/Accroch/config/services.yaml</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/show.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/Registration/_form.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/templates/default/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Form/UserType.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/products/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Entity/Products.php</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Form/CatShopType.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/shop/show.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/Registration/register.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/DefaultController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/public/assets/css/pricing.css</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/ShopController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/config/services.yaml</file>
             <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
         </group>
     </open-files>

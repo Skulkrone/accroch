@@ -11,103 +11,210 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{% block title %}Accroch'.com{% endblock %}</title>
         {% block head_css %}
-            <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
         {% endblock %}
         {% block head_js %}
-            <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+
         {% endblock %}
         {% block stylesheets %}
             <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+            <link href="{{ asset('assets/css/mdb.min.css')}}" rel="stylesheet" />
             <link href="{{ asset('assets/css/pricing.css')}}" rel="stylesheet" />
         {% endblock %}
     </head>
     <body>
         {% block navigation %}
-            <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow backgroung-menu">
+            <!--Navbar-->
+            <nav class="navbar navbar-light amber lighten-4 mb-4">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="#"><img src="../../image/logo.png" alt="" title=""></a>
+
+                <!-- Collapse button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20" aria-controls="navbarSupportedContent20"
+                        aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon4"><span></span><span></span><span></span></div></button>
+
+                <!-- Collapsible content -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent20">
+
+                    <!-- Links -->
+                    <ul class="navbar-nav mr-auto">
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user">Espace Client</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/announcements">Annonce</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/shop">Boutique</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cat/shop">Catégorie Produits de la Boutique</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/products">Produits</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/marketers">Annonceurs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cat/add">Catégorie Bannière</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/banner">Bannière Pub</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/invoices">Factures</a>
+                            </li>
+                        {% elseif is_granted('ROLE_ADD') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user">Espace Client</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/marketers">Annonceurs</a>
+                            </li>
+                        {% elseif is_granted('ROLE_USER') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user">Espace Client</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/announcements">Annonce</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/shop">Boutique</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/products">Produits</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/">Accueil</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                    <!-- Links -->
+                    <div>
+                        {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
+                            <a class="btn btn-outline-dark btn-rounded waves-effect" href="/logout">Déconnexion</a>
+                        {% else %}
+                            <a class="btn btn-outline-dark btn-rounded waves-effect" href="/register">Inscription</a>&nbsp&nbsp
+                            <a class="btn btn-outline-dark btn-rounded waves-effect" href="/login">Connexion</a>
+                        {% endif %}
+                    </div>
+
+                </div>
+                <!-- Collapsible content -->
+
+            </nav>
+            <!--/.Navbar-->
+
+
+            <!--<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow backgroung-menu">
                 <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../../image/logo.png" alt="" title=""></h5>
                 <nav class="my-2 my-md-0 mr-md-3">
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <a class="p-2 text-white" href="/">Accueil</a>
-                        <a class="p-2 text-white" href="/user">Espace Client</a>
-                        <a class="p-2 text-white" href="/announcements">Annonce</a>
-                        <a class="p-2 text-white" href="/shop">Boutique</a>
-                        <a class="p-2 text-white" href="/cat/shop">Catégorie Produits de la Boutique</a>
-                        <a class="p-2 text-white" href="/products">Produits</a>
-                        <a class="p-2 text-white" href="/marketers">Annonceurs</a>
-                        <a class="p-2 text-white" href="/cat/add">Catégorie Bannière</a>
-                        <a class="p-2 text-white" href="/banner">Bannière Pub</a>
-                        <a class="p-2 text-white" href="/invoices">Factures</a>
-                    {% elseif is_granted('ROLE_ADD') %}
-                        <a class="p-2 text-white" href="/">Accueil</a>
-                        <a class="p-2 text-white" href="/user">Espace Client</a>
-                        <a class="p-2 text-white" href="/marketers">Annonceurs</a>
-                    {% elseif is_granted('ROLE_USER') %}
-                        <a class="p-2 text-white" href="/">Accueil</a>
-                        <a class="p-2 text-white" href="/user">Espace Client</a>
-                        <a class="p-2 text-white" href="/announcements">Annonce</a>
-                        <a class="p-2 text-white" href="/shop">Boutique</a>
-                        <a class="p-2 text-white" href="/products">Produits</a>
-                    {% else %}
-                        <a class="p-2 text-white" href="/">Accueil</a>
-                        <a class="p-2 text-white" href="{{ path('announcements_index') }}">Annonces</a>
-                    {% endif %}
-                </nav>
-                {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
-                    <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
-                {% else %}
-                    <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
-                    <a class="btn btn-outline-light" href="/login">Connexion</a>
-                {% endif %}
-            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <a class="p-2 text-white" href="/">Accueil</a>
+                <a class="p-2 text-white" href="/user">Espace Client</a>
+                <a class="p-2 text-white" href="/announcements">Annonce</a>
+                <a class="p-2 text-white" href="/shop">Boutique</a>
+                <a class="p-2 text-white" href="/cat/shop">Catégorie Produits de la Boutique</a>
+                <a class="p-2 text-white" href="/products">Produits</a>
+                <a class="p-2 text-white" href="/marketers">Annonceurs</a>
+                <a class="p-2 text-white" href="/cat/add">Catégorie Bannière</a>
+                <a class="p-2 text-white" href="/banner">Bannière Pub</a>
+                <a class="p-2 text-white" href="/invoices">Factures</a>
+            {% elseif is_granted('ROLE_ADD') %}
+                <a class="p-2 text-white" href="/">Accueil</a>
+                <a class="p-2 text-white" href="/user">Espace Client</a>
+                <a class="p-2 text-white" href="/marketers">Annonceurs</a>
+            {% elseif is_granted('ROLE_USER') %}
+                <a class="p-2 text-white" href="/">Accueil</a>
+                <a class="p-2 text-white" href="/user">Espace Client</a>
+                <a class="p-2 text-white" href="/announcements">Annonce</a>
+                <a class="p-2 text-white" href="/shop">Boutique</a>
+                <a class="p-2 text-white" href="/products">Produits</a>
+            {% else %}
+                <a class="p-2 text-white" href="/">Accueil</a>
+                <a class="p-2 text-white" href="{{ path('announcements_index') }}">Annonces</a>
+            {% endif %}
+        </nav>
+            {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
+                <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
+            {% else %}
+                <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
+                <a class="btn btn-outline-light" href="/login">Connexion</a>
+            {% endif %}
+        </div>-->
         {% endblock %}
-        
-    {% block body %}
-    
-    {% endblock %}
-    
-    {% block footer %}
-        <footer class="pt-4 my-md-5 pt-md-5 border-top">
-            <div class="row">
-                <div class="col-6 col-md-2">
-                    <h5 class="display-5 text-bold">Features</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Cool stuff</a></li>
-                        <li><a class="text-muted" href="#">Random feature</a></li>
-                        <li><a class="text-muted" href="#">Team feature</a></li>
-                        <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                        <li><a class="text-muted" href="#">Another one</a></li>
-                        <li><a class="text-muted" href="#">Last time</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5>Resources</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="#">Resource</a></li>
-                        <li><a class="text-muted" href="#">Resource name</a></li>
-                        <li><a class="text-muted" href="#">Another resource</a></li>
-                        <li><a class="text-muted" href="#">Final resource</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md-2">
-                    <h5>A propos</h5>
-                    <ul class="list-unstyled text-small">
-                        <li><a class="text-muted" href="https://www.skulkrone-design.fr/" target="_blank" title="Skulkrone-Design">&copy; 2018 Skulkrone-Design</a></li>
-                        <li><a class="text-muted" href="#">Plan du site</a></li>
-                        <li><a class="text-muted" href="#">CGVU</a></li>
-                        <li><a class="text-muted" href="#">Mentions Légales</a></li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    {% endblock %}
 
-</body>
+        {% block body %}
 
-{% block javascripts %}
-    <script src="{{ asset('assets/js/bootstrap.min.js')}}" />
-{% endblock %}
+        {% endblock %}
+
+        {% block footer %}
+            <footer class="pt-4 my-md-5 pt-md-5 border-top">
+                <div class="row">
+                    <div class="col-6 col-md-2">
+                        <h5 class="display-5 text-bold">Features</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Cool stuff</a></li>
+                            <li><a class="text-muted" href="#">Random feature</a></li>
+                            <li><a class="text-muted" href="#">Team feature</a></li>
+                            <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                            <li><a class="text-muted" href="#">Another one</a></li>
+                            <li><a class="text-muted" href="#">Last time</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Resource</a></li>
+                            <li><a class="text-muted" href="#">Resource name</a></li>
+                            <li><a class="text-muted" href="#">Another resource</a></li>
+                            <li><a class="text-muted" href="#">Final resource</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-2">
+                        <h5>A propos</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="https://www.skulkrone-design.fr/" target="_blank" title="Skulkrone-Design">&copy; 2018 Skulkrone-Design</a></li>
+                            <li><a class="text-muted" href="#">Plan du site</a></li>
+                            <li><a class="text-muted" href="#">CGVU</a></li>
+                            <li><a class="text-muted" href="#">Mentions Légales</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+
+    </body>
+
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}"></script>
+        <script src="{{ asset('assets/js/popper.min.js')}}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('assets/js/mdb.min.js')}}"></script>
+        <script>
+            $(document).ready(function () {
+                $('.animated-icon1,.animated-icon3,.animated-icon4').click(function () {
+                    $(this).toggleClass('open');
+                });
+            });
+        </script>
+    {% endblock %}
 </html>
 
 
