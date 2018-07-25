@@ -3,7 +3,7 @@
 {% block title %}{{ shop.Label }}{% endblock %}
 
 {% block body %}
-    <h1 class='text-bold'><img src="{{ shop.Logo }}" alt="{{ shop.Label }}" /></h1>
+    <h1 class='text-bold'><img src="{{ asset('uploads/images/' ~ shop.logo) }}" alt="{{ shop.Label }}" /></h1>
         {% if shop.fkUserId == app.user %}
             {% for boutique in shop.fkCatShopId %}
                 {% for prod in boutique.fkCatShopProdId %}
@@ -36,7 +36,7 @@
 
 
     {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD']) %}
-        '<body style="background : url('{{ shop.ShopImage }}') no-repeat;background-size : cover;"></body>';
+        '<body style="background : url('{{ asset('uploads/images/' ~ shop.ShopImage) }}') no-repeat;background-size : cover;"></body>';
     {% else %}
 
     {% endif %}

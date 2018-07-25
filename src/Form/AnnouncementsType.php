@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class AnnouncementsType extends AbstractType
 {
@@ -21,7 +22,7 @@ class AnnouncementsType extends AbstractType
             ->add('Weight')
             ->add('Quality')
             ->add('Specifications')
-            ->add('ImageAnnouncements')
+            ->add('ImageAnnouncements', FileType::class, array('data_class' => null))
             ->add('fkUserId', EntityType::class, array(
             'class' => User::class,
             'query_builder' => function (EntityRepository $er) {

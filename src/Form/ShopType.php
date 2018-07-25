@@ -16,8 +16,8 @@ class ShopType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('Label')
-                ->add('ShopImage', FileType::class)
-                ->add('Logo', FileType::class)
+                ->add('ShopImage', FileType::class, array('data_class' => null))
+                ->add('Logo', FileType::class, array('data_class' => null))
                 ->add('fkUserId', EntityType::class, array(
                     'class' => User::class,
                     'query_builder' => function (EntityRepository $er) {

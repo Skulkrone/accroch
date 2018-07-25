@@ -23,7 +23,7 @@
             <div class="col-lg-9">
 
                 <div class="card mt-4">
-                    <img class="card-img-top img-fluid" src="{{ announcement.ImageAnnouncements }}" alt="Image Annonce">
+                    <img class="card-img-top img-fluid" src="{{ asset('uploads/images/' ~ announcement.ImageAnnouncements) }}" alt="Image Annonce">
                     <div class="card-body">
                         <h3 class="card-title">{{ announcement.Description }}</h3>
                         <h4>{{ announcement.Price }} €</h4>

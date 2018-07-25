@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class RegistrationController extends Controller {
 
@@ -53,13 +52,6 @@ class RegistrationController extends Controller {
 
             // ... persist the $product variable or any other work
             //return $this->redirect($this->generateUrl('app_product_list'));
-            // On enregistre l'utilisateur dans la base
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-
-            return $this->redirectToRoute('default');
-
             // On enregistre l'utilisateur dans la base
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
