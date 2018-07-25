@@ -49,7 +49,10 @@ private $username;
  *
  * @ORM\Column(type="string", unique=true)
  * @Assert\NotBlank()
- * @Assert\Email()
+ * @Assert\Email(
+ *     message = "The email '{{ value }}' is not a valid email.",
+ *     checkMX = true
+ * )
  */
 private $email;
 
