@@ -20,7 +20,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('fullName', TextType::class)
-            ->add('avatar', FileType::class)
+            ->add('avatar', FileType::class, array('data_class' => null))
             ->add('email', EmailType::class)            
             ->add('username', TextType::class)
             ->add('password', RepeatedType::class, array(

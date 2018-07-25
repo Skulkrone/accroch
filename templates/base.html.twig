@@ -18,27 +18,19 @@
         {% endblock %}
         {% block stylesheets %}
             <link href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-            <link href="{{ asset('assets/css/mdb.min.css')}}" rel="stylesheet" />
             <link href="{{ asset('assets/css/pricing.css')}}" rel="stylesheet" />
         {% endblock %}
     </head>
     <body>
         {% block navigation %}
-            <!--Navbar-->
-            <nav class="navbar navbar-light amber lighten-4 mb-4">
+            <nav class="navbar navbar-expand-lg navbar-light amber lighten-4">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src="../../image/logo.png" alt="" title=""></a>
 
-                <!-- Navbar brand -->
-                <a class="navbar-brand" href="#"><img src="../../image/logo.png" alt="" title=""></a>
-
-                <!-- Collapse button -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20" aria-controls="navbarSupportedContent20"
-                        aria-expanded="false" aria-label="Toggle navigation"><div class="animated-icon4"><span></span><span></span><span></span></div></button>
-
-                <!-- Collapsible content -->
-                <div class="collapse navbar-collapse" id="navbarSupportedContent20">
-
-                    <!-- Links -->
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                         {% if is_granted('ROLE_ADMIN') %}
                             <li class="nav-item active">
                                 <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
@@ -47,79 +39,69 @@
                                 <a class="nav-link" href="/user">Espace Client</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/announcements">Annonce</a>
+                                <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/shop">Boutique</a>
+                                <a class="nav-link" href="/shop">Boutiques</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/cat/shop">Catégorie Produits de la Boutique</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/products">Produits</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/marketers">Annonceurs</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/cat/add">Catégorie Bannière</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/banner">Bannière Pub</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/invoices">Factures</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="/cat/shop">Catégorie Produits de la Boutique</a>
+                                    <a class="dropdown-item" href="/products">Produits</a>
+                                    <a class="dropdown-item" href="/marketers">Annonceurs</a>
+                                    <a class="dropdown-item" href="/cat/add">Catégorie bannière</a>
+                                    <a class="dropdown-item" href="/banner">Bannière</a>
+                                    <a class="dropdown-item" href="/invoices">Factures</a>
+                                </div>
                             </li>
                         {% elseif is_granted('ROLE_ADD') %}
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/user">Espace Client</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/marketers">Annonceurs</a>
+                                <a class="nav-link" href="/marketers">Boutiques</a>
                             </li>
                         {% elseif is_granted('ROLE_USER') %}
-                            <li class="nav-item">
+                            <li class="nav-item active">
                                 <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/user">Espace Client</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/announcements">Annonce</a>
+                                <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/shop">Boutique</a>
+                                <a class="nav-link" href="/shop">Boutiques</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/products">Produits</a>
                             </li>
                         {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Accueil</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                             </li>
                         {% endif %}
                     </ul>
-                    <!-- Links -->
-                    <div>
+                    <form class="form-inline my-2 my-lg-0">
                         {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
                             <a class="btn btn-outline-dark btn-rounded waves-effect" href="/logout">Déconnexion</a>
                         {% else %}
                             <a class="btn btn-outline-dark btn-rounded waves-effect" href="/register">Inscription</a>&nbsp&nbsp
                             <a class="btn btn-outline-dark btn-rounded waves-effect" href="/login">Connexion</a>
                         {% endif %}
-                    </div>
-
+                    </form>
                 </div>
-                <!-- Collapsible content -->
-
             </nav>
-            <!--/.Navbar-->
 
 
             <!--<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow backgroung-menu">
@@ -204,16 +186,7 @@
 
     {% block javascripts %}
         <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}"></script>
-        <script src="{{ asset('assets/js/popper.min.js')}}"></script>
         <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
-        <script src="{{ asset('assets/js/mdb.min.js')}}"></script>
-        <script>
-            $(document).ready(function () {
-                $('.animated-icon1,.animated-icon3,.animated-icon4').click(function () {
-                    $(this).toggleClass('open');
-                });
-            });
-        </script>
     {% endblock %}
 </html>
 
