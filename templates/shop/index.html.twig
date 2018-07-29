@@ -7,52 +7,40 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class='text-white text-bold'>Ma Boutique</h1>
+    <h1 class='text-white text-bold'>Toutes les boutiques</h1>
 
     <table class="table">
         <thead class="thead-inverse">
             <tr>
-                <th>Id</th>
-                <th>Boutique</th>
-                <th>Catégorie</th>
-                <th>Produits</th>
-                <th>actions</th>
+                <th class="text-center">Boutique</th>
             </tr>
         </thead>
         <tbody>
             {% for shop in shops %}
-                {{ dump(shop) }}
                 {% if shop.fkUserId == app.user %}
                     <tr>
-                        <td>{{ shop.id }}</td>
-                        <td>{{ shop.Label }}</td>
-                        {% for boutique in shop.fkCatShopId %}
-                            {{ dump(boutique) }}
-                            <td>{{ boutique.Label }}</td>
-                            {% for prod in boutique.fkCatShopProdId %}
-                                {{ dump(prod) }}
-                                <td>{{ prod.Label }}</td>
-                            </tr>
-                        {% else %}
-                            <tr>
-                                <td colspan="3">no records found</td>
-                            </tr>
-
-                        {% endfor %}
-                    {% endfor %}
-                <td>
-                    <a href="{{ path('shop_show', {'id': shop.id}) }}">Afficher</a>
-                    <a href="{{ path('shop_edit', {'id': shop.id}) }}">Modifier</a>
-                </td>
-            {% endif %}
-
-        {% endfor %}
-    </tbody>
-</table>
+                        <td class="text-center"><img src="{{ asset('uploads/images/logo/' ~ shop.Logo) }}" alt="{{ shop.Label }}" title="{{ shop.Label }}" /></td>
+                        <td class="text-center">
+                            <a href="{{ path('shop_show', {'id': shop.id}) }}" class='text-white'>Afficher</a>
+                            {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
+                                <a href="{{ path('shop_edit', {'id': shop.id}) }}" class='text-white'> | Modifier</a>
+                            {% endif %}
+                        </td>
+                    {% elseif app.user == false %}
+                        <td class="text-center"><img src="{{ asset('uploads/images/logo/' ~ shop.Logo) }}" alt="{{ shop.Label }}" title="{{ shop.Label }}" /></td>
+                        <td class="text-center">
+                            <a href="{{ path('shop_show', {'id': shop.id}) }}" class='text-white'>Afficher</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 
-
-<div class="lien">
-    <a href="{{ path('products_new') }}" class="text-white">Ajouter des produits à la boutique</a>
-</div>
+    {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
+        <div class="lien">
+            <a href="{{ path('products_new') }}" class="text-white">Ajouter des produits à la boutique</a>
+        </div>
+    {% endif %}
 {% endblock %}

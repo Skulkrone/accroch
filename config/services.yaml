@@ -2,7 +2,12 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en' 
-    avatar_directory: '%kernel.project_dir%/public/uploads/images'
+    avatar_directory: '%kernel.project_dir%/public/uploads/images/avatar'
+    boutique_directory: '%kernel.project_dir%/public/uploads/images/boutique'
+    annonce_directory: '%kernel.project_dir%/public/uploads/images/annonce'
+    banniere_directory: '%kernel.project_dir%/public/uploads/images/banniere'
+    logo_directory: '%kernel.project_dir%/public/uploads/images/logo'
+    produits_directory: '%kernel.project_dir%/public/uploads/images/produits'
 
 services:
     # default configuration for services in *this* file

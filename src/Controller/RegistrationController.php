@@ -35,18 +35,17 @@ class RegistrationController extends Controller {
                 $user->setRoles(['ROLE_ADD']);
             }
 
-            // $file stores the uploaded PDF file
-            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            // $file stores the uploaded file
             $file = $user->getAvatar();
 
             $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
 
-            // moves the file to the directory where brochures are stored
+            // moves the file to the directory where avatar are stored
             $file->move(
                     $this->getParameter('avatar_directory'), $fileName
             );
 
-            // updates the 'brochure' property to store the PDF file name
+            // updates the 'avatar' property to store the file name
             // instead of its contents
             $user->setAvatar($fileName);
 

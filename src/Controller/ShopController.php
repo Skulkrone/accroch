@@ -40,8 +40,8 @@ class ShopController extends Controller {
         $fileNameOne = $this->generateUniqueFilename().'.'.$fileOne->guessExtension();
         $fileNameTwo = $this->generateUniqueFilename().'.'.$fileTwo->guessExtension();
 
-        $fileOne->move($this->getParameter('avatar_directory'), $fileName);
-        $fileTwo->move($this->getParameter('avatar_directory'), $fileName);
+        $fileOne->move($this->getParameter('boutique_directory'), $fileName);
+        $fileTwo->move($this->getParameter('logo_directory'), $fileName);
 
         $shop->setShopImage($fileNameOne);
         $shop->setLogo($fileNameTwo);
@@ -89,11 +89,12 @@ class ShopController extends Controller {
             $fileNameOne = $this->generateFilename() . '.' . $fileOne->guessExtension();
             $fileNameTwo = $this->generateFilename() . '.' . $fileTwo->guessExtension();
 
-            $fileOne->move($this->getParameter('avatar_directory'), $fileNameOne);
-            $fileTwo->move($this->getParameter('avatar_directory'), $fileNameTwo);
+            $fileOne->move($this->getParameter('boutique_directory'), $fileNameOne);
+            $fileTwo->move($this->getParameter('logo_directory'), $fileNameTwo);
 
             $shop->setShopImage($fileNameOne);
             $shop->setLogo($fileNameTwo);
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('shop_edit', ['id' => $shop->getId()]);

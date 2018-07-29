@@ -18,7 +18,7 @@ class ProductsType extends AbstractType {
         $builder
                 ->add('Label')
                 ->add('Price')
-                ->add('ImageProducts', FileType::class, array('label' => 'Image du Produit'))
+                ->add('ImageProducts', FileType::class, array('data_class' => null))
                 ->add('fkCatShopId', EntityType::class, array(
                     'class' => CatShop::class,
                     'query_builder' => function (EntityRepository $er) {

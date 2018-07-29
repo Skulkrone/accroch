@@ -1,41 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Products{% endblock %}
+{% block title %}{{ product.Label }}{% endblock %}
 
 {% block body %}
-    <h1>Products</h1>
-    {{ dump(product) }}
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Label</th>
-                <td>{{ product.Label }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.Price }}</td>
-            </tr>
-            <tr>
-                <th>ImageProducts</th>
-                <td>{{ product.ImageProducts }}</td>
-            </tr>
-            {% for cat in product.fkCatShopId %}
-                {{ dump(cat) }}
-                <tr>
-                    <th>Produits</th>
-                    <td></td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <h1 class='text-white text-bold'>{{ product.fkCatShopId.Label }}</h1>
 
-    <a href="{{ path('products_index') }}">back to list</a>
+    <div class="container">
+        <div class="card-deck mb-6 text-center">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">{{ product.Label }}</h4>
+                </div>
+                <div class="card-body">
+                    <img class="rounded mx-auto d-block" src="{{ asset('uploads/images/produits/' ~ product.ImageProducts) }}" alt="{{ product.Label }}" title="{{ product.Label }}" />
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Prix : {{ product.Price }} €</li>
+                        <li>Stock : *** </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('products_edit', {'id': product.id}) }}">edit</a>
+    {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
+        <div class="lien">
+            <a href="{{ path('products_index') }}">Retour</a>
+            <br />
+            <br />
+            <a href="{{ path('products_edit', {'id': product.id}) }}">Modifier</a>
+        </div>
 
-    {{ include('products/_delete_form.html.twig') }}
+        {{ include('products/_delete_form.html.twig') }}
+    {% elseif app.user == false %}
+        <div class="lien">
+            <a href="{{ path('shop_index') }}">Retour</a>
+        </div>
+    {% endif %}
+
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}{{ shop.Label }}{% endblock %}
 
 {% block body %}
-    <h1 class='text-bold'><img src="{{ asset('uploads/images/' ~ shop.logo) }}" alt="{{ shop.Label }}" /></h1>
+    <h1 class='text-bold'><img src="{{ asset('uploads/images/logo/' ~ shop.logo) }}" alt="{{ shop.Label }}" title="{{ shop.Label }}" /></h1>
         {% if shop.fkUserId == app.user %}
             {% for boutique in shop.fkCatShopId %}
                 {% for prod in boutique.fkCatShopProdId %}
@@ -12,35 +12,56 @@
                         <tr>
                             <th>{{ boutique.Label }}</th>
                             <th>Prix</th>
-                            <th>Prix</th>
+                            <th>Stock</th>
                         </tr>
                     </thead>
                     <tr>
                         <td><a href="{{ path('products_show', {'id': prod.id}) }}" class="text-white">{{ prod.Label }}</a></td>
                         <td>{{ prod.Price }} €</td>
+                        <td> *** </td>
+                    </tr>
+                </table>
+            {% endfor %}
+        {% endfor %}
+    {% elseif app.user == false %}
+        {% for boutique in shop.fkCatShopId %}
+            {% for prod in boutique.fkCatShopProdId %}
+                <table class="table table-dark table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th>{{ boutique.Label }}</th>
+                            <th>Prix</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td><a href="{{ path('products_show', {'id': prod.id}) }}" class="text-white">{{ prod.Label }}</a></td>
                         <td>{{ prod.Price }} €</td>
+                        <td> *** </td>
                     </tr>
                 </table>
             {% endfor %}
         {% endfor %}
     {% endif %}
 
-    <div class="lien">
 
-        <a href="{{ path('user_index') }}">Retour</a>
-        <br />
-        <br />
-        <a href="{{ path('shop_edit', {'id': shop.id}) }}">edit</a>
+    {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
+        <div class="lien">
+            <a href="{{ path('user_index') }}">Retour</a>
+            <br />
+            <br />
+            <a href="{{ path('shop_edit', {'id': shop.id}) }}">edit</a>
+        </div>
 
-    </div>
-
+        {{ include('shop/_delete_form.html.twig') }}
+    {% endif %}
 
     {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD']) %}
-        '<body style="background : url('{{ asset('uploads/images/' ~ shop.ShopImage) }}') no-repeat;background-size : cover;"></body>';
+        '<body style="background : url('{{ asset('uploads/images/boutique/' ~ shop.ShopImage) }}') no-repeat;background-size : cover;"></body>';
     {% else %}
 
     {% endif %}
 
 
-    {{ include('shop/_delete_form.html.twig') }}
+
 {% endblock %}

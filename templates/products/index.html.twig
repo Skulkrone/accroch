@@ -3,39 +3,37 @@
 {% block title %}Produits{% endblock %}
 
 {% block body %}
-    <h1>Mes Produits</h1>
+    <h1 class='text-white text-bold'>Produits de la boutique</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Label</th>
-                <th>Price</th>
-                <th>ImageProducts</th>
-                <th>Boutique</th>
+                <th>Prix</th>
+                <th>Stock</th>
+                <!--<th>Boutique</th>-->
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
-                        {% if app.user == product.fkCatShopId.fkShopId.fkUserId %}
-                            <tr>
-                                <td>{{ product.id }}</td>
-                                <td>{{ product.Label }}</td>
-                                <td>{{ product.Price }}</td>
-                                <td>{{ product.ImageProducts }}</td>
-                                <td>{{ product.fkCatShopId.fkShopId.Label }}</td>
-                                <td>
-                                    <a href="{{ path('products_show', {'id': product.id}) }}">Afficher</a>
-                                    <a href="{{ path('products_edit', {'id': product.id}) }}">Modifier</a>
-                                </td>
-                            </tr>
-                        {% endif %}
-                    {% else %}
-                        <tr>
-                            <td colspan="5">no records found</td>
-                        </tr>
-                    {% endfor %}
+                {% if app.user == product.fkCatShopId.fkShopId.fkUserId %}
+                    <tr>
+                        <td>{{ product.Label }}</td>
+                        <td>{{ product.Price }}</td>
+                        <td> *** </td>
+                        <!--<td>{{ product.fkCatShopId.fkShopId.Label }}</td>-->
+                        <td>
+                            <a href="{{ path('products_show', {'id': product.id}) }}" class='text-white'>Afficher</a> | 
+                            <a href="{{ path('products_edit', {'id': product.id}) }}" class='text-white'>Modifier</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 

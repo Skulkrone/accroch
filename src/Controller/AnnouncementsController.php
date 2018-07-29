@@ -51,7 +51,7 @@ class AnnouncementsController extends Controller
 
             // moves the file to the directory where brochures are stored
             $file->move(
-                    $this->getParameter('avatar_directory'), $fileName
+                    $this->getParameter('annonce_directory'), $fileName
             );
 
             // updates the 'brochure' property to store the PDF file name
@@ -97,7 +97,7 @@ class AnnouncementsController extends Controller
 
             // moves the file to the directory where brochures are stored
             $file->move(
-                    $this->getParameter('avatar_directory'), $fileName
+                    $this->getParameter('annonce_directory'), $fileName
             );
 
             // updates the 'brochure' property to store the PDF file name

@@ -90,6 +90,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('shop_index') }}">Boutiques</a>
+                            </li>
                         {% endif %}
                     </ul>
                     <form class="form-inline my-2 my-lg-0">
@@ -102,44 +105,6 @@
                     </form>
                 </div>
             </nav>
-
-
-            <!--<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 border-bottom box-shadow backgroung-menu">
-                <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../../image/logo.png" alt="" title=""></h5>
-                <nav class="my-2 my-md-0 mr-md-3">
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class="p-2 text-white" href="/">Accueil</a>
-                <a class="p-2 text-white" href="/user">Espace Client</a>
-                <a class="p-2 text-white" href="/announcements">Annonce</a>
-                <a class="p-2 text-white" href="/shop">Boutique</a>
-                <a class="p-2 text-white" href="/cat/shop">Catégorie Produits de la Boutique</a>
-                <a class="p-2 text-white" href="/products">Produits</a>
-                <a class="p-2 text-white" href="/marketers">Annonceurs</a>
-                <a class="p-2 text-white" href="/cat/add">Catégorie Bannière</a>
-                <a class="p-2 text-white" href="/banner">Bannière Pub</a>
-                <a class="p-2 text-white" href="/invoices">Factures</a>
-            {% elseif is_granted('ROLE_ADD') %}
-                <a class="p-2 text-white" href="/">Accueil</a>
-                <a class="p-2 text-white" href="/user">Espace Client</a>
-                <a class="p-2 text-white" href="/marketers">Annonceurs</a>
-            {% elseif is_granted('ROLE_USER') %}
-                <a class="p-2 text-white" href="/">Accueil</a>
-                <a class="p-2 text-white" href="/user">Espace Client</a>
-                <a class="p-2 text-white" href="/announcements">Annonce</a>
-                <a class="p-2 text-white" href="/shop">Boutique</a>
-                <a class="p-2 text-white" href="/products">Produits</a>
-            {% else %}
-                <a class="p-2 text-white" href="/">Accueil</a>
-                <a class="p-2 text-white" href="{{ path('announcements_index') }}">Annonces</a>
-            {% endif %}
-        </nav>
-            {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
-                <a class="btn btn-outline-light" href="/logout">Déconnexion</a>
-            {% else %}
-                <a class="btn btn-outline-light" href="/register">Inscription</a>&nbsp&nbsp
-                <a class="btn btn-outline-light" href="/login">Connexion</a>
-            {% endif %}
-        </div>-->
         {% endblock %}
 
         {% block body %}

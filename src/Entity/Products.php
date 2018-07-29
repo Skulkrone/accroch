@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductsRepository")
@@ -29,7 +30,10 @@ class Products
     private $Price;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\File(mimeTypes={ "image/png",
+     *          "image/jpeg",
+     *          "image/jpg" })
      */
     private $ImageProducts;
 
@@ -78,12 +82,12 @@ class Products
         return $this;
     }
 
-    public function getImageProducts(): ?string
+    public function getImageProducts()
     {
         return $this->ImageProducts;
     }
 
-    public function setImageProducts(?string $ImageProducts): self
+    public function setImageProducts($ImageProducts): self
     {
         $this->ImageProducts = $ImageProducts;
 

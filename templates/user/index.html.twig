@@ -1,10 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Espace Client{% endblock %}
+{% block title %}
+    {% for user in users %}
+        Espace Client - {{ user.username }}
+    {% endfor %}
+{% endblock %}
 
 {% block body %}
-    
-    <?php phpinfo(); ?> 
+
     <h1 class="text-bold text-white">Espace Client</h1>
 
     <div class="container-fluid">
@@ -46,13 +49,13 @@
                     {% if user.id is same as(app.user.id) %}
                         <div class="col-sm">
                             <h2 class="card-body text-dark">{{ user.username }}</h2>
-                            <img class="rounded mx-auto d-block" src="{{ asset('uploads/images/' ~ user.avatar) }}" alt="Responsive image">
+                            <img class="rounded mx-auto d-block" src="{{ asset('uploads/images/avatar/' ~ user.avatar) }}" alt="Responsive image">
                             <p><b>Nom / Prénom : </b>{{ user.fullName }}</p>
                             <p><b>Email : </b>{{ user.email }}</p>
                             <a href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>&nbsp&nbsp
                             <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
                         </div>
-                    {#{% elseif is_granted('ROLE_ADMIN') %} #}
+                        {#{% elseif is_granted('ROLE_ADMIN') %} #}
                         <!--<div class="col-sm">
                             <h2 class="card-body text-dark">{{ user.username }}</h2>
                             <p>Id : {{ user.id }}</p>
@@ -72,7 +75,7 @@
 
     {% if is_granted('ROLE_ADMIN') %}
         <div class="lien">
-            <a href="{{ path('user_new') }}" class="text-dark">Créer un nouvel utilisateur</a>
+            <a href="{{ path('user_new') }}" class="text-bold text-white">Créer un nouvel utilisateur</a>
         </div>
     {% endif %}
 {% endblock %}
