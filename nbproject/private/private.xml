@@ -5,14 +5,18 @@
         <group>
             <file>file:/C:/wamp64/www/Accroch/templates/announcements/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Entity/User.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Repository/ShopRepository.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/products/show.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/public/assets/css/pricing.css</file>
             <file>file:/C:/wamp64/www/Accroch/templates/announcements/show.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/templates/default/index.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/shop/example.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Form/UserType.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/products/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/products/show.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Entity/Products.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/shop/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/public/assets/css/pricing.css</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/ShopController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/templates/shop/show.html.twig</file>
         </group>

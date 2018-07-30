@@ -66,6 +66,14 @@ class ShopController extends Controller {
     private function generateUniqueFilename() {
         return md5(uniqid());
     }
+    
+    /**
+     * @Route("/example", name="shop_example", methods="GET")
+     */
+    public function exampleQuery(ShopRepository $shopRepository): Response
+    {
+        return $this->render('shop/example.html.twig', ['shops' => $shopRepository->exampleSQL()]);
+    }
 
     /**
      * @Route("/{id}", name="shop_show", methods="GET")
@@ -128,5 +136,5 @@ class ShopController extends Controller {
         return md5(uniqid());
     }
    
-
+    
 }
