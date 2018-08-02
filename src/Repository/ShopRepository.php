@@ -46,6 +46,11 @@ class ShopRepository extends ServiceEntityRepository {
       ;
       }
      */
+    
+    /**
+     * 
+     * Connexion à la base de données en PDO et requête pour afficher la boutique.
+     */
     public function exampleSQL() {
 
         $bdd = new \PDO('mysql:host=localhost;dbname=accroch;charset=utf8', 'root', '', array(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION));

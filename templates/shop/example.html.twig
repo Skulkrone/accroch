@@ -9,45 +9,46 @@
 {% block body %}
 
 
-    {% for shop in shops %}
-            <h1 class='text-bold'><img src="{{ asset('uploads/images/logo/' ~ shop.logo) }}" alt="{{ shop.label }}" title="{{ shop.label }}" /></h1>
-        {% endfor %}
+
+    <h1 class='text-bold'><img src="{{ asset('uploads/images/logo/' ~ shops[2].logo) }}" alt="{{ shops[2].label }}" title="{{ shops[2].label }}" /></h1>
+
 
     {% for shop in shops %}
         <table class="table table-dark table-hover text-center">
             <thead>
                 <tr>
-                    <th>{{ shop.catshoplabel }}</th>
+                    <th>{{ shops[2].catshoplabel }}</th>
                     <th>Prix</th>
                     <th>Stock</th>
                 </tr>
             </thead>
             <tr>
-                <td><a href="{{ path('products_show', {'id': shop.id }) }}" class="text-white">{{ shop.productslabel }}</a></td>
-                <td>{{ shop.price }} €</td>
+                <td><a href="{{ path('products_show', {'id': shops[2].id }) }}" class="text-white">{{ shops[2].productslabel }}</a></td>
+                <td>{{ shops[2].price }} €</td>
                 <td> *** </td>
             </tr>
         </table>
-
-        {% if app.user %}
-            <div class="lien">
-                <a href="{{ path('user_index') }}">Retour</a>
-                <br />
-                <br />
-                <a href="{{ path('shop_edit', {'id': shop.id}) }}">edit</a>
-            </div>
-
-            {{ include('shop/_delete_form.html.twig') }}
-        {% else %}
-            <div class="lien">
-                <a href="{{ path('shop_index') }}">Retour</a>
-            </div>
-        {% endif %}
-
-
-        '<body style="background : url('{{ asset('uploads/images/boutique/' ~ shop.shop_image) }}') no-repeat;background-size : cover;"></body>';
-
     {% endfor %}
+    {% if app.user %}
+        <div class="lien">
+            <a href="{{ path('user_index') }}">Retour</a>
+            <br />
+            <br />
+            <a href="{{ path('shop_edit', {'id': shops[2].id}) }}">Modifier</a>
+        </div>
+
+        {{ include('shop/_delete_form.html_1.twig') }}
+
+    {% else %}
+        <div class="lien">
+            <a href="{{ path('shop_index') }}">Retour</a>
+        </div>
+    {% endif %}
+
+
+    '<body style="background : url('{{ asset('uploads/images/boutique/' ~ shops[2].shop_image) }}') no-repeat;background-size : cover;"></body>';
+
+
 
 
 {% endblock %}
