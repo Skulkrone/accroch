@@ -74,6 +74,27 @@
                                         </div>
                                     {% endfor %}
                                 {% endfor %}
+                            {% else %}
+                                {% for boutique in shop.fkCatShopId %}
+                                    {% for prod in boutique.fkCatShopProdId %}
+                                        <div class="container">
+                                            <div class="card-deck mb-6 text-center">
+                                                <div class="card mb-4 box-shadow">
+                                                    <div class="card-header">
+                                                        <h4 class="my-0 font-weight-normal"><a href="{{ path('products_show', {'id': prod.id}) }}" >{{ prod.Label }}</a></h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <img class="rounded mx-auto d-block" src="{{ asset('uploads/images/produits/' ~ prod.ImageProducts) }}" alt="{{ prod.Label }}" title="{{ prod.Label }}" />
+                                                        <ul class="list-unstyled mt-3 mb-4">
+                                                            <li>Prix : {{ prod.Price }} €</li>
+                                                            <li>Stock : *** </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
                             {% endif %}
                         </div>
                         <!-- /.row -->

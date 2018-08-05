@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
- 
+
 {% block body %}
     {% if error %}
         <div class="alert alert-danger">
             {{ error.messageKey }}
         </div>
     {% endif %}
- 
+
+
+
     <div class="columns">
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <div class="well">
                 <form action="{{ path('security_login') }}" method="post">
                     <fieldset>
-                        <legend class="text-white"><i class="fa fa-lock" aria-hidden="true"></i> Connexion</legend>
+                        <h1 class="text-bold text-white">Connexion</h1>
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
@@ -29,4 +31,4 @@
                 </form>
             </div>
         </div>
-{% endblock %}
+    {% endblock %}

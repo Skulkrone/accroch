@@ -44,10 +44,10 @@
                                     <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Description }}</a>
+                                            {{ announcement.Description }}
                                         </h4>
                                         <h5>{{ announcement.Price }} €</h5>
-                                        <p class="card-text">{{ announcement.Specifications }}</p>
+                                        <p class="card-text"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">En savoir plus...</a></p>
                                     </div>
                                 </div>
                                     
@@ -58,10 +58,10 @@
                                     <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
                                     <div class="card-body">
                                         <h4 class="card-title">
-                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Description }}</a>
+                                            {{ announcement.Description }}
                                         </h4>
                                         <h5>{{ announcement.Price }} €</h5>
-                                        <p class="card-text">{{ announcement.Specifications }}</p>
+                                        <p class="card-text"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">En savoir plus...</a></p>
                                     </div>
                                 </div>
                             </div>
