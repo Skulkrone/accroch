@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Products;
+use App\Entity\Shop;
+use App\Entity\CatShop;
 use App\Form\ProductsType;
 use App\Repository\ProductsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,73 +15,71 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/products")
  */
-class ProductsController extends Controller
-{
+class ProductsController extends Controller {
+
     /**
      * @Route("/", name="products_index", methods="GET")
      */
-    public function index(ProductsRepository $productsRepository): Response
-    {
+    public function index(ProductsRepository $productsRepository): Response {
         return $this->render('products/index.html.twig', ['products' => $productsRepository->findAll()]);
-    }
+        }
 
-    /**
-     * @Route("/new", name="products_new", methods="GET|POST")
-     */
-    public function new(Request $request): Response
-    {
+        /**
+         * @Route("/new", name="products_new", methods="GET|POST")
+         */
+        public function new(Request $request): Response
+        {
         $product = new Products();
         $form = $this->createForm(ProductsType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
-            // $file stores the uploaded file
-            $file = $product->getImageProducts();
 
-            $fileName = $this->generateProductFileName() . '.' . $file->guessExtension();
+        // $file stores the uploaded file
+        $file = $product->getImageProducts();
 
-            // moves the file to the directory where avatar are stored
-            $file->move(
-                    $this->getParameter('produits_directory'), $fileName
-            );
+        $fileName = $this->generateProductFileName() . '.' . $file->guessExtension();
 
-            // updates the 'avatar' property to store the file name
-            // instead of its contents
-            $product->setImageProducts($fileName);
-            
-            
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($product);
-            $em->flush();
+        // moves the file to the directory where avatar are stored
+        $file->move(
+        $this->getParameter('produits_directory'), $fileName
+        );
 
-            return $this->redirectToRoute('products_index');
+        // updates the 'avatar' property to store the file name
+        // instead of its contents
+        $product->setImageProducts($fileName);
+
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($product);
+        $em->flush();
+
+        return $this->redirectToRoute('products_index');
         }
 
         return $this->render('products/new.html.twig', [
-            'product' => $product,
-            'form' => $form->createView(),
+                    'product' => $product,
+                    'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="products_show", methods="GET")
      */
-    public function show(Products $product): Response
-    {
+    public function show(Products $product): Response {
         return $this->render('products/show.html.twig', ['product' => $product]);
     }
 
     /**
      * @Route("/{id}/edit", name="products_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Products $product): Response
-    {
+    public function edit(Request $request, Products $product): Response {
+        
         $form = $this->createForm(ProductsType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             // $file stores the uploaded file
             $file = $product->getImageProducts();
 
@@ -93,25 +93,24 @@ class ProductsController extends Controller
             // updates the 'avatar' property to store the file name
             // instead of its contents
             $product->setImageProducts($fileName);
-            
-            
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('products_edit', ['id' => $product->getId()]);
         }
 
         return $this->render('products/edit.html.twig', [
-            'product' => $product,
-            'form' => $form->createView(),
+                    'product' => $product,
+                    'form' => $form->createView(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="products_delete", methods="DELETE")
      */
-    public function delete(Request $request, Products $product): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+    public function delete(Request $request, Products $product): Response {
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($product);
             $em->flush();
@@ -119,8 +118,7 @@ class ProductsController extends Controller
 
         return $this->redirectToRoute('products_index');
     }
-    
-    
+
     /**
      * @return string
      */
@@ -129,4 +127,5 @@ class ProductsController extends Controller
         // uniqid(), which is based on timestamps
         return md5(uniqid());
     }
+
 }

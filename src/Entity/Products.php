@@ -12,128 +12,134 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Products
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+/**
+ * @ORM\Id()
+ * @ORM\GeneratedValue()
+ * @ORM\Column(type="integer")
+ */
+private $id;
 
-    /**
-     * @ORM\Column(type="string", length=30)
-     */
-    private $Label;
+/**
+ * @ORM\Column(type="string", length=30)
+ */
+private $Label;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Price;
+/**
+ * @ORM\Column(type="integer")
+ */
+private $Price;
 
-    /**
-     * @ORM\Column(type="string", length=60, nullable=true)
-     * @Assert\File(mimeTypes={ "image/png",
-     *          "image/jpeg",
-     *          "image/jpg" })
-     */
-    private $ImageProducts;
+/**
+ * @ORM\Column(type="string", length=60, nullable=true)
+ * @Assert\File(mimeTypes={ "image/png",
+ *          "image/jpeg",
+ *          "image/jpg" })
+ * @Assert\Image(
+ *     minWidth = 200,
+ *     maxWidth = 400,
+ *     minHeight = 200,
+ *     maxHeight = 400
+ * )
+ */
+private $ImageProducts;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\CatShop", inversedBy="fkCatShopProdId")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $fkCatShopId;
+/**
+ * @ORM\ManyToOne(targetEntity="App\Entity\CatShop", inversedBy="fkCatShopProdId")
+ * @ORM\JoinColumn(nullable=false)
+ */
+private $fkCatShopId;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Invoices", mappedBy="fkProductsId")
-     */
-    private $fkInvoicesProductsId;
+/**
+ * @ORM\OneToMany(targetEntity="App\Entity\Invoices", mappedBy="fkProductsId")
+ */
+private $fkInvoicesProductsId;
 
-    public function __construct()
-    {
-        $this->fkInvoicesProductsId = new ArrayCollection();
-    }
+public function __construct()
+{
+$this->fkInvoicesProductsId = new ArrayCollection();
+}
 
-    public function getId()
-    {
-        return $this->id;
-    }
+public function getId()
+{
+return $this->id;
+}
 
-    public function getLabel(): ?string
-    {
-        return $this->Label;
-    }
+public function getLabel(): ?string
+{
+return $this->Label;
+}
 
-    public function setLabel(string $Label): self
-    {
-        $this->Label = $Label;
+public function setLabel(string $Label): self
+{
+$this->Label = $Label;
 
-        return $this;
-    }
+return $this;
+}
 
-    public function getPrice(): ?float
-    {
-        return $this->Price;
-    }
+public function getPrice(): ?float
+{
+return $this->Price;
+}
 
-    public function setPrice(float $Price): self
-    {
-        $this->Price = $Price;
+public function setPrice(float $Price): self
+{
+$this->Price = $Price;
 
-        return $this;
-    }
+return $this;
+}
 
-    public function getImageProducts()
-    {
-        return $this->ImageProducts;
-    }
+public function getImageProducts()
+{
+return $this->ImageProducts;
+}
 
-    public function setImageProducts($ImageProducts): self
-    {
-        $this->ImageProducts = $ImageProducts;
+public function setImageProducts($ImageProducts): self
+{
+$this->ImageProducts = $ImageProducts;
 
-        return $this;
-    }
+return $this;
+}
 
-    public function getFkCatShopId(): ?CatShop
-    {
-        return $this->fkCatShopId;
-    }
+public function getFkCatShopId(): ?CatShop
+{
+return $this->fkCatShopId;
+}
 
-    public function setFkCatShopId(?CatShop $fkCatShopId): self
-    {
-        $this->fkCatShopId = $fkCatShopId;
+public function setFkCatShopId(?CatShop $fkCatShopId): self
+{
+$this->fkCatShopId = $fkCatShopId;
 
-        return $this;
-    }
+return $this;
+}
 
-    /**
-     * @return Collection|Invoices[]
-     */
-    public function getFkInvoicesProductsId(): Collection
-    {
-        return $this->fkInvoicesProductsId;
-    }
+/**
+ * @return Collection|Invoices[]
+ */
+public function getFkInvoicesProductsId(): Collection
+{
+return $this->fkInvoicesProductsId;
+}
 
-    public function addFkInvoicesProductsId(Invoices $fkInvoicesProductsId): self
-    {
-        if (!$this->fkInvoicesProductsId->contains($fkInvoicesProductsId)) {
-            $this->fkInvoicesProductsId[] = $fkInvoicesProductsId;
-            $fkInvoicesProductsId->setFkProductsId($this);
-        }
+public function addFkInvoicesProductsId(Invoices $fkInvoicesProductsId): self
+{
+if (!$this->fkInvoicesProductsId->contains($fkInvoicesProductsId)) {
+$this->fkInvoicesProductsId[] = $fkInvoicesProductsId;
+$fkInvoicesProductsId->setFkProductsId($this);
+}
 
-        return $this;
-    }
+return $this;
+}
 
-    public function removeFkInvoicesProductsId(Invoices $fkInvoicesProductsId): self
-    {
-        if ($this->fkInvoicesProductsId->contains($fkInvoicesProductsId)) {
-            $this->fkInvoicesProductsId->removeElement($fkInvoicesProductsId);
-            // set the owning side to null (unless already changed)
-            if ($fkInvoicesProductsId->getFkProductsId() === $this) {
-                $fkInvoicesProductsId->setFkProductsId(null);
-            }
-        }
+public function removeFkInvoicesProductsId(Invoices $fkInvoicesProductsId): self
+{
+if ($this->fkInvoicesProductsId->contains($fkInvoicesProductsId)) {
+$this->fkInvoicesProductsId->removeElement($fkInvoicesProductsId);
+// set the owning side to null (unless already changed)
+if ($fkInvoicesProductsId->getFkProductsId() === $this) {
+$fkInvoicesProductsId->setFkProductsId(null);
+}
+}
 
-        return $this;
-    }
+return $this;
+}
 }

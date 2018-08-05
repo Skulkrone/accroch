@@ -40,8 +40,8 @@ class ShopController extends Controller {
         $fileNameOne = $this->generateUniqueFilename().'.'.$fileOne->guessExtension();
         $fileNameTwo = $this->generateUniqueFilename().'.'.$fileTwo->guessExtension();
 
-        $fileOne->move($this->getParameter('boutique_directory'), $fileName);
-        $fileTwo->move($this->getParameter('logo_directory'), $fileName);
+        $fileOne->move($this->getParameter('boutique_directory'), $fileNameOne);
+        $fileTwo->move($this->getParameter('logo_directory'), $fileNameTwo);
 
         $shop->setShopImage($fileNameOne);
         $shop->setLogo($fileNameTwo);

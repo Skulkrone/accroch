@@ -10,29 +10,28 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
-class CatShopType extends AbstractType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+class CatShopType extends AbstractType {
+
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('Label')
-            ->add('Description')
-            ->add('fkShopId', EntityType::class, array(
-            'class' => Shop::class,
-            'query_builder' => function (EntityRepository $er) {
-             return $er->createQueryBuilder('e')
-             ->orderBy('e.Label', 'ASC');
-            },
-            'choice_label' => 'Label',
-            'label'=> 'Nom de la boutique : ',
-             ))
+                ->add('Label')
+                ->add('Description')
+                ->add('fkShopId', EntityType::class, array(
+                    'class' => Shop::class,
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('e')
+                                ->orderBy('e.Label', 'ASC');
+                    },
+                    'choice_label' => 'Label',
+                    'label' => 'Nom de la boutique : ',
+                ))
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => CatShop::class,
         ]);
     }
+
 }

@@ -29,11 +29,6 @@ class CatShop
     private $Description;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $ImageCatShop;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Shop", inversedBy="fkCatShopId")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -74,18 +69,6 @@ class CatShop
     public function setDescription(string $Description): self
     {
         $this->Description = $Description;
-
-        return $this;
-    }
-
-    public function getImageCatShop(): ?string
-    {
-        return $this->ImageCatShop;
-    }
-
-    public function setImageCatShop(?string $ImageCatShop): self
-    {
-        $this->ImageCatShop = $ImageCatShop;
 
         return $this;
     }
