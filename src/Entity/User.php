@@ -123,6 +123,11 @@ public function getId(): int
 return $this->id;
 }
 
+public function __toString()
+{
+return $this->username;
+}
+
 public function setName(string $Name): void
 {
 $this->Name = $Name;
@@ -329,10 +334,7 @@ $fkInvoicesUserId->setFkUserId(null);
 
 return $this;
 }
-public function __toString()
-{
-return $this->id;
-}
+
 
 public function getTypeRoles()
 {

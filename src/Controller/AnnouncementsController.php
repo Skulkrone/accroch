@@ -38,7 +38,7 @@ class AnnouncementsController extends Controller
     public function new(Request $request): Response
     {
         $announcement = new Announcements();
-        $form = $announcement->setFkUserId()->getUserId();
+        $announcement->setFkUserId($this->getUser());
         $form = $this->createForm(AnnouncementsType::class, $announcement);
         $form->handleRequest($request);
 
@@ -85,6 +85,7 @@ class AnnouncementsController extends Controller
      */
     public function edit(Request $request, Announcements $announcement): Response
     {
+        $announcement->setFkUserId($this->getUser());
         $form = $this->createForm(AnnouncementsType::class, $announcement);
         $form->handleRequest($request);
 

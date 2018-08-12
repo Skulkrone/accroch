@@ -12,26 +12,26 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
-class AnnouncementsType extends AbstractType
-{
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+class AnnouncementsType extends AbstractType {
+
+    public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-            ->add('Description')
-            ->add('Price')
-            ->add('Size')
-            ->add('Weight')
-            ->add('Quality')
-            ->add('Specifications')
-            ->add('ImageAnnouncements', FileType::class, array('data_class' => null))
-            ->add('fkUserId', HiddenType::class)
+                ->add('Description')
+                ->add('Price')
+                ->add('Size')
+                ->add('Weight')
+                ->add('Quality')
+                ->add('Specifications')
+                ->add('ImageAnnouncements', FileType::class, array(
+                    'data_class' => null
+                ))
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
-    {
+    public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults([
             'data_class' => Announcements::class,
         ]);
     }
+
 }
