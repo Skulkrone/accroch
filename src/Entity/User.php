@@ -34,7 +34,15 @@ private $id;
  * @ORM\Column(type="string")
  * @Assert\NotBlank()
  */
-private $fullName;
+private $Name;
+
+/**
+ * @var string
+ *
+ * @ORM\Column(type="string")
+ * @Assert\NotBlank()
+ */
+private $firstName;
 
 /**
  * @var string
@@ -90,7 +98,7 @@ private $fkInvoicesUserId;
 /**
  * @ORM\Column(type="string", nullable=true)
  * 
- * @Assert\NotBlank(message="Please, upload the product brochure as an image.")
+ * @Assert\NotBlank(message="Please, upload the avatar as an image.")
  * @Assert\File(mimeTypes={ "image/png",
  *          "image/jpeg",
  *          "image/jpg" })
@@ -115,14 +123,24 @@ public function getId(): int
 return $this->id;
 }
 
-public function setFullName(string $fullName): void
+public function setName(string $Name): void
 {
-$this->fullName = $fullName;
+$this->Name = $Name;
 }
 
-public function getFullName(): ?string
+public function getName(): ?string
 {
-return $this->fullName;
+return $this->Name;
+}
+
+public function setFirstName(string $firstName): void
+{
+$this->firstName = $firstName;
+}
+
+public function getFirstName(): ?string
+{
+return $this->firstName;
 }
 
 public function getUsername(): ?string

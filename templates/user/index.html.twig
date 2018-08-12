@@ -50,7 +50,8 @@
                         <div class="col-sm">
                             <h2 class="card-body text-dark">{{ user.username }}</h2>
                             <img class="rounded mx-auto d-block" src="{{ asset('uploads/images/avatar/' ~ user.avatar) }}" alt="Responsive image">
-                            <p><b>Nom / Prénom : </b>{{ user.fullName }}</p>
+                            <p><b>Nom : </b>{{ user.Name }}</p>
+                            <p><b>Prénom : </b>{{ user.firstName }}</p>
                             <p><b>Email : </b>{{ user.email }}</p>
                             <a href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>&nbsp&nbsp
                             <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
@@ -60,7 +61,7 @@
                             <h2 class="card-body text-dark">{{ user.username }}</h2>
                             <p>Id : {{ user.id }}</p>
                             <img class="rounded mx-auto d-block" src="{{ user.avatar }}" alt="Responsive image">
-                            <p><b>Nom / Prénom : </b>{{ user.fullName }}</p>
+                            <p><b>Nom / Prénom : </b>{{ user.Name }}</p>
                             <p><b>Email : </b>{{ user.email }}</p>
                             <p><b>Rôle : </b>{{ user.roles[0] }}</p>
                             <a href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>&nbsp&nbsp

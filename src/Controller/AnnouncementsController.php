@@ -38,6 +38,7 @@ class AnnouncementsController extends Controller
     public function new(Request $request): Response
     {
         $announcement = new Announcements();
+        $form = $announcement->setFkUserId()->getUserId();
         $form = $this->createForm(AnnouncementsType::class, $announcement);
         $form->handleRequest($request);
 
