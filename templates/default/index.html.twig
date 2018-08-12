@@ -1,20 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accroch'.com{% endblock %}
+{% block title %}Acroch'Shop{% endblock %}
 
 {% block body %}
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="text-white size">Bienvenue chez <img src="../../image/logo_home.png" alt="Logo Accroch'.shop" title="Accroch'.shop"> <br /> 
-            {% if app.user %}
-                {{ app.user.username }} !
-            {% else %}
-            {% endif %}
-        </h1>
-        <p class="lead text-dark text-bold">Site d'annonces pour matériel de musique & création de boutique pour la gestion du merchandising des groupes</p>
-    </div><br />
-    <br />
 
     {% if app.user %}
+        <br />
+        <br />
         <div class="container">
             <div class="card-deck mb-6 text-center">
                 <div class="card mb-4 box-shadow">
@@ -28,26 +20,15 @@
                         </ul>
 
                         <button type="button" class="btn btn-lg btn-block btn-info"><a href="{{ path('announcements_index') }}">Consulter</a></button>
-
-                    </div>
-
-                </div>
-
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Boutiques</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Mes boutiques</h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li></li>
-                        </ul>
-                        <button type="button" class="btn btn-lg btn-block btn-info"><a href="{{ path('shop_index') }}">Consulter</a></button>
                     </div>
                 </div>
             </div>
         </div>
+        <br />
+        <br />
     {% else %}
+        <br />
+        <br />
         <div class="container">
             <div class="card-deck mb-6 text-center">
                 <div class="card mb-4 box-shadow">
@@ -62,20 +43,9 @@
                         <button type="button" class="btn btn-lg btn-block btn-info"><a href="/register">Créer Annonce</a></button>
                     </div>
                 </div>
-
-                <div class="card mb-4 box-shadow">
-                    <div class="card-header">
-                        <h4 class="my-0 font-weight-normal">Nouvelle Boutique</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Boutique</h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li></li>
-                        </ul>
-                        <button type="button" class="btn btn-lg btn-block btn-info"><a href="/register">Créer Boutique</a></button>
-                    </div>
-                </div>
             </div>
         </div>
+        <br />
+        <br />
     {% endif %}
 {% endblock %}

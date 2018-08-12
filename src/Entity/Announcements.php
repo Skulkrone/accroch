@@ -35,7 +35,7 @@ class Announcements
     private $Size;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=60)
      */
     private $Weight;
 
