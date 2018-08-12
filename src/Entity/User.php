@@ -68,6 +68,10 @@ private $email;
  * @var string
  *
  * @ORM\Column(type="string", length=64)
+ * @Assert\Regex(
+ *  pattern="/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{7,}/",
+ *  message="Le mot de passe doit comporter sept caractères ou plus et contenir au moins un chiffre, un caractère majuscule et un caractère minuscule."
+ * )
  */
 private $password;
 

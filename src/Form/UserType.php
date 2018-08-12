@@ -22,10 +22,7 @@ class UserType extends AbstractType {
         $builder
                 ->add('Name', TextType::class, array('label' => 'Nom'))
                 ->add('firstName', TextType::class, array('label' => 'Prénom'))
-                ->add('avatar', FileType::class, array(
-                    'data_class' => null,
-                    'required' => false,
-                ))
+                
                 ->add('email', EmailType::class)
                 ->add('username', TextType::class, array('label' => 'Login'))
                 ->add('password', RepeatedType::class, array(
@@ -42,6 +39,11 @@ class UserType extends AbstractType {
                         'Utilisateur' => '2',
                         'Annonceur' => '3',
                     )
+                ))
+                ->add('avatar', FileType::class, array(
+                    'data_class' => null,
+                    'label' => 'Avatar',
+                    'required' => false
                 ))
                 ->add('termsAccepted', CheckboxType::class, array(
                     'mapped' => false,

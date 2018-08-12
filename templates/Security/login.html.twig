@@ -5,30 +5,60 @@
         <div class="alert alert-danger">
             {{ error.messageKey }}
         </div>
+
     {% endif %}
 
-
-
-    <div class="columns">
-        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-            <div class="well">
-                <form action="{{ path('security_login') }}" method="post">
-                    <fieldset>
-                        <h1 class="text-bold text-white">Connexion</h1>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Mot de passe</label>
-                            <input type="password" id="password" name="_password" class="form-control" />
-                        </div>
-                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                        <button type="submit" class="btn btn-light text-center">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i> Valider
-                        </button>
-                    </fieldset>
-                </form>
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">         
+                <div class="col-md-12">
+                    <div class="breadcrumb-wrapper">
+                        <h2 class="page-title">Connexion au compte</h2>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+    <!-- Page Header End -->
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-4 col-md-4 col-md-offset-4">
+                    <div class="page-login-form box">
+                        <h3>
+                            Login
+                        </h3>
+                        <form class="login-form" action="{{ path('security_login') }}" method="post">
+                            <div class="form-group">
+                                <div class="input-icon">
+                                    <i class="icon fa fa-user"></i>
+                                    <input type="text" id="username" class="form-control"  value="{{ last_username }}" name="_username" placeholder="Username">
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <div class="input-icon">
+                                    <i class="icon fa fa-unlock-alt"></i>
+                                    <input type="password" class="form-control" id="password" name="_password" placeholder="Mot de passe">
+                                </div>
+                            </div>                  
+                            <div class="checkbox">
+                                <input type="checkbox" id="remember" name="rememberme" value="forever" style="float: left;">
+                                <label for="remember">Remember me</label>
+                            </div>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                            <button class="btn btn-common log-btn">Valider</button>
+                        </form>
+                        <ul class="form-links">
+                            <li class="pull-left"><a href="signup.html">Etes-vous inscrit ?</a></li>
+                            <li class="pull-right"><a href="forgot-password.html">Mot de passe</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
     {% endblock %}

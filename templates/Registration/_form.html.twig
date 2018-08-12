@@ -1,17 +1,35 @@
-{{ form_start(form, {'attr': {'id': 'upload-form'}}) }}
-{{ form_row(form.Name) }}
-{{ form_row(form.firstName) }}
-{{ form_row(form.username) }}
-{{ form_row(form.email) }}
-{{ form_row(form.password.first) }}
-{{ form_row(form.password.second) }}
-{{ form_row(form.avatar) }}
+<section id="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-4 col-md-6 col-md-offset-3">
+                <div class="page-login-form box">
+                    <h3>
+                        Inscription
+                    </h3>
+                    {{ form_start(form, {'attr': {'id': 'upload-form'}}) }}
+                    {{ form_row(form.Name) }}
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.password.first) }}
+                    {{ form_row(form.password.second) }}
+                    {{ form_row(form.avatar) }}
+                    {{ form_row(form.typeRoles) }}
+                    {{ form_row(form.termsAccepted) }}
 
 
-<!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
+                    <!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
+                    <button type="submit" class="btn btn-common log-btn">S'inscrire !</button>
+                    {{ form_end(form) }}
 
-{{ form_end(form) }}
-<button type="submit" class="btn">S'inscrire !</button>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
 
