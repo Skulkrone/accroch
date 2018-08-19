@@ -14,22 +14,23 @@
             </tr>
         </thead>
         <tbody>
-        {% for cat_announcement in cat_announcements %}
-            <tr>
-                <td class="text-center">{{ cat_announcement.id }}</td>
-                <td class="text-center">{{ cat_announcement.Label }}</td>
-                <td class="text-center">
-                    <a href="{{ path('cat_announcements_show', {'id': cat_announcement.id}) }}">Afficher</a>
-                    <a href="{{ path('cat_announcements_edit', {'id': cat_announcement.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
+            {% for cat_announcement in cat_announcements %}
+                <tr>
+                    <td class="text-center">{{ cat_announcement.id }}</td>
+                    <td class="text-center">{{ cat_announcement.Label }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('cat_announcements_show', {'id': cat_announcement.id}) }}">Afficher</a>
+                        <a href="{{ path('cat_announcements_edit', {'id': cat_announcement.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('cat_announcements_new') }}">Create new</a>
+    <div class='lien'>
+        <a class="btn btn-common log-btn"  href="{{ path('cat_announcements_new') }}">Ajouter une catégorie</a>
+    </div>
 {% endblock %}
