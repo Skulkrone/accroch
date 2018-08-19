@@ -23,6 +23,22 @@ class UserController extends Controller {
         return $this->render('user/index.html.twig', ['users' => $userRepository->findAll()]);
     }
 
+    
+    /**
+     * @Route("/mentions", name="mentions_legales")
+     */
+    public function mentions() {
+        return $this->render('mentions.html.twig');
+        }
+        
+    /**
+     * @Route("/confidentialite", name="politique_confidentialite")
+     */
+    public function confidentialite() {
+        return $this->render('confidentialite.html.twig');
+        }
+        
+        
     /**
      * @Route("/admin", name="admin")
      */

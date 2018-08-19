@@ -5,8 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">    
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta name="author" content="© Skulkrone-Design">
         <title>{% block title %}Acroh'Shop{% endblock %}</title>
+        <meta name="description" content="Site d'annonces pour matériel de musique & création de boutique pour la gestion du merchandising des groupes" />
+        <meta name="keywords" content="accroch, acroch, musique, annonce, instrument, occasion, boutique, merchandising, annonceurs, publicitaires." />
+        <meta name="author" content="BARON Laurent" />
+        <meta name="robots" content="index, follow, all" />
+        <meta name="copyright" content="© Skulkrone-Design" />
+
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="theme-color" content="#ffffff">
+
         {% block head_css %}
 
         {% endblock %}
@@ -15,8 +23,12 @@
         {% endblock %}
         {% block stylesheets %}
 
-            <!-- Favicon -->
-            <link rel="shortcut icon" href="{{ asset('assets/img/favicon.png')}}">
+            <!-- Favicon -->        
+            <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/favicon/apple-touch-icon.png')}}">
+            <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon/favicon-32x32.png')}}">
+            <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/img/favicon/favicon-16x16.png')}}">
+            <link rel="manifest" href="{{ asset('assets/img/favicon/site.webmanifest')}}">
+            <link rel="mask-icon" href="{{ asset('assets/img/favicon/safari-pinned-tab.svg')}}" color="#5bbad5">
             <!-- Bootstrap CSS -->
             <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />    
             <link rel="stylesheet" href="{{ asset('assets/css/jasny-bootstrap.min.css')}}" type="text/css">
@@ -162,8 +174,8 @@
                                         <li><a href="#">Accueil</a></li>
                                         <li><a href="#">Annonces</a></li>
                                         <li><a href="#">Contact</a></li>
-                                        <li><a href="#">Mentions Légales</a></li>
-                                        <li><a href="#">Politique de confidentialité</a></li>
+                                        <li><a href="/user/mentions">Mentions Légales</a></li>
+                                        <li><a href="/user/confidentialite">Politique de confidentialité</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -242,7 +254,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="site-info pull-left">
-                                    <p>All copyrights reserved &copy; 2018 - Designed by <a href="http://graygrids.com" rel="nofollow">GrayGrids</a></p>
+                                    <p>Tous droits réservés &copy; 2017 - {{ 'now'| date('Y') }} - Designed by <a href="https://www.skulkrone-design.fr" target='_blank' rel="nofollow">Skulkrone-Design</a></p>
                                 </div>              
                                 <div class="bottom-social-icons social-icon pull-right">  
                                     <a class="facebook" target="_blank" href="https://web.facebook.com/GrayGrids"><i class="fa fa-facebook"></i></a> 
@@ -284,23 +296,9 @@
         <!--<script src="{#{{ asset('assets/js/jquery-3.3.1.min.js')}}#}"></script>
         <script src="{#{{ asset('assets/js/bootstrap.min.js')}}#}"></script>-->
 
+
         <script type="text/javascript" src="{{ asset('assets/js/jquery-min.js')}}"></script>      
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/material.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/material-kit.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.parallax.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/wow.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/main.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.counterup.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/waypoints.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jasny-bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/form-validator.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/contact-form-script.js')}}"></script>    
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.revolution.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.tools.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/bootstrap-select.min.js')}}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/jquery.bootpag.min.js')}}"></script>
         <script>
             pageSize = 5;
 
@@ -327,6 +325,45 @@
                 showPage(parseInt($(this).text()))
             });
         </script>
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+        <script>
+            window.addEventListener("load", function () {
+                window.cookieconsent.initialise({
+                    "palette": {
+                        "popup": {
+                            "background": "#eaf7f7",
+                            "text": "#5c7291"
+                        },
+                        "button": {
+                            "background": "#56cbdb",
+                            "text": "#ffffff"
+                        }
+                    },
+                    "content": {
+                        "message": "Ce site Web utilise des cookies pour s'assurer que vous obtenez la meilleure expérience sur notre site Web.",
+                        "dismiss": "J'ai compris",
+                        "link": "En savoir plus"
+                    }
+                })
+            });
+        </script>
+        <script type="text/javascript" src="{{ asset('assets/js/material.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/material-kit.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.parallax.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/owl.carousel.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/wow.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/main.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.counterup.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/waypoints.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/jasny-bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/form-validator.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/contact-form-script.js')}}"></script>    
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.revolution.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.themepunch.tools.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/bootstrap-select.min.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/jquery.bootpag.min.js')}}"></script>
+
 
 
     {% endblock %}

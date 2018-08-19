@@ -57,10 +57,8 @@ private $username;
  *
  * @ORM\Column(type="string", unique=true)
  * @Assert\NotBlank()
- * @Assert\Email(
- *     message = "The email '{{ value }}' is not a valid email.",
- *     checkMX = true
- * )
+ * @Assert\Email(strict=true, message="Le format de l'email '{{ value }}' est incorrect.")
+ * @Assert\Email(checkMX = true, message = "Aucun serveur mail n'a été trouvé pour ce domaine.")
  */
 private $email;
 
