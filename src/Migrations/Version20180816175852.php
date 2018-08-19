@@ -8,14 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180722155911 extends AbstractMigration
+final class Version20180816175852 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user CHANGE avatar avatar VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE announcements CHANGE brand brand VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -23,6 +23,6 @@ final class Version20180722155911 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user CHANGE avatar avatar LONGTEXT DEFAULT NULL COLLATE utf8mb4_unicode_ci');
+        $this->addSql('ALTER TABLE announcements CHANGE brand brand VARCHAR(30) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }

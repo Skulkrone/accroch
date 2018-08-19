@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Announcements;
+use App\Entity\CatAnnouncements;
 use App\Entity\User;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
@@ -10,20 +11,33 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class AnnouncementsType extends AbstractType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('Description')
-                ->add('Price')
-                ->add('Size')
-                ->add('Weight')
-                ->add('Quality')
-                ->add('Specifications')
+                ->add('Brand', TextType::class, array('label' => 'Marque du matériel'))
+                ->add('Description', EntityType::class, array(
+                    'class' => CatAnnouncements::class,
+                    'query_builder' => function (EntityRepository $er) {
+                        return $er->createQueryBuilder('e');
+                        //->orderBy('e.username', 'ASC');
+                    },
+                    'choice_label' => 'label',
+                    'label' => 'Catégorie : ',
+                ))
+                ->add('Price', TextType::class, array('label' => 'Prix du matériel'))
+                ->add('Size', TextType::class, array('label' => 'Taille du matériel'))
+                ->add('Weight', TextType::class, array('label' => 'Poids du matériel'))
+                ->add('Quality', TextType::class, array('label' => 'Qualité du matériel'))
+                ->add('Specifications', TextType::class, array('label' => 'Détail du matériel'))
+                ->add('isOnSale')
+                ->add('isSaled')
                 ->add('ImageAnnouncements', FileType::class, array(
-                    'data_class' => null
+                    'data_class' => null,
+                    'label' => 'Image'
                 ))
         ;
     }

@@ -20,7 +20,7 @@ class Announcements
     private $id;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string")
      */
     private $Description;
 
@@ -75,6 +75,26 @@ class Announcements
      * @ORM\OneToMany(targetEntity="App\Entity\Invoices", mappedBy="fkAnnoucementsId")
      */
     private $fkInvoicesAnnoucementsId;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Brand;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isOnSale;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isSaled;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $creationDate;
 
     public function __construct()
     {
@@ -276,4 +296,59 @@ class Announcements
 
         return $this;
     }
+
+    public function getBrand(): ?string
+    {
+        return $this->Brand;
+    }
+
+    public function setBrand(string $Brand): self
+    {
+        $this->Brand = $Brand;
+
+        return $this;
+    }
+
+    public function getIsOnSale(): ?bool
+    {
+        return $this->isOnSale;
+    }
+
+    public function setIsOnSale(bool $isOnSale): self
+    {
+        $this->isOnSale = $isOnSale;
+
+        return $this;
+    }
+
+    public function getIsSaled(): ?bool
+    {
+        return $this->isSaled;
+    }
+
+    public function setIsSaled(bool $isSaled): self
+    {
+        $this->isSaled = $isSaled;
+
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(?\DateTimeInterface $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+    public function __toString(){
+    // to show the name of the Category in the select
+        return $this->creationDate;
+    // to show the id of the Category in the select
+    // return $this->id;
+    }
+
 }

@@ -8,7 +8,149 @@
 
 {% block body %}
 
-    <h1 class="text-bold text-white">Espace Client</h1>
+    <!-- Start Content -->
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 page-sideabr">
+                    <aside>
+                        <div class="inner-box">
+                            <div class="user-panel-sidebar">
+                                <div class="collapse-box">
+                                    <h5 class="collapset-title no-border">Profil <a aria-expanded="true" class="pull-right" data-toggle="collapse" href="#myclassified"><i class="fa fa-angle-down"></i></a></h5>
+                                    <div aria-expanded="true" id="myclassified" class="panel-collapse collapse in">
+                                        <ul class="acc-list">
+                                            <li class="active">
+                                                <a href="/user"><i class="fa fa-home"></i> Mon Profil</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="collapse-box">
+                                    <h5 class="collapset-title">Mes Annonces <a aria-expanded="true" class="pull-right" data-toggle="collapse" href="#myads"><i class="fa fa-angle-down"></i></a></h5>
+                                    <div aria-expanded="true" id="myads" class="panel-collapse collapse in">
+                                        <ul class="acc-list">
+                                            <li>
+                                                <a href="/announcements"><i class="fa fa-credit-card"></i> Mes Annonces <span class="badge">44</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="account-favourite-ads.html"><i class="fa fa-heart-o"></i> Favourite Ads <span class="badge">19</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="account-saved-search.html"><i class="fa fa-star-o"></i> Saved Search <span class="badge">13</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="account-archived-ads.html"><i class="fa fa-folder-o"></i> Archived Ads <span class="badge">49</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="account-pending-approval-ads.html"><i class="fa fa-hourglass-o"></i> Pending Approval <span class="badge">33</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="collapse-box">
+                                    <h5 class="collapset-title">Fermer le compte <a aria-expanded="true" class="pull-right" data-toggle="collapse" href="#close"><i class="fa fa-angle-down"></i></a></h5>
+                                    <div aria-expanded="true" id="close" class="panel-collapse collapse in">
+                                        <ul class="acc-list">
+                                            <li>
+                                                <a href="/logout"><i class="fa fa-close"></i> Déconnexion</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inner-box">
+                            <div class="widget-title">
+                                <h4>Advertisement</h4>
+                            </div>
+                            <img src="assets/img/img1.jpg" alt="">
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-sm-9 page-content">
+                    <div class="inner-box">
+                        <div class="usearadmin">
+                            {% for user in users %}
+                                {% if user.id is same as(app.user.id) %}
+                                    <h3><a href="#"><img class="userimg" src="{{ asset('uploads/images/avatar/' ~ user.avatar) }}" alt="Responsive image"> {{ user.firstName }} {{ user.Name }}</a></h3>
+                                </div>
+                            </div>
+                            <div class="inner-box">
+                                <div class="welcome-msg">
+                                    <h3 class="page-sub-header2 clearfix no-padding">Hello {{ user.username }} </h3>
+                                    <span class="page-sub-header-sub small">Dernière connexion le : {{ 'now'| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y') }}</span> 
+                                </div>
+                                <div id="accordion" class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a href="#collapseB1" data-toggle="collapse"> Mes Infos </a> </h4>
+                                        </div>
+                                        <div class="panel-collapse collapse in" id="collapseB1">
+                                            <div class="panel-body">
+                                                <form role="form">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Prénom</label>
+                                                        <input class="form-control" placeholder="{{ user.firstName }}" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Nom</label>
+                                                        <input class="form-control" placeholder="{{ user.Name }}" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Email</label>
+                                                        <input class="form-control" placeholder="{{ user.email }}" type="email">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Adresse</label>
+                                                        <input class="form-control" placeholder=".." type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="Phone" class="control-label">Téléphone</label>
+                                                        <input class="form-control" id="Phone" placeholder="880 123 456789" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Code Postal</label>
+                                                        <input class="form-control" placeholder="75000" type="text">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <a class="btn btn-common log-btn" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"> <a aria-expanded="false" class="collapsed" href="#collapseB2" data-toggle="collapse"> Paramètres </a> </h4>
+                                        </div>
+                                        <div style="height: 0px;" aria-expanded="false" class="panel-collapse collapse" id="collapseB2">
+                                            <div class="panel-body">
+                                                <form role="form">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Nouveau Mot de passe</label>
+                                                        <input class="form-control" placeholder="" type="password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Confirm Password</label>
+                                                        <input class="form-control" placeholder="" type="password">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <a class="btn btn-common log-btn" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>  
+        </div>      
+    </div>
+    <!-- End Content -->
 
     <div class="container-fluid">
 
@@ -20,8 +162,9 @@
                 <ul>
                     {% for user in users %}
                         {% for annonce in user.fkAnnouncements %}
+                            {{ dump(annonce) }}
                             {% if user.id is same as(app.user.id) %}
-                                <li class="text-left"><a href="{{ path('announcements_show', {'id': annonce.id}) }}" title="{{ annonce.Description }}" >{{ annonce.Description }}</a></li>
+                                <li class="text-left"><a href="{{ path('announcements_show', {'id': annonce.id}) }}" title="{{ annonce.Description }}" >{{ annonce.Brand }}</a></li>
                                 {% endif %}
                             {% endfor %}
                         {% endfor %}

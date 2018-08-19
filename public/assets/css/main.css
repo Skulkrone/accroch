@@ -130,6 +130,10 @@ h3.block-title {
     opacity: 1;
     left: 50px;
 }
+.bloc {
+    display: flex;
+    justify-content: space-between;
+}
 /*====================================================
                 bootstrap default style overriding
         ====================================================*/

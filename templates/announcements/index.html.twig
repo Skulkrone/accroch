@@ -4,78 +4,162 @@
 
 {% block body %}
     {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
-        <h1 class="text-bold text-white">Toutes les annonces</h1>
+        <h1 class="text-bold text-white text-center" style="margin-top: 20px;">Toutes les annonces</h1>
     {% else %}
-        <h1 class="text-bold text-white">Annonces</h1>
+        <h1 class="text-bold text-white text-center" style="margin-top: 20px;">Annonces</h1>
     {% endif %}
 
-    <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!--<div class="col-lg-3">
-
-                <h1 class="my-4 text-white">Shop Name</h1>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Category 1</a>
-                    <a href="#" class="list-group-item">Category 2</a>
-                    <a href="#" class="list-group-item">Category 3</a>
-                </div>
-
-            </div>-->
-            <!-- /.col-lg-3 -->
-
-            <div class="col-lg-12">
-
-                <!--<div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                </div>-->
-
-                <div class="row">
-                    {% for announcement in announcements %}
-                        {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
-                            <div class="col-lg-6 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            {{ announcement.Description }}
-                                        </h4>
-                                        <h5>{{ announcement.Price }} €</h5>
-                                        <p class="card-text"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">En savoir plus...</a></p>
-                                    </div>
+    <!-- Main container Start -->  
+    <div class="main-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3 page-sidebar">
+                    <aside>
+                        <div class="inner-box">
+                            <div class="categories">
+                                <div class="widget-title">
+                                    <i class="fa fa-align-justify"></i>
+                                    <h4>All Categories</h4>
                                 </div>
-                                    
-                            </div>
-                        {% elseif app.user == false %}
-                            <div class="col-lg-6 col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            {{ announcement.Description }}
-                                        </h4>
-                                        <h5>{{ announcement.Price }} €</h5>
-                                        <p class="card-text"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">En savoir plus...</a></p>
-                                    </div>
+                                <div class="categories-list">
+                                    {% for announcement in announcements %}
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-desktop"></i>
+                                                    {{ announcement.Description }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    {% endfor %}
                                 </div>
                             </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
+                        </div>
 
+                        <div class="inner-box">
+                            <div class="widget-title">
+                                <h4>Premium Ads</h4>
+                            </div>
+                            <div class="advimg">
+                                <ul class="featured-list">
+                                    <li>
+                                        <img alt="" src="assets/img/featured/img1.jpg">
+                                        <div class="hover">
+                                            <a href="#"><span>$49</span></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img alt="" src="assets/img/featured/img2.jpg">
+                                        <div class="hover">
+                                            <a href="#"><span>$49</span></a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <img alt="" src="assets/img/featured/img3.jpg">
+                                        <div class="hover">
+                                            <a href="#"><span>$49</span></a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="inner-box">
+                            <div class="widget-title">
+                                <h4>Advertisement</h4>
+                            </div>
+                            <img src="assets/img/img1.jpg" alt="">
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-sm-9 page-content">
+                    <!-- Product filter Start -->
+                    <div class="product-filter">
+                        <div class="grid-list-count">
+                            <a class="list switchToGrid" href="#"><i class="fa fa-list"></i></a>
+                            <a class="grid switchToList" href="#"><i class="fa fa-th-large"></i></a>
+                        </div>
+                        <div class="short-name">
+                            <span>Short By</span>
+                            <form class="name-ordering" method="post">
+                                <label>
+                                    <select name="order" class="orderby">
+                                        <option selected="selected" value="menu-order">Trier par</option>
+                                        <option value="popularity">Price: Low to High</option>
+                                        <option value="popularity">Price: High to Low</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="Show-item">
+                            <span>Afficher produits</span>
+                            <form class="woocommerce-ordering" method="post">
+                                <label>
+                                    <select name="order" class="orderby">
+                                        <option selected="selected" value="menu-order">xx produits</option>
+                                        <option value="popularity">popularity</option>
+                                        <option value="popularity">Average ration</option>
+                                        <option value="popularity">newness</option>
+                                        <option value="popularity">price</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Product filter End -->
+
+                    <!-- Adds wrapper Start -->
+                    <div class="adds-wrapper well demo content4">
+                        {% for announcement in announcements %}
+                            <div class="item-list">
+                                <div class="col-sm-2 no-padding photobox">
+                                    <div class="add-image">
+                                        <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
+                                        <span class="photo-count"><i class="fa fa-camera"></i>2</span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7 add-desc-box">
+                                    <div class="add-details">
+                                        <h5 class="add-title"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Brand }}</a></h5>
+                                        <div class="info">
+                                            <span class="add-type">B</span>
+                                            <span class="date">
+                                                <i class="fa fa-clock"></i>
+                                                {{ announcement.creationDate| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y H:mm:ss') }}
+                                            </span> -
+                                            <span class="category">{{ announcement.Description }}</span> -
+                                        </div>
+                                        <div class="item_desc">
+                                            <a href="#">Donec ut quam felis. Cras egestas, quam in plac erat dictum, erat mauris inte rdum est nec.</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    <!-- Adds wrapper End -->
+
+                    <!-- Start Pagination -->
+                    <div class="demo demo4_top">
+                        <ul class="pagination bootpag" id="pagin">
+
+                        </ul>
+                    </div>
+                    <!-- End Pagination -->
+
+
+                    <div class="post-promo text-center">
+                        <h2> Avez-vous quelque chose à vendre ? </h2>
+                        <h5>Vendez vos produits en ligne. C'est plus facile que vous ne le pensez !</h5>
+                        <a href="{{ path('announcements_new') }}" class="btn btn-post btn-danger">Ajouter une annonce </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.col-lg-9 -->
+    <!-- Main container End -->  
 
-</div>
-<!-- /.row -->
 
-</div>
-<!-- /.container -->
 
 {% endblock %}

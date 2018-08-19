@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,7 +25,7 @@ class CatAnnouncements
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Announcements", inversedBy="fkCatAnnouncementsId")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $fkAnnouncementsId;
 
@@ -55,4 +57,12 @@ class CatAnnouncements
 
         return $this;
     }
+    public function __toString(){
+    // to show the name of the Category in the select
+        return $this->Label;
+    // to show the id of the Category in the select
+    // return $this->id;
+    }
+    
+    
 }

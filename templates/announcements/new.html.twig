@@ -3,10 +3,9 @@
 {% block title %}Nouvelle Annonce{% endblock %}
 
 {% block body %}
-    <h1 class="text-bold text-white">Créer et publier une annonce</h1>
 
     {{ include('announcements/_form.html.twig') }}
     <div class="lien">
-        <a href="{{ path('announcements_index') }}">back to list</a>
+        <a class="btn btn-common log-btn" href="{{ path('announcements_index') }}">Retour</a>
     </div>
 {% endblock %}
