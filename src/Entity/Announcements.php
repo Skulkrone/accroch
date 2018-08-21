@@ -96,6 +96,18 @@ class Announcements
      */
     private $creationDate;
 
+    /**
+     * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\File(mimeTypes={"image/png", "image/jpg", "image/jpeg", "image/gif"})
+     */
+    private $ImageAnnouncementsTwo;
+
+    /**
+     * @ORM\Column(type="string", length=60, nullable=true)
+     * @Assert\File(mimeTypes={"image/png", "image/jpg", "image/jpeg", "image/gif"})
+     */
+    private $ImageAnnouncementsThree;
+
     public function __construct()
     {
         $this->fkCatAnnouncementsId = new ArrayCollection();
@@ -349,6 +361,30 @@ class Announcements
         return $this->creationDate;
     // to show the id of the Category in the select
     // return $this->id;
+    }
+
+    public function getImageAnnouncementsTwo(): ?string
+    {
+        return $this->ImageAnnouncementsTwo;
+    }
+
+    public function setImageAnnouncementsTwo(?string $ImageAnnouncementsTwo): self
+    {
+        $this->ImageAnnouncementsTwo = $ImageAnnouncementsTwo;
+
+        return $this;
+    }
+
+    public function getImageAnnouncementsThree(): ?string
+    {
+        return $this->ImageAnnouncementsThree;
+    }
+
+    public function setImageAnnouncementsThree(?string $ImageAnnouncementsThree): self
+    {
+        $this->ImageAnnouncementsThree = $ImageAnnouncementsThree;
+
+        return $this;
     }
 
 }

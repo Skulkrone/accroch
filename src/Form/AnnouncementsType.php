@@ -39,6 +39,14 @@ class AnnouncementsType extends AbstractType {
                     'data_class' => null,
                     'label' => 'Image'
                 ))
+                ->add('ImageAnnouncementsTwo', FileType::class, array(
+                    'data_class' => null,
+                    'label' => 'Image'
+                ))
+                ->add('ImageAnnouncementsThree', FileType::class, array(
+                    'data_class' => null,
+                    'label' => 'Image'
+                ))
         ;
     }
 

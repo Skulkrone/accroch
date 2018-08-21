@@ -113,6 +113,26 @@ private $fkInvoicesUserId;
  */
 private $Avatar;
 
+/**
+ * @ORM\Column(type="string", length=100)
+ */
+private $Address;
+
+/**
+ * @ORM\Column(type="integer")
+ */
+private $PostalCode;
+
+/**
+ * @ORM\Column(type="string", length=50)
+ */
+private $City;
+
+/**
+ * @ORM\Column(type="string", length=10)
+ */
+private $Phone;
+
 public function __construct()
 {
 $this->fkShopId = new ArrayCollection();
@@ -359,5 +379,54 @@ public function setAvatar($Avatar): self
 $this->Avatar = $Avatar;
 
 return $this;
+}
+
+public function getAddress(): ?string
+{
+    return $this->Address;
+}
+
+
+public function setAddress(string $Address): self
+{
+    $this->Address = $Address;
+  return $this;
+}
+
+public function getPostalCode(): ?int
+{
+    return $this->PostalCode;
+}
+
+
+public function setPostalCode(int $PostalCode): self
+{
+    $this->PostalCode = $PostalCode;
+
+    return $this;
+}
+
+public function getCity(): ?string
+{
+    return $this->City;
+}
+
+
+public function setCity(string $City): self
+{
+    $this->City = $City;
+
+    return $this;
+}
+
+public function getPhone(): ?int
+{
+    return $this->Phone;
+}
+
+public function setPhone(int $Phone): self
+{
+    $this->Phone = $Phone;
+    return $this;
 }
 }
