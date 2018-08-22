@@ -3,13 +3,33 @@
         <div class="row">
             <div class="col-sm-6 col-sm-offset-4 col-md-6 col-md-offset-3">
                 <div class="page-login-form box">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
+                    {{ form_start(form, {'attr': {'id': 'upload-form'}}) }}
+                    {{ form_row(form.Name) }}
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.address) }}
+                    <div>
+                        <select id="countrySelect" name="country">
+                            <option value="FR"> France</option>
+                        </select>
+                    </div>
+                    {{ form_row(form.postalCode, {'attr': {'onblur': 'postalCodeLookup ();'} }) }}
+                    {{ form_row(form.city, {'attr': {'onblur': 'closeSuggestBox ();'} }) }}
+                    <span style="z-index:25;visibility: hidden;" id="suggestBoxElement"></span>
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.password.first) }}
+                    {{ form_row(form.password.second) }}
+                    {{ form_row(form.avatar) }}
+                    {{ form_row(form.typeRoles) }}
+                    {{ form_row(form.termsAccepted) }}
+                    <!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
                     <button class="btn btn-common log-btn">{{ button_label|default('Valider') }}</button>
                     {{ form_end(form) }}
-
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+

@@ -79,6 +79,7 @@ class AnnouncementsController extends Controller
      */
     public function show(Announcements $announcement): Response
     {
+       
         return $this->render('announcements/show.html.twig', ['announcement' => $announcement]);
     }
 

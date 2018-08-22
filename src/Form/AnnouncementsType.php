@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
@@ -32,21 +33,21 @@ class AnnouncementsType extends AbstractType {
                 ->add('Size', TextType::class, array('label' => 'Taille du matériel'))
                 ->add('Weight', TextType::class, array('label' => 'Poids du matériel'))
                 ->add('Quality', TextType::class, array('label' => 'Qualité du matériel'))
-                ->add('Specifications', TextType::class, array('label' => 'Détail du matériel'))
+                ->add('Specifications', TextareaType::class, array('label' => 'Détail du matériel'))
                 ->add('isOnSale')
                 ->add('isSaled')
                 ->add('ImageAnnouncements', FileType::class, array(
                     'data_class' => null,
                     'label' => 'Image'
                 ))
-                ->add('ImageAnnouncementsTwo', FileType::class, array(
+                /*->add('ImageAnnouncementsTwo', FileType::class, array(
                     'data_class' => null,
                     'label' => 'Image'
                 ))
                 ->add('ImageAnnouncementsThree', FileType::class, array(
                     'data_class' => null,
                     'label' => 'Image'
-                ))
+                ))*/
         ;
     }
 

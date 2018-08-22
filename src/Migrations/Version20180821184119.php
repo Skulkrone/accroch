@@ -8,16 +8,16 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180816170433 extends AbstractMigration
+final class Version20180821184119 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE cat_announcements ADD fk_announcements_id_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE cat_announcements ADD CONSTRAINT FK_83304D9A33D19CDD FOREIGN KEY (fk_announcements_id_id) REFERENCES announcements (id)');
-        $this->addSql('CREATE INDEX IDX_83304D9A33D19CDD ON cat_announcements (fk_announcements_id_id)');
+        $this->addSql('CREATE TABLE messages (id INT AUTO_INCREMENT NOT NULL, from_id_id INT DEFAULT NULL, to_id_id INT DEFAULT NULL, content LONGTEXT NOT NULL, created_at DATETIME NOT NULL, read_at DATETIME DEFAULT NULL, UNIQUE INDEX UNIQ_DB021E964632BB48 (from_id_id), UNIQUE INDEX UNIQ_DB021E967478AF67 (to_id_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE messages ADD CONSTRAINT FK_DB021E964632BB48 FOREIGN KEY (from_id_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE messages ADD CONSTRAINT FK_DB021E967478AF67 FOREIGN KEY (to_id_id) REFERENCES user (id)');
     }
 
     public function down(Schema $schema) : void
@@ -25,8 +25,6 @@ final class Version20180816170433 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE cat_announcements DROP FOREIGN KEY FK_83304D9A33D19CDD');
-        $this->addSql('DROP INDEX IDX_83304D9A33D19CDD ON cat_announcements');
-        $this->addSql('ALTER TABLE cat_announcements DROP fk_announcements_id_id');
+        $this->addSql('DROP TABLE messages');
     }
 }

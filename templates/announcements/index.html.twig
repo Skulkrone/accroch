@@ -8,7 +8,13 @@
     {% else %}
         <h1 class="text-bold text-white text-center" style="margin-top: 20px;">Annonces</h1>
     {% endif %}
+    {{ dump(announcements) }}
+    {% for announcement in announcements %}
+        {{ dump(announcement.fkUserId) }}
+        {{ announcement.fkUserId.username }}
 
+    {% endfor %}
+    
     <!-- Main container Start -->  
     <div class="main-container">
         <div class="container">

@@ -133,11 +133,18 @@ private $City;
  */
 private $Phone;
 
+/**
+ * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="fkFromUserId")
+ */
+private $fkFromId;
+
 public function __construct()
 {
 $this->fkShopId = new ArrayCollection();
 $this->fkAnnouncements = new ArrayCollection();
 $this->fkInvoicesUserId = new ArrayCollection();
+$this->fkFromId = new ArrayCollection();
+$this->fkToId = new ArrayCollection();
 }
 
 public function getId(): int
@@ -429,4 +436,72 @@ public function setPhone(int $Phone): self
     $this->Phone = $Phone;
     return $this;
 }
+
+/**
+ * @return Collection|Messages[]
+ */
+public function getFkFromId(): Collection
+{
+    return $this->fkFromId;
+}
+
+public function addFkFromId(Messages $fkFromId): self
+{
+    if (!$this->fkFromId->contains($fkFromId)) {
+        $this->fkFromId[] = $fkFromId;
+        $fkFromId->setFkFromUserId($this);
+    }
+
+    return $this;
+}
+
+/**
+ * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="fkToUserId")
+ */
+private $fkToId;
+public function removeFkFromId(Messages $fkFromId): self
+{
+    if ($this->fkFromId->contains($fkFromId)) {
+        $this->fkFromId->removeElement($fkFromId);
+        // set the owning side to null (unless already changed)
+        if ($fkFromId->getFkFromUserId() === $this) {
+            $fkFromId->setFkFromUserId(null);
+        }
+    }
+
+    return $this;
+}
+
+/**
+ * @return Collection|Messages[]
+ */
+public function getFkToId(): Collection
+{
+    return $this->fkToId;
+}
+
+public function addFkToId(Messages $fkToId): self
+{
+    if (!$this->fkToId->contains($fkToId)) {
+        $this->fkToId[] = $fkToId;
+        $fkToId->setFkToUserId($this);
+    }
+
+    return $this;
+}
+
+public function removeFkToId(Messages $fkToId): self
+{
+    if ($this->fkToId->contains($fkToId)) {
+        $this->fkToId->removeElement($fkToId);
+        // set the owning side to null (unless already changed)
+        if ($fkToId->getFkToUserId() === $this) {
+            $fkToId->setFkToUserId(null);
+        }
+    }
+
+    return $this;
+}
+
+
 }

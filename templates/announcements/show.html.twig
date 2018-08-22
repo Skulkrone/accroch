@@ -35,7 +35,7 @@
                                 <div class="ads-details-info col-md-8">
 
                                     <ul class="list-circle">
-                                        <li>{{ announcement.Specifications }}</li>
+                                        <li>{{ announcement.Specifications|nl2br }}</li>
                                 </div>
                                 <div class="col-md-4">
                                     <aside class="panel panel-body panel-details">
@@ -61,7 +61,7 @@
                                                 <a href="#"> <i class=" fa fa-mail-reply"></i> {{ announcement.FkUserId.email }} </a></li>
                                             <li>
                                             <li>
-                                                <a href="#">Ajouté par <i class=" fa fa-user"></i> {{ announcement.FkUserId.username }}</a></li>
+                                                <a href="{{ path('messages_new', {'id': announcement.FkUserId.id}) }}">Ajouté par <i class=" fa fa-user"></i> {{ announcement.FkUserId.username }}</a></li>
                                             <li>
                                                 <a href="#"> <i class=" fa fa-heart"></i> Save ad</a></li>
                                             <li>

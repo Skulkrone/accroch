@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Messages;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
-use PDO;
 
 /**
  * @method Messages|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,26 +18,40 @@ class MessagesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Messages::class);
     }
+    
+    /*public function findByWithAuthor() {
+        return $this->createQueryBuilder('a')
+                        ->leftJoin('a.author', 'us')
+                        ->leftJoin('a.blogId', 'bl')
+                        ->where('a.author = us.id')
+                        ->andWhere('a.blogId = bl.id')
+                        ->addSelect('us')
+                        ->addSelect('bl')
+                        //->groupBy('')
+                        ->orderBy('a.author', 'ASC')
+                        //->andOrderBy('z.blogId', 'ASC')
+                        ->getQuery()
+                        //->getSQL()
+                        ->getResult()
+        ;
+    }*/
 
 //    /**
 //     * @return Messages[] Returns an array of Messages objects
 //     */
-    
-    public function findByUsername()
+    /*
+    public function findByExampleField($value)
     {
-                $bdd = new PDO('mysql:host=localhost;dbname=accroch;charset=utf8', 'root', '',array(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION));
-                $req = $bdd->prepare('SELECT username FROM user');
-                $req->execute();
-                
-                
-                $i = 0;
-                while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-                    $user[$i] = $data;
-                    $i++;
-                }
-                return $user;
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('m.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
     }
-    
+    */
 
     /*
     public function findOneBySomeField($value): ?Messages

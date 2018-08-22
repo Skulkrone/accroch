@@ -93,7 +93,7 @@ ul {
     padding: 0px;
 }
 ul.conf {
-    
+
 }
 ul li {
     list-style: none;
@@ -143,7 +143,22 @@ h3.block-title {
     display: flex;
     justify-content: space-between;
 }
-
+#suggestBoxElement {
+    border: 1px solid #8FABFF; 
+   
+    text-align: left;  
+    white-space: nowrap; 
+    background-color: #eeeeee;
+}
+.suggestions { 
+    font-size: 14px;
+    background-color: #eeeeee;  
+}
+.suggestionMouseOver { 
+    font-size: 14px;
+    background: #3333ff; 
+    color: white;  
+}
 /*====================================================
                 bootstrap default style overriding
         ====================================================*/
