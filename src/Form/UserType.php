@@ -39,7 +39,6 @@ class UserType extends AbstractType {
                     'multiple' => false,
                     'expanded' => true,
                     'choices' => array(
-                        'Admin' => '1',
                         'Utilisateur' => '2',
                         'Annonceur' => '3',
                     )

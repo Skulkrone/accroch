@@ -108,6 +108,11 @@ class Announcements
      */
     private $ImageAnnouncementsThree;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Model;
+
     public function __construct()
     {
         $this->fkCatAnnouncementsId = new ArrayCollection();
@@ -363,26 +368,38 @@ class Announcements
     // return $this->id;
     }
 
-    public function getImageAnnouncementsTwo(): ?string
+    public function getImageAnnouncementsTwo()
     {
         return $this->ImageAnnouncementsTwo;
     }
 
-    public function setImageAnnouncementsTwo(?string $ImageAnnouncementsTwo): self
+    public function setImageAnnouncementsTwo($ImageAnnouncementsTwo): self
     {
         $this->ImageAnnouncementsTwo = $ImageAnnouncementsTwo;
 
         return $this;
     }
 
-    public function getImageAnnouncementsThree(): ?string
+    public function getImageAnnouncementsThree()
     {
         return $this->ImageAnnouncementsThree;
     }
 
-    public function setImageAnnouncementsThree(?string $ImageAnnouncementsThree): self
+    public function setImageAnnouncementsThree($ImageAnnouncementsThree): self
     {
         $this->ImageAnnouncementsThree = $ImageAnnouncementsThree;
+
+        return $this;
+    }
+
+    public function getModel(): ?string
+    {
+        return $this->Model;
+    }
+
+    public function setModel(string $Model): self
+    {
+        $this->Model = $Model;
 
         return $this;
     }

@@ -3,7 +3,7 @@
 {% block title %}Mes Annonces{% endblock %}
 
 {% block body %}
-    <h1 class="text-bold text-white text-center" style="margin-top: 20px;">{{ announcement.Description }} : {{ announcement.Brand }}</h1>
+    <h1 class="text-bold text-white text-center" style="margin-top: 20px;">{{ announcement.Brand }}<br />{{ announcement.Model }}</h1>
 
     <!-- Start Content -->
     <div id="content">
@@ -13,18 +13,20 @@
                 <div class="product-info">
                     <div class="col-sm-8">
                         <div class="inner-box ads-details-wrapper">
-                            <h2>{{ announcement.Description }}</h2>
                             <h2>{{ announcement.Brand }}</h2>
-                            <p class="item-intro"><span class="poster">Ajouté par <span class="ui-bubble is-member">{{ announcement.FkUserId.username }}</span> le <span class="date">{{ announcement.creationDate| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y H:mm:ss') }}</span></p>
+                            <h2>{{ announcement.Model }}</h2>
+                            <p class="item-intro"><span class="poster">Ajouté par <span class="ui-bubble is-member">{{ announcement.FkUserId.username }}</span> le <span class="date">{{ announcement.creationDate| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y H:mm:ss') }}</span>
+                                     -
+                                    <span class="category">{{ announcement.Description }}</span> -</p>
                             <div id="owl-demo" class="owl-carousel owl-theme">
                                 <div class="item">
                                     <img class="card-img-top img-fluid" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" />
                                 </div>
                                 <div class="item">
-                                    <img src="assets/img/productinfo/img2.jpg" alt="">
+                                    <img src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncementsTwo) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" >
                                 </div>
                                 <div class="item">
-                                    <img src="assets/img/productinfo/img3.jpg" alt="">
+                                    <img src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncementsThree) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" >
                                 </div>
                             </div>
                         </div>
@@ -84,7 +86,7 @@
                 <div class="col-sm-4">
                     <div class="inner-box">
                         <div class="widget-title">
-                            <h4>Advertisement</h4>
+                            <h4>Pubs (bannière)</h4>
                         </div>
                         <img src="assets/img/img1.jpg" alt="">
                     </div>
@@ -166,7 +168,7 @@
             <br />
             {{ include('announcements/_delete_form.html.twig') }}
         </div>
-        
+
     {% else %}
         <div class="lien">
             <a class="btn btn-common log-btn" href="{{ path('announcements_index') }}">Retour</a>

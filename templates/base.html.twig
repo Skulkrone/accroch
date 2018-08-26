@@ -227,7 +227,7 @@
     {% block javascripts %}
         <!--<script src="{#{{ asset('assets/js/jquery-3.3.1.min.js')}}#}"></script>
         <script src="{#{{ asset('assets/js/bootstrap.min.js')}}#}"></script>-->
-        <script type="text/javascript" src="http://api.geonames.org/export/geonamesData.js?username=skulkrone"></script>
+        <script type="text/javascript" src="http://api.geonames.org/export/geonamesData.js?username=demo"></script>
         <script type="text/javascript" src="{{ asset('assets/js/jsr_class.js')}}"></script>
         <script type="text/javascript" >
             // postalcodes is filled by the JSON callback and used by the mouse event handlers of the suggest box
@@ -341,18 +341,18 @@
         <script type="text/javascript" src="{{ asset('assets/js/jquery-min.js')}}"></script>      
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
         <script>
-            pageSize = 5;
+            pageSize = 4;
 
             var pageCount = $(".item-list").length / pageSize;
 
             for (var i = 0; i < pageCount; i++) {
 
-                $("#pagin").append('<li class="page-item active"><a class="page-link" href="#">' + (i + 1) + '</a></li> ' + '<li><a class="pagination-btn" href="#">Suivante »</a>');
+                $("#pagin").append('<li class="page-item"><a class="page-link" href="#">' + (i + 1) + '</a></li> ');
             }
             $("#pagin li").first().find("a").addClass("current")
             showPage = function (page) {
-                $(".line-content").hide();
-                $(".line-content").each(function (n) {
+                $(".item-list").hide();
+                $(".item-list").each(function (n) {
                     if (n >= pageSize * (page - 1) && n < pageSize * page)
                         $(this).show();
                 });

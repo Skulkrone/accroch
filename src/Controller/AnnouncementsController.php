@@ -99,21 +99,33 @@ class AnnouncementsController extends Controller
             // $file stores the uploaded PDF file
             /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
             $file = $announcement->getImageAnnouncements();
+            $fileTwo = $announcement->getImageAnnouncementsTwo();
+            $fileThree = $announcement->getImageAnnouncementsThree();
 
             $fileName = $this->generateOneFileName() . '.' . $file->guessExtension();
+            $fileNameTwo = $this->generateOneFileName() . '.' . $fileTwo->guessExtension();
+            $fileNameThree = $this->generateOneFileName() . '.' . $fileThree->guessExtension();
 
             // moves the file to the directory where brochures are stored
             $file->move(
                     $this->getParameter('annonce_directory'), $fileName
             );
+            $fileTwo->move(
+                    $this->getParameter('annonce_directory'), $fileNameTwo
+            );
+            $fileThree->move(
+                    $this->getParameter('annonce_directory'), $fileNameThree
+            );
 
             // updates the 'brochure' property to store the PDF file name
             // instead of its contents
             $announcement->setImageAnnouncements($fileName);
+            $announcement->setImageAnnouncementsTwo($fileNameTwo);
+            $announcement->setImageAnnouncementsThree($fileNameThree);
             
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('announcements_edit', ['id' => $announcement->getId()]);
+            return $this->redirectToRoute('announcements_show', ['id' => $announcement->getId()]);
         }
 
         return $this->render('announcements/edit.html.twig', [

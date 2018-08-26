@@ -8,13 +8,13 @@
     {% else %}
         <h1 class="text-bold text-white text-center" style="margin-top: 20px;">Annonces</h1>
     {% endif %}
-    {{ dump(announcements) }}
+    {#{{ dump(announcements) }}
     {% for announcement in announcements %}
         {{ dump(announcement.fkUserId) }}
         {{ announcement.fkUserId.username }}
 
-    {% endfor %}
-    
+    {% endfor %}#}
+
     <!-- Main container Start -->  
     <div class="main-container">
         <div class="container">
@@ -25,7 +25,7 @@
                             <div class="categories">
                                 <div class="widget-title">
                                     <i class="fa fa-align-justify"></i>
-                                    <h4>All Categories</h4>
+                                    <h4>Catégories</h4>
                                 </div>
                                 <div class="categories-list">
                                     {% for announcement in announcements %}
@@ -33,7 +33,7 @@
                                             <li>
                                                 <a href="#">
                                                     <i class="fa fa-desktop"></i>
-                                                    {{ announcement.Description }}
+                                                    {{ announcement.Brand|e }}
                                                 </a>
                                             </li>
                                         </ul>
@@ -44,35 +44,25 @@
 
                         <div class="inner-box">
                             <div class="widget-title">
-                                <h4>Premium Ads</h4>
+                                <h4>Articles à vendre</h4>
                             </div>
                             <div class="advimg">
                                 <ul class="featured-list">
-                                    <li>
-                                        <img alt="" src="assets/img/featured/img1.jpg">
-                                        <div class="hover">
-                                            <a href="#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img alt="" src="assets/img/featured/img2.jpg">
-                                        <div class="hover">
-                                            <a href="#"><span>$49</span></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <img alt="" src="assets/img/featured/img3.jpg">
-                                        <div class="hover">
-                                            <a href="#"><span>$49</span></a>
-                                        </div>
-                                    </li>
+                                    {% for announcement in announcements %}
+                                        <li>
+                                            <img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" />
+                                            <div class="hover">
+                                                <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><span>{{ announcement.Price }}€</span></a>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
 
                         <div class="inner-box">
                             <div class="widget-title">
-                                <h4>Advertisement</h4>
+                                <h4>Pubs</h4>
                             </div>
                             <img src="assets/img/img1.jpg" alt="">
                         </div>
@@ -85,7 +75,7 @@
                             <a class="list switchToGrid" href="#"><i class="fa fa-list"></i></a>
                             <a class="grid switchToList" href="#"><i class="fa fa-th-large"></i></a>
                         </div>
-                        <div class="short-name">
+                        <!--<div class="short-name">
                             <span>Short By</span>
                             <form class="name-ordering" method="post">
                                 <label>
@@ -110,39 +100,41 @@
                                     </select>
                                 </label>
                             </form>
-                        </div>
+                        </div>-->
                     </div>
                     <!-- Product filter End -->
 
                     <!-- Adds wrapper Start -->
                     <div class="adds-wrapper well demo content4">
                         {% for announcement in announcements %}
-                            <div class="item-list">
-                                <div class="col-sm-2 no-padding photobox">
-                                    <div class="add-image">
-                                        <a href="#"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
-                                        <span class="photo-count"><i class="fa fa-camera"></i>2</span>
-                                    </div>
-                                </div>
-                                <div class="col-sm-7 add-desc-box">
-                                    <div class="add-details">
-                                        <h5 class="add-title"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Brand }}</a></h5>
-                                        <div class="info">
-                                            <span class="add-type">B</span>
-                                            <span class="date">
-                                                <i class="fa fa-clock"></i>
-                                                {{ announcement.creationDate| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y H:mm:ss') }}
-                                            </span> -
-                                            <span class="category">{{ announcement.Description }}</span> -
-                                        </div>
-                                        <div class="item_desc">
-                                            <a href="#">Donec ut quam felis. Cras egestas, quam in plac erat dictum, erat mauris inte rdum est nec.</a>
+                                <div class="item-list">
+                                    <div class="col-sm-2 no-padding photobox">
+                                        <div class="add-image">
+                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        {% endfor %}
+                                    <div class="col-sm-7 add-desc-box">
+                                        <div class="add-details">
+                                            <h5 class="add-title"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Brand }} {{ announcement.Model }}</a></h5>
+                                            <div class="info">
+                                                <!--<span class="add-type">B</span>-->
+                                                <span class="date">
+                                                    <i class="fa fa-clock"></i>
+                                                    {{ announcement.creationDate| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y H:mm:ss') }}
+                                                </span> -
+                                                <span class="category">{{ announcement.Description }}</span> -
+                                            </div>
+                                            <div class="item_desc">
+                                                <a href="#">Donec ut quam felis. Cras egestas, quam in plac erat dictum, erat mauris inte rdum est nec.</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 text-right  price-box">
+                                        <h2 class="item-price"> {{ announcement.Price }} €</h2>
+                                    </div>
 
+                                </div>
+                        {% endfor %}
                     </div>
                     <!-- Adds wrapper End -->
 
@@ -169,3 +161,4 @@
 
 
 {% endblock %}
+

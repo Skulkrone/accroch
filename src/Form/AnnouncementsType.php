@@ -20,6 +20,7 @@ class AnnouncementsType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
                 ->add('Brand', TextType::class, array('label' => 'Marque du matériel'))
+                ->add('Model', TextType::class, array('label' => 'Modèle du matériel'))
                 ->add('Description', EntityType::class, array(
                     'class' => CatAnnouncements::class,
                     'query_builder' => function (EntityRepository $er) {
@@ -40,14 +41,16 @@ class AnnouncementsType extends AbstractType {
                     'data_class' => null,
                     'label' => 'Image'
                 ))
-                /*->add('ImageAnnouncementsTwo', FileType::class, array(
+                ->add('ImageAnnouncementsTwo', FileType::class, array(
                     'data_class' => null,
-                    'label' => 'Image'
+                    'label' => 'Image',
+                    'required' => false
                 ))
                 ->add('ImageAnnouncementsThree', FileType::class, array(
                     'data_class' => null,
-                    'label' => 'Image'
-                ))*/
+                    'label' => 'Image',
+                    'required' => false
+                ))
         ;
     }
 

@@ -108,7 +108,7 @@ class UserController extends Controller {
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user_edit', ['id' => $user->getId()]);
+            return $this->redirectToRoute('user_index', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit.html.twig', [
