@@ -3,9 +3,11 @@
 {% block title %}New Messages{% endblock %}
 
 {% block body %}
-    <h1>Create new Messages</h1>
+    <h1 class="text-center">Envoyer un message privé à</h1>
     
     {#{{ app.request.uri }}#}
+    
+    {{ dump(message) }}
 
     {{ include('messages/_form.html.twig') }}
 

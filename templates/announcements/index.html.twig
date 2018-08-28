@@ -107,7 +107,7 @@
                     <!-- Adds wrapper Start -->
                     <div class="adds-wrapper well demo content4">
                         {% for announcement in announcements %}
-                                <div class="item-list">
+                                <div class="item-list {{ announcement.Brand }}">
                                     <div class="col-sm-2 no-padding photobox">
                                         <div class="add-image">
                                             <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>

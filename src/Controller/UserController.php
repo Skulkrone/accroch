@@ -25,14 +25,14 @@ class UserController extends Controller {
 
     
     /**
-     * @Route("/mentions", name="mentions_legales")
+     * @Route("/mentions_legales", name="mentions_legales")
      */
     public function mentions() {
         return $this->render('mentions.html.twig');
         }
         
     /**
-     * @Route("/confidentialite", name="politique_confidentialite")
+     * @Route("/politique_confidentialite", name="politique_confidentialite")
      */
     public function confidentialite() {
         return $this->render('confidentialite.html.twig');

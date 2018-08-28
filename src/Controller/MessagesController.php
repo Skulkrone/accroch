@@ -21,7 +21,8 @@ class MessagesController extends Controller {
      * @Route("/", name="messages_index", methods="GET")
      */
     public function index(MessagesRepository $messagesRepository): Response {
-        return $this->render('messages/index.html.twig', ['messages' => $messagesRepository->findAll()]);
+        
+        return $this->render('messages/index.html.twig', ['userId' => $messagesRepository->messagesSQL()]);
         }
 
         /**
@@ -33,22 +34,25 @@ class MessagesController extends Controller {
         $now = new \DateTime();
         $message->setCreatedAt($now);
         $message->setFkFromUserId($this->getUser());
+        $message->setFkToUserId($this->getUser()->getFkAnnouncements());
+
         //$mes = $_GET['id'];
-        /*$tag = $request->query->get('id');
-        echo $tag;*/
-        /*$request->request->get('id');
-        echo $request;*/
-        //$message->setFkToserId($this->$request->query->get('id'));
+        /* $tag = $request->query->get('id');
+          echo $tag; */
+        /* $request->request->get('id');
+          echo $request; */
+
         //$message = $messagesRepository->getId()->get);
-        
+
         $form = $this->createForm(MessagesType::class, $message);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($message);
         $em->flush();
-        
+
 
         return $this->redirectToRoute('messages_index');
         }
@@ -62,9 +66,19 @@ class MessagesController extends Controller {
     /**
      * @Route("/{id}", name="messages_show", methods="GET")
      */
-    public function show(Messages $message): Response {
-        return $this->render('messages/show.html.twig', ['message' => $message]);
+    public function show(MessagesRepository $messagesRepository, User $users, Messages $message): Response {
+        $users->getUsername();
+        return $this->render('messages/show.html.twig', ['userId' => $messagesRepository->messagesSQL(), 'users'=>$users, 'message' => $message]);
     }
+    
+     /**
+     * name="messages_show", methods="POST")
+     */
+    public function store(Request $request, User $users): Response {
+        $users->getUsername();
+        return $this->render('messages/show.html.twig', ['userId' => $messagesRepository->messagesSQL(), 'users'=>$users]);
+    }
+
 
     /**
      * @Route("/{id}/edit", name="messages_edit", methods="GET|POST")

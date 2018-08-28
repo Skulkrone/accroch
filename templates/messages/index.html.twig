@@ -3,9 +3,21 @@
 {% block title %}Messages index{% endblock %}
 
 {% block body %}
-    <h1>Messages index</h1>
+    <h1 class="text-center" style="margin-top: 20px;margin-bottom: 20px;">Messages index</h1>  
         
-    <table class="table">
+        <section class='content'>
+            <div class='container'>
+                <div class="col-md-3">
+                    <div class="list-group">
+                        {% for user in userId %}
+                        <a class="list-group-item" href="{{ path('messages_show', {'id': user.id}) }}">{{ user.username }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <!--<table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -16,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for message in messages %}
+        {#{% for message in messages %}
     
             <tr>
                 <td>{{ message.id }}</td>
@@ -32,9 +44,9 @@
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
-        {% endfor %}
+        {% endfor %}#}
         </tbody>
-    </table>
+    </table>-->
 
-    <a href="{{ path('messages_new') }}">Create new</a>
+    <!--<a href="{#{{ path('messages_new') }}#}">Create new</a>-->
 {% endblock %}

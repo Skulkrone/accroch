@@ -3,17 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/MessagesController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/announcements/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/RegistrationController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Form/AnnouncementsType.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/edit.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Entity/Messages.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Entity/User.php</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Controller/AnnouncementsController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/messages/new.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Entity/Announcements.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/announcements/show.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/src/Form/UserType.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Repository/MessagesRepository.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/messages/show.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/announcements/show.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/messages/index.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/shop/example.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Form/MessagesType.php</file>
             <file>file:/C:/wamp64/www/Accroch/public/assets/css/main.css</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/ShopController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
         </group>
     </open-files>

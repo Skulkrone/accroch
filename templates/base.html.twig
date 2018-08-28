@@ -159,7 +159,7 @@
                                 <div class="widget">
                                     <h3 class="block-title">A propos de nous</h3>
                                     <div class="textwidget">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque lobortis tincidunt est, et euismod purus suscipit quis. Etiam euismod ornare elementum. Sed ex est, consectetur eget facilisis sed, auctor ut purus.</p>
+                                        <p>Notre site vous propose un nouveau service d'annonces en ligne moderne et intuitif. Nous sommes des passionnés de musique voulant offir ce qu'il y a de mieux dans ce domaine car nous avons aussi utilisé d'autres services mais peu sécurisés.</p>
                                     </div>
                                 </div>
                             </div>
@@ -167,11 +167,11 @@
                                 <div class="widget">
                                     <h3 class="block-title">Liens Pratique</h3>
                                     <ul class="menu">
-                                        <li><a href="#">Accueil</a></li>
-                                        <li><a href="#">Annonces</a></li>
+                                        <li><a href="/">Accueil</a></li>
+                                        <li><a href="{{ path('announcements_index') }}">Annonces</a></li>
                                         <li><a href="#">Contact</a></li>
-                                        <li><a href="/user/mentions">Mentions Légales</a></li>
-                                        <li><a href="/user/confidentialite">Politique de confidentialité</a></li>
+                                        <li><a href="{{ path('mentions_legales') }}">Mentions Légales</a></li>
+                                        <li><a href="{{ path('politique_confidentialite') }}">Politique de confidentialité</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -186,7 +186,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="site-info pull-left">
-                                    <p>Tous droits réservés &copy; 2017 - {{ 'now'| date('Y') }} - Designed by <a href="https://www.skulkrone-design.fr" target='_blank' rel="nofollow">Skulkrone-Design</a></p>
+                                    <p>Tous droits réservés &copy; 2017 - {{ 'now'| date('Y') }} - Site créé par <a href="https://www.skulkrone-design.fr" target='_blank' rel="nofollow">Skulkrone-Design</a> - Template de <a href="http://graygrids.com" target='_blank' rel="nofollow">GrayGrids</a></p>
                                 </div>              
                                 <div class="bottom-social-icons social-icon pull-right">  
                                     <a class="facebook" target="_blank" href="https://web.facebook.com/GrayGrids"><i class="fa fa-facebook"></i></a> 
