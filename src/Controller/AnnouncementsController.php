@@ -20,7 +20,9 @@ class AnnouncementsController extends Controller
      */
     public function index(AnnouncementsRepository $announcementsRepository): Response
     {
-        return $this->render('announcements/index.html.twig', ['announcements' => $announcementsRepository->findAll()]);
+        return $this->render('announcements/index.html.twig', ['announcements' => $announcementsRepository->findAll(),
+            'annonces' => $announcementsRepository->triSQL()
+            ]);
     }
     
     /**

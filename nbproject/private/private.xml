@@ -10,9 +10,12 @@
             <file>file:/C:/wamp64/www/Accroch/src/Entity/User.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/messages/new.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Entity/Announcements.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Repository/ShopRepository.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Repository/AnnouncementsRepository.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Repository/MessagesRepository.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/messages/show.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/AnnouncementsController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/announcements/show.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/templates/messages/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/templates/shop/example.html.twig</file>

@@ -47,4 +47,18 @@ class AnnouncementsRepository extends ServiceEntityRepository
         ;
     }
     */
+    
+    public function triSQL() {
+
+        $bdd = new \PDO('mysql:host=localhost;dbname=accroch;charset=utf8', 'root', '', array(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION));
+        $req = $bdd->prepare('SELECT DISTINCT brand FROM announcements');              
+        $req->execute();
+
+        $i = 0;
+        while ($data = $req->fetch(\PDO::FETCH_ASSOC)) {
+            $annonces[$i] = $data;
+            $i++;
+        }
+        return $annonces;
+    }
 }
