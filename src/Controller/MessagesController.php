@@ -34,7 +34,7 @@ class MessagesController extends Controller {
         $now = new \DateTime();
         $message->setCreatedAt($now);
         $message->setFkFromUserId($this->getUser());
-        $message->setFkToUserId($this->getUser()->getFkAnnouncements());
+        //$message->setFkToUserId($this->getId());
 
         //$mes = $_GET['id'];
         /* $tag = $request->query->get('id');
