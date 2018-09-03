@@ -9,7 +9,15 @@
 /* ==========================================================================
    Common Styles
    ========================================================================== */
-
+#google-map,
+body,
+html {
+    padding: 0;
+    height: 460px;
+}
+#suggestBoxElement {
+    border: none;
+}
 legend {
     margin-bottom: 2.5rem;
 }
@@ -145,7 +153,7 @@ h3.block-title {
 }
 #suggestBoxElement {
     border: 1px solid #8FABFF; 
-   
+
     text-align: left;  
     white-space: nowrap; 
     background-color: #eeeeee;

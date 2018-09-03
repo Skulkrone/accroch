@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(our_form, {'attr': {'id': 'upload-form'}}) }}
+    {{ form_widget(our_form) }}
+    <input type="submit" id="submit" class="btn btn-common" value="Envoyer votre message" />
+    {{ form_end(our_form) }}
+
+{% endblock %}
