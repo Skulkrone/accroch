@@ -14,7 +14,7 @@ class RegistrationController extends Controller {
     /**
      * @Route("/register", name="user_registration")
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder) {
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer) {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 

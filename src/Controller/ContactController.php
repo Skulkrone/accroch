@@ -20,22 +20,32 @@ class ContactController extends AbstractController {
         if ($form->isSubmitted() && $form->isValid()) {
 
             $contactFormData = $form->getData();
-            //print_r($contactFormData);
+            $name = $contactFormData['name'];
+            $firstName = $contactFormData['firstName'];
 
             $message = (new \Swift_Message('Vous avez un nouveau message!'))
-            ->setFrom($contactFormData['email'])
-            ->setTo('punchyguy@mailinator.com')
-            ->setBody(
-                    $contactFormData['message'],
-                    'text/plain'
+                    ->setFrom($contactFormData['email'])
+                    ->setTo('laukorn666@gmail.com')
+                    ->setBody(
+                    $contactFormData['message'], 'text/html'
             );
-            
+
             $mailer->send($message);
+
+            return $this->redirectToRoute('contact_index');
         }
 
-        return $this->render('contact/index.html.twig', [
+        return $this->render('contact/contact.html.twig', [
                     'our_form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/contact/index", name="contact_index", methods="GET|POST")
+     */
+    public function contactIndex(Request $request) {
+
+        return $this->render('contact/index.html.twig', ['mailer' => $request]);
     }
 
 }

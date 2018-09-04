@@ -6,11 +6,14 @@
             <file>file:/C:/wamp64/www/Accroch/src/Controller/RegistrationController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/contact/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/.env</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/Registration/_form.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Form/ContactType.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Form/UserType.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/ContactController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/contact/contact.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/SecurityController.php</file>
             <file>file:/C:/wamp64/www/Accroch/public/assets/css/main.css</file>
-            <file>file:/C:/wamp64/www/Accroch/config/packages/swiftmailer.yaml</file>
             <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
         </group>
     </open-files>
