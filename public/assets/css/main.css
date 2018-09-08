@@ -15,9 +15,6 @@ html {
     padding: 0;
     height: 460px;
 }
-#suggestBoxElement {
-    border: none;
-}
 legend {
     margin-bottom: 2.5rem;
 }
@@ -61,8 +58,8 @@ h3,
 h4,
 h5,
 h6 {
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
 }
@@ -77,7 +74,7 @@ h3 {
 p {
     font-size: 16px;
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
+    margin: 0 0 10px 0;
     line-height: 24px;
     font-weight: 400;
 }
@@ -97,11 +94,11 @@ img {
     max-width: 100%;
 }
 ul {
-    margin: 0px;
+    margin: 0;
     padding: 0px;
 }
 ul.conf {
-
+    margin: 0 0 0 35px;
 }
 ul li {
     list-style: none;
@@ -109,8 +106,8 @@ ul li {
 }
 ul.conf li {
     list-style: disc;
-    margin-left: 50px;
-    line-height: 30px;
+    line-height: 24px;
+    margin: 0 0 10px 0;
 }
 ol {
     list-style: none;
@@ -152,20 +149,23 @@ h3.block-title {
     justify-content: space-between;
 }
 #suggestBoxElement {
-    border: 1px solid #8FABFF; 
-
+    border: none!important;
     text-align: left;  
     white-space: nowrap; 
     background-color: #eeeeee;
 }
 .suggestions { 
-    font-size: 14px;
-    background-color: #eeeeee;  
+    font-size: 16px;
+    background-color: graytext;  
+    color: #fff;
 }
 .suggestionMouseOver { 
-    font-size: 14px;
-    background: #3333ff; 
+    font-size: 16px;
+    background: gray; 
+    padding-left: 10px;
     color: white;  
+    cursor: pointer;
+    border-radius: 4px;
 }
 .card-header {
     padding: 30px 0 0 20px;
@@ -1160,7 +1160,6 @@ select > opation:focus {
     -webkit-transition: all 0.9s ease;
     -moz-transition: all 0.9s ease;
     -ms-transition: all 0.9s ease;
-    -0-transition: all 0.9s ease;
     transition: all 0.9s ease;
 }
 #new-products .product-item .carousel-thumb .overlay {
@@ -1216,7 +1215,6 @@ select > opation:focus {
     -webkit-transform: scale(0.9);
     -moz-transform: scale(0.9);
     -ms-transform: scale(0.9);
-    -0-transform: scale(0.9);
     transform: scale(0.9);
 }
 #new-products .product-item .carousel-thumb:hover {
@@ -1232,7 +1230,6 @@ select > opation:focus {
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
-    -0-transform: scale(1);
     transform: scale(1);
 }
 #new-products .product-item .item-name {
@@ -2282,7 +2279,7 @@ table.add-manage-table > tbody > tr > th {
    Custom Component
    ========================================================================== */
 #content {
-    padding: 30px;
+    /*padding: 30px;*/
 }
 .post-title {
     font-size: 38px;
@@ -2868,4 +2865,24 @@ textarea:focus {
     display: inline-block;
     margin-bottom: 0px;
     vertical-align: middle;
+}
+
+@media screen and (max-width:695px) {
+    .form-group input[type=file] {
+        opacity: 1;
+        left: 0px;
+        top: 25px;
+    }
+    label {
+        max-width: 90%;
+    }
+    .page-login-form input[type="checkbox"] {
+        vertical-align: top;
+    }
+    .bloc {
+        flex-direction: column;
+    }
+    #content, .main-container {
+        padding: 20px 0 40px 0;
+    }
 }
