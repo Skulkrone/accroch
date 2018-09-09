@@ -23,22 +23,27 @@ class UserController extends Controller {
         return $this->render('user/index.html.twig', ['users' => $userRepository->findAll()]);
     }
 
-    
     /**
      * @Route("/mentions_legales", name="mentions_legales")
      */
     public function mentions() {
         return $this->render('mentions.html.twig');
-        }
-        
+    }
+
     /**
      * @Route("/politique_confidentialite", name="politique_confidentialite")
      */
     public function confidentialite() {
         return $this->render('confidentialite.html.twig');
-        }
-        
-        
+    }
+
+    /**
+     * @Route("/CGV", name="CGV")
+     */
+    public function cgv() {
+        return $this->render('cgv.html.twig');
+    }
+
     /**
      * @Route("/admin", name="admin")
      */
@@ -89,7 +94,7 @@ class UserController extends Controller {
             $user->setPassword($password);
 
             // $file stores the uploaded file
-            
+
             $file = $user->getAvatar();
 
             $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
