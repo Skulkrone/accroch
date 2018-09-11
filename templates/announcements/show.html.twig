@@ -20,13 +20,13 @@
                                     <span class="category">{{ announcement.Description }}</span> -</p>
                             <div id="owl-demo" class="owl-carousel owl-theme">
                                 <div class="item">
-                                    <img class="card-img-top img-fluid" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" />
+                                    <img class="card-img-top img-fluid" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Brand }} {{ announcement.Model }}" title="{{ announcement.Brand }} {{ announcement.Model }}" />
                                 </div>
                                 <div class="item">
-                                    <img src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncementsTwo) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" >
+                                    <img src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncementsTwo) }}" alt="{{ announcement.Brand }} {{ announcement.Model }}" title="{{ announcement.Brand }} {{ announcement.Model }}" >
                                 </div>
                                 <div class="item">
-                                    <img src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncementsThree) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" >
+                                    <img src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncementsThree) }}" alt="{{ announcement.Brand }} {{ announcement.Model }}" title="{{ announcement.Brand }} {{ announcement.Model }}" >
                                 </div>
                             </div>
                         </div>

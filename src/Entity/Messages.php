@@ -99,12 +99,11 @@ class Messages
         return $this->fkToUserId;
     }
 
-    public function setFkToUserId($fkToUserId): self
+    public function setFkToUserId(?string $fkToUserId): self
     {
         $this->fkToUserId = $fkToUserId;
 
         return $this;
     }
-    
     
 }

@@ -3,29 +3,39 @@
         <div class="row">
             <div class="col-sm-6 col-sm-offset-4 col-md-6 col-md-offset-3">
                 <div class="page-login-form box">
-                    {{ form_start(form, {'attr': {'id': 'upload-form'}}) }}
-                    {{ form_row(form.Name) }}
-                    {{ form_row(form.firstName) }}
-                    {{ form_row(form.username) }}
-                    {{ form_row(form.address) }}
-                    <div>
-                        <select id="countrySelect" name="country">
-                            <option value="FR"> France</option>
-                        </select>
-                    </div>
-                    {{ form_row(form.postalCode, {'attr': {'onblur': 'postalCodeLookup ();'} }) }}
-                    {{ form_row(form.city, {'attr': {'onblur': 'closeSuggestBox ();'} }) }}
-                    <span style="z-index:25;visibility: hidden;" id="suggestBoxElement"></span>
-                    {{ form_row(form.email) }}
-                    {{ form_row(form.phone) }}
-                    {{ form_row(form.password.first) }}
-                    {{ form_row(form.password.second) }}
-                    {{ form_row(form.avatar) }}
-                    {{ form_row(form.typeRoles) }}
-                    {{ form_row(form.termsAccepted) }}
-                    <!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
-                    <button class="btn btn-common log-btn">{{ button_label|default('Valider') }}</button>
-                    {{ form_end(form) }}
+                    <form name="user" method="post" id="upload-form" enctype="multipart/form-data">
+                        <div class="form-group"><label for="user_Name" class="form-control-label required">Nom</label><input type="text" id="user_Name" name="user[Name]" required="required" class="form-control" value="Baron"><span class="material-input"></span></div>
+                        <div class="form-group"><label for="user_firstName" class="form-control-label required">Prénom</label><input type="text" id="user_firstName" name="user[firstName]" required="required" class="form-control" value="Laurent"><span class="material-input"></span></div>
+                        <div class="form-group"><label for="user_username" class="form-control-label required">Login</label><input type="text" id="user_username" name="user[username]" required="required" class="form-control" value="skulkrone"><span class="material-input"></span></div>
+                        <div class="form-group"><label for="user_address" class="form-control-label required">Adresse</label><input type="text" id="user_address" name="user[address]" required="required" class="form-control" value="12 Allee des ducs de Savoie"><span class="material-input"></span></div>
+                        <div style="display: none;">
+                            <select id="countrySelect" name="country">
+                                <option value="FR"> France</option>
+                            </select>
+                        </div>
+                        <div class="form-group"><label for="user_postalCode" class="form-control-label required">Code Postal</label><input type="text" id="user_postalCode" name="user[postalCode]" required="required" onblur="postalCodeLookup();" class="form-control" value="74600"><span class="material-input"></span></div>
+                        <div class="form-group"><label for="user_city" class="form-control-label required">Ville</label><input type="text" id="user_city" name="user[city]" required="required" onblur="closeSuggestBox();" class="form-control" value="Seynod"><span class="material-input"></span></div>
+                        <span style="z-index:25;visibility: hidden;" id="suggestBoxElement"></span>
+                        <div class="form-group"><label for="user_email" class="form-control-label required">Email</label><input type="email" id="user_email" name="user[email]" required="required" class="form-control" value="laurentbaron80@gmail.com"><span class="material-input"></span></div>
+                        <div class="form-group"><label for="user_phone" class="form-control-label required">Téléphone</label><input type="text" id="user_phone" name="user[phone]" required="required" class="form-control" value="629980266"><span class="material-input"></span></div>
+                        <div class="form-group is-empty"><label for="user_password_first" class="form-control-label required">Mot de passe</label><input type="password" id="user_password_first" name="user[password][first]" required="required" class="form-control"><span class="material-input"></span></div>
+                        <div class="form-group is-empty"><label for="user_password_second" class="form-control-label required">Répéter Mot de passe</label><input type="password" id="user_password_second" name="user[password][second]" required="required" class="form-control"><span class="material-input"></span></div>
+                        <div class="form-group">
+                            <div class="custom-file"><input type="file" id="user_avatar" name="user[avatar]" class="custom-file-input"><label for="user_avatar" class="custom-file-label">Avatar</label></div>
+                        </div>
+
+                        <fieldset class="form-group"><legend class="col-form-label">vous êtes : </legend><div id="user_typeRoles"><div class="form-check">        
+                                    <input type="radio" id="user_typeRoles_0" name="user[typeRoles]" class="form-check-input" value="2">
+                                    <label class="form-check-label" for="user_typeRoles_0">Utilisateur</label></div><div class="form-check">        <input type="radio" id="user_typeRoles_1" name="user[typeRoles]" class="form-check-input" value="3">
+                                    <label class="form-check-label" for="user_typeRoles_1">Annonceur</label></div></div></fieldset>
+                        <div class="form-group"><div class="form-check">        <input type="checkbox" id="user_termsAccepted" name="user[termsAccepted]" required="required" class="form-check-input" value="1">
+                                <label class="form-check-label required" for="user_termsAccepted">En créant votre compte, vous acceptez l'intégralité de nos 
+                                    <a href="{{ path('CGV') }}">Conditions générales de vente et d'utilisation</a>.</label></div></div>
+                        <!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
+                        <button class="btn btn-common log-btn">Mettre à jour</button>
+                        <input type="hidden" id="user__token" name="user[_token]" value="HAYG_2LZP-jTf4wg8I-psezkpKrZi1abMcfAhVP3quw">
+                    </form>
+                    <p style="color: #000;font-weight: 700;">Informations sur le traitement de vos données personnelles : Pour connaitre et exercer vos droits, notamment de retrait de votre consentement à l'utilisation des données collectées par ce formulaire, veuillez consulter nos <a href="{{ path('mentions_legales') }}">Mentions Légales</a>.</p>
                 </div>
             </div>
         </div>

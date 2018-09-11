@@ -21,7 +21,7 @@ class MessagesController extends Controller {
      * @Route("/", name="messages_index", methods="GET")
      */
     public function index(MessagesRepository $messagesRepository): Response {
-        
+
         return $this->render('messages/index.html.twig', ['userId' => $messagesRepository->messagesSQL()]);
         }
 
@@ -34,8 +34,9 @@ class MessagesController extends Controller {
         $now = new \DateTime();
         $message->setCreatedAt($now);
         $message->setFkFromUserId($this->getUser());
-        //$message->setFkToUserId($this->getId());
-
+        /*$request = Request::createFromGlobals();
+        $result = $request->query->get('id');
+        $message->getFkToUserId($result);
         //$mes = $_GET['id'];
         /* $tag = $request->query->get('id');
           echo $tag; */
@@ -68,17 +69,16 @@ class MessagesController extends Controller {
      */
     public function show(MessagesRepository $messagesRepository, User $users, Messages $message): Response {
         $users->getUsername();
-        return $this->render('messages/show.html.twig', ['userId' => $messagesRepository->messagesSQL(), 'users'=>$users, 'message' => $message]);
+        return $this->render('messages/show.html.twig', ['userId' => $messagesRepository->messagesSQL(), 'users' => $users, 'message' => $message]);
     }
-    
-     /**
+
+    /**
      * name="messages_show", methods="POST")
      */
     public function store(Request $request, User $users): Response {
         $users->getUsername();
-        return $this->render('messages/show.html.twig', ['userId' => $messagesRepository->messagesSQL(), 'users'=>$users]);
+        return $this->render('messages/show.html.twig', ['userId' => $messagesRepository->messagesSQL(), 'users' => $users]);
     }
-
 
     /**
      * @Route("/{id}/edit", name="messages_edit", methods="GET|POST")
