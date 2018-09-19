@@ -37,6 +37,7 @@ class UserController extends Controller {
     public function confidentialite() {
         return $this->render('confidentialite.html.twig');
         }
+
         
         
     /**

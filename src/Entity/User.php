@@ -138,11 +138,6 @@ private $Phone;
  */
 private $fkFromId;
 
-/**
- * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="fkToUserId")
- */
-private $fkToId;
-
 public function __construct()
 {
 $this->fkShopId = new ArrayCollection();
@@ -460,8 +455,10 @@ public function addFkFromId(Messages $fkFromId): self
     return $this;
 }
 
-
-
+/**
+ * @ORM\OneToMany(targetEntity="App\Entity\Messages", mappedBy="fkToUserId")
+ */
+private $fkToId;
 public function removeFkFromId(Messages $fkFromId): self
 {
     if ($this->fkFromId->contains($fkFromId)) {

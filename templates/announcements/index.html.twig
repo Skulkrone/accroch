@@ -50,7 +50,7 @@
                                 <ul class="featured-list">
                                     {% for announcement in announcements %}
                                         <li>
-                                            <img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Brand }} {{ announcement.Model }}" title="{{ announcement.Brand }} {{ announcement.Model }}" />
+                                            <img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" />
                                             <div class="hover">
                                                 <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><span>{{ announcement.Price }}€</span></a>
                                             </div>
@@ -110,7 +110,7 @@
                                 <div class="item-list {{ announcement.Brand }}">
                                     <div class="col-sm-2 no-padding photobox">
                                         <div class="add-image">
-                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Brand }} {{ announcement.Model }}" title="{{ announcement.Brand }} {{ announcement.Model }}" /></a>
+                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
                                         </div>
                                     </div>
                                     <div class="col-sm-7 add-desc-box">
@@ -125,7 +125,7 @@
                                                 <span class="category">{{ announcement.Description }}</span> -
                                             </div>
                                             <div class="item_desc">
-                                                <a href="#"></a>
+                                                <a href="#">Donec ut quam felis. Cras egestas, quam in plac erat dictum, erat mauris inte rdum est nec.</a>
                                             </div>
                                         </div>
                                     </div>
@@ -146,17 +146,20 @@
                     </div><br /><br />
                     <!-- End Pagination -->
 <<<<<<< HEAD
+<<<<<<< HEAD
                     {% if app.user %}
 =======
 
 
 >>>>>>> parent of ed21014... Changes V2 38
+=======
+
+>>>>>>> parent of 5be3cb8... Changes V2 39
                     <div class="post-promo text-center">
                         <h2> Avez-vous quelque chose à vendre ? </h2>
                         <h5>Vendez vos produits en ligne. C'est plus facile que vous ne le pensez !</h5>
                         <a href="{{ path('announcements_new') }}" class="btn btn-post btn-danger">Ajouter une annonce </a>
                     </div>
-                    {% endif %}
                 </div>
             </div>
         </div>

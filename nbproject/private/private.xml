@@ -4,15 +4,22 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/C:/wamp64/www/Accroch/templates/announcements/index.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/AnnouncementsController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/Security/login.html.twig</file>
+=======
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/RegistrationController.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/contact/index.html.twig</file>
+>>>>>>> parent of 5be3cb8... Changes V2 39
             <file>file:/C:/wamp64/www/Accroch/templates/Registration/_form.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Form/ContactType.php</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/default/index.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/src/Form/UserType.php</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/ContactController.php</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/index.html.twig</file>
-            <file>file:/C:/wamp64/www/Accroch/templates/user/_form.html.twig</file>
+            <file>file:/C:/wamp64/www/Accroch/templates/contact/contact.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/UserController.php</file>
+<<<<<<< HEAD
 =======
             <file>file:/C:/wamp64/www/Accroch/templates/mentions.html.twig</file>
             <file>file:/C:/wamp64/www/Accroch/src/Controller/RegistrationController.php</file>
@@ -26,6 +33,9 @@
             <file>file:/C:/wamp64/www/Accroch/src/Controller/ContactController.php</file>
             <file>file:/C:/wamp64/www/Accroch/templates/contact/contact.html.twig</file>
 >>>>>>> parent of ed21014... Changes V2 38
+=======
+            <file>file:/C:/wamp64/www/Accroch/src/Controller/SecurityController.php</file>
+>>>>>>> parent of 5be3cb8... Changes V2 39
             <file>file:/C:/wamp64/www/Accroch/public/assets/css/main.css</file>
             <file>file:/C:/wamp64/www/Accroch/templates/base.html.twig</file>
         </group>
