@@ -82,18 +82,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Admin
-                                        </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="/cat/announcements">Cat. Annonces</a>
-                                            <a class="dropdown-item" href="/marketers">Annonceurs</a>
-                                            <a class="dropdown-item" href="/cat/add">Cat. bannière</a>
-                                            <a class="dropdown-item" href="/banner">Bannière</a>
-                                            <a class="dropdown-item" href="/invoices">Factures</a>
-                                        </div>
-                                    </li>
+                                    
                                 {% elseif is_granted('ROLE_ADD') %}
                                     <li class="nav-item active">
                                         <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
@@ -122,6 +111,18 @@
                                 {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ path('user_index') }}"><i class="lnr lnr-user"></i>Mon Profil</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Admin
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="/cat/announcements">Cat. Annonces</a>
+                                            <a class="dropdown-item" href="/marketers">Annonceurs</a>
+                                            <a class="dropdown-item" href="/cat/add">Cat. bannière</a>
+                                            <a class="dropdown-item" href="/banner">Bannière</a>
+                                            <a class="dropdown-item" href="/invoices">Factures</a>
+                                        </div>
                                     </li>
                                     <li><a href="/logout"><i class="lnr lnr-exit"></i> Déconnexion</a></li>
                                     {% else %}

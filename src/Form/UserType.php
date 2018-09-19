@@ -22,15 +22,15 @@ class UserType extends AbstractType {
         $builder
                 ->add('Name', TextType::class, array('label' => 'Nom'))
                 ->add('firstName', TextType::class, array('label' => 'Prénom')) 
-                ->add('address', TextType::class, array('label' => 'Adresse'))
-                ->add('postalCode', TextType::class, array('label' => 'Code Postal'))
-                ->add('city', TextType::class, array('label' => 'Ville'))
+                ->add('address', TextType::class, array('label' => 'Adresse', 'required' => false))
+                ->add('postalCode', TextType::class, array('label' => 'Code Postal', 'required' => false))
+                ->add('city', TextType::class, array('label' => 'Ville', 'required' => false))
                 ->add('email', EmailType::class)
-                ->add('phone', TextType::class, array('label' => 'Téléphone'))
+                ->add('phone', TextType::class, array('label' => 'Téléphone', 'required' => false))
                 ->add('username', TextType::class, array('label' => 'Login'))
                 ->add('password', RepeatedType::class, array(
                     'type' => PasswordType::class,
-                    'first_options' => array('label' => 'Mot de passe'),
+                    'first_options' => array('label' => 'Mot de passe - Le mot de passe doit comporter sept caractères ou plus et contenir au moins un chiffre, un caractère majuscule et un caractère minuscule.'),
                     'second_options' => array('label' => 'Répéter Mot de passe'),
                 ))
                 ->add('typeRoles', ChoiceType::class, array(

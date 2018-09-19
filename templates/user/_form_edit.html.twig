@@ -3,31 +3,29 @@
         <div class="row">
             <div class="col-sm-6 col-sm-offset-4 col-md-6 col-md-offset-3">
                 <div class="page-login-form box">
-                    <h3>
-                        Inscription
-                    </h3>
-
-                    <form name="user" method="post" id="upload-form" enctype="multipart/form-data">
-                        <div class="form-group is-empty"><label for="user_Name" class="form-control-label required">Nom</label><input type="text" id="user_Name" name="user[Name]" required="required" class="form-control"><span class="material-input"></span></div>
-                        <div class="form-group is-empty"><label for="user_firstName" class="form-control-label required">Prénom</label><input type="text" id="user_firstName" name="user[firstName]" required="required" class="form-control"><span class="material-input"></span></div>
-                        <div class="form-group is-empty"><label for="user_username" class="form-control-label required">Login</label><input type="text" id="user_username" name="user[username]" required="required" class="form-control"><span class="material-input"></span></div>
-                        <div class="form-group is-empty"><label for="user_email" class="form-control-label required">Email<span class="invalid-feedback d-block"><span class="mb-0 d-block">
-                    <span class="initialism form-error-icon badge badge-danger">Erreur</span> <span class="form-error-message">Cette valeur ne doit pas être vide.</span>
-                </span></span></label><input type="email" id="user_email" name="user[email]" required="required" class="form-control is-invalid"><span class="material-input"></span></div>
-                        <div class="form-group is-empty"><label for="user_password_first" class="form-control-label required">Mot de passe <span style="font-size: 14px;font-weight: 400;">- Le mot de passe doit comporter sept caractères ou plus et contenir au moins un chiffre, un caractère majuscule et un caractère minuscule.</span></label><input type="password" id="user_password_first" name="user[password][first]" required="required" class="form-control"><span class="material-input"></span></div>
-                        <div class="form-group is-empty"><label for="user_password_second" class="form-control-label required">Répéter Mot de passe</label><input type="password" id="user_password_second" name="user[password][second]" required="required" class="form-control"><span class="material-input"></span></div>
-                        <fieldset class="form-group"><legend class="col-form-label">vous êtes : </legend><div id="user_typeRoles"><div class="form-check">        <input type="radio" id="user_typeRoles_placeholder" name="user[typeRoles]" class="form-check-input" value="" checked="checked">
-                                    <label class="form-check-label" for="user_typeRoles_placeholder">None</label></div><div class="form-check">        <input type="radio" id="user_typeRoles_0" name="user[typeRoles]" class="form-check-input" value="2">
-                                    <label class="form-check-label" for="user_typeRoles_0">Utilisateur</label></div><div class="form-check">        <input type="radio" id="user_typeRoles_1" name="user[typeRoles]" class="form-check-input" value="3">
-                                    <label class="form-check-label" for="user_typeRoles_1">Annonceur</label></div></div></fieldset>
-                        <div class="form-group"><div class="form-check">        <input type="checkbox" id="user_termsAccepted" name="user[termsAccepted]" required="required" class="form-check-input" value="1">
-                                <label class="form-check-label required" for="user_termsAccepted">En créant votre compte, vous acceptez l'intégralité de nos 
-                                    Conditions générales de vente et d'utilisation.</label></div></div>
-                        <!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
-                        <button class="btn btn-common log-btn">Valider</button>
-                        <p style="color: #000;font-weight: 700;">Informations sur le traitement de vos données personnelles : Pour connaitre et exercer vos droits, notamment de retrait de votre consentement à l'utilisation des données collectées par ce formulaire, veuillez consulter nos <a href="/user/mentions_legales">Mentions Légales</a>.</p>
-                        
-                        <input type="hidden" id="user__token" name="user[_token]" value="rSpsr1JDNwvj45ZWmd6MzycWIa0g092ak2PoflMdCDI"></form>
+                    {{ form_start(form, {'attr': {'id': 'upload-form'}}) }}
+                    {{ form_row(form.Name) }}
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.address) }}
+                    <div>
+                        <select id="countrySelect" name="country">
+                            <option value="FR"> France</option>
+                        </select>
+                    </div>
+                    {{ form_row(form.postalCode, {'attr': {'onblur': 'postalCodeLookup ();'} }) }}
+                    {{ form_row(form.city, {'attr': {'onblur': 'closeSuggestBox ();'} }) }}
+                    <span style="z-index:25;visibility: hidden;" id="suggestBoxElement"></span>
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.password.first) }}
+                    {{ form_row(form.password.second) }}
+                    {{ form_row(form.avatar) }}
+                    {{ form_row(form.typeRoles) }}
+                    {{ form_row(form.termsAccepted) }}
+                    <!--<input type="submit" name="upload" class="btn" value="S'inscrire !">-->
+                    <button class="btn btn-common log-btn">{{ button_label|default('Valider') }}</button>
+                    {{ form_end(form) }}
                 </div>
             </div>
         </div>
@@ -143,9 +141,5 @@
         }
     }
 </script>
-
-
-
-
 
 

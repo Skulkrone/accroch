@@ -1640,8 +1640,8 @@ footer .menu li a:hover {
 .adds-wrapper .info {
     display: block;
     clear: both;
-    font-size: 12px;
-    color: #888;
+    font-size: 14px;
+    /*color: #888;*/
     margin-bottom: 10px;
 }
 .adds-wrapper .add-type {
