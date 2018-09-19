@@ -107,6 +107,7 @@
                     <!-- Adds wrapper Start -->
                     <div class="adds-wrapper well demo content4">
                         {% for announcement in announcements %}
+                            {% if is_granted(['ROLE_USER','ROLE_ADD','ROLE_ADMIN']) %}
                                 <div class="item-list {{ announcement.Brand }}">
                                     <div class="col-sm-2 no-padding photobox">
                                         <div class="add-image">
@@ -134,9 +135,39 @@
                                     </div>
 
                                 </div>
+                            {% else %}
+                                <div class="item-list {{ announcement.Brand }}">
+                                    <div class="col-sm-2 no-padding photobox">
+                                        <div class="add-image">
+                                            <a href="{{ path('announcements_show', {'id': announcement.id}) }}"><img class="card-img-top" src="{{ asset('uploads/images/annonce/' ~ announcement.ImageAnnouncements) }}" alt="{{ announcement.Description }}" title="{{ announcement.Description }}" /></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 add-desc-box">
+                                        <div class="add-details">
+                                            <h5 class="add-title"><a href="{{ path('announcements_show', {'id': announcement.id}) }}">{{ announcement.Brand }} {{ announcement.Model }}</a></h5>
+                                            <div class="info">
+                                                <!--<span class="add-type">B</span>-->
+                                                <span class="date">
+                                                    <i class="fa fa-clock"></i>
+                                                    {{ announcement.creationDate| localizeddate('none', 'none', 'fr', 'Europe/Paris', 'EEEE d MMMM Y H:mm:ss') }}
+                                                </span> -
+                                                <span class="category">{{ announcement.Description }}</span> -
+                                            </div>
+                                            <div class="item_desc">
+                                                <a href="#">Donec ut quam felis. Cras egestas, quam in plac erat dictum, erat mauris inte rdum est nec.</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 text-right  price-box">
+                                        <h2 class="item-price"> {{ announcement.Price }} €</h2>
+                                    </div>
+
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                     <!-- Adds wrapper End -->
+
 
                     <!-- Start Pagination -->
                     <div class="demo demo4_top">
@@ -145,21 +176,14 @@
                         </ul>
                     </div><br /><br />
                     <!-- End Pagination -->
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                     {% if app.user %}
-=======
-
-
->>>>>>> parent of ed21014... Changes V2 38
-=======
-
->>>>>>> parent of 5be3cb8... Changes V2 39
-                    <div class="post-promo text-center">
-                        <h2> Avez-vous quelque chose à vendre ? </h2>
-                        <h5>Vendez vos produits en ligne. C'est plus facile que vous ne le pensez !</h5>
-                        <a href="{{ path('announcements_new') }}" class="btn btn-post btn-danger">Ajouter une annonce </a>
-                    </div>
+                        <div class="post-promo text-center">
+                            <h2> Avez-vous quelque chose à vendre ? </h2>
+                            <h5>Vendez vos produits en ligne. C'est plus facile que vous ne le pensez !</h5>
+                            <a href="{{ path('announcements_new') }}" class="btn btn-post btn-danger">Ajouter une annonce </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

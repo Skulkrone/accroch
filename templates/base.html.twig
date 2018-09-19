@@ -80,9 +80,6 @@
                                         <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('user_index') }}">Mon Profil</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -109,9 +106,6 @@
                                         <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ path('user_index') }}">Mon Profil</a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a class="nav-link" href="{{ path('announcements_index') }}">Annonces</a>
                                     </li>
                                 {% else %}
@@ -126,6 +120,9 @@
 
                             <ul class="nav navbar-nav navbar-right">
                                 {% if is_granted(['ROLE_ADMIN','ROLE_USER','ROLE_ADD'])  %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ path('user_index') }}"><i class="lnr lnr-user"></i>Mon Profil</a>
+                                    </li>
                                     <li><a href="/logout"><i class="lnr lnr-exit"></i> Déconnexion</a></li>
                                     {% else %}
                                     <li><a href="/login"><i class="lnr lnr-enter"></i> Connexion</a></li>

@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    
+
     <!-- Start Content -->
     <div id="content">
         <div class="container">
@@ -39,21 +39,28 @@
                                                 {% endif %}
                                             {% endfor %}
 
-                                            <li>
-                                                <a href="/announcements"><i class="fa fa-credit-card"></i> Mes Annonces <span class="badge">{{ count }}</span></a>
-                                            </li>
-                                            <li>
-                                                <a href="account-favourite-ads.html"><i class="fa fa-heart-o"></i> Annonces Favorites <span class="badge"></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="account-saved-search.html"><i class="fa fa-star-o"></i> Recherches Sauvegardées <span class="badge"></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="account-archived-ads.html"><i class="fa fa-folder-o"></i> Annonces Archivées <span class="badge"></span></a>
-                                            </li>
-                                            <li>
-                                                <a href="account-pending-approval-ads.html"><i class="fa fa-hourglass-o"></i> Annonce en attente <span class="badge"></span></a>
-                                            </li>
+
+                                            {% for user in users %}
+                                                {% for annonce in user.fkAnnouncements %}
+                                                    {% if user.id is same as(app.user.id) %}
+                                                        <li>
+                                                            <a href="{{ path('announcements_show', {'id': annonce.id}) }}"><i class="fa fa-credit-card"></i> Mes Annonces <span class="badge">{{ count }}</span></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="account-favourite-ads.html"><i class="fa fa-heart-o"></i> Annonces Favorites <span class="badge"></span></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="account-saved-search.html"><i class="fa fa-star-o"></i> Recherches Sauvegardées <span class="badge"></span></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="account-archived-ads.html"><i class="fa fa-folder-o"></i> Annonces Archivées <span class="badge"></span></a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="account-pending-approval-ads.html"><i class="fa fa-hourglass-o"></i> Annonce en attente <span class="badge"></span></a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </div>
