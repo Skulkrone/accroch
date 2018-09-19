@@ -8,6 +8,13 @@
     {% else %}
         <h1 class="text-bold text-white text-center" style="margin-top: 20px;">Annonces</h1>
     {% endif %}
+    {#{{ dump(announcements) }}
+    {% for announcement in announcements %}
+        {{ dump(announcement.fkUserId) }}
+        {{ announcement.fkUserId.username }}
+
+    {% endfor %}#}
+
     <!-- Main container Start -->  
     <div class="main-container">
         <div class="container">
@@ -68,6 +75,32 @@
                             <a class="list switchToGrid" href="#"><i class="fa fa-list"></i></a>
                             <a class="grid switchToList" href="#"><i class="fa fa-th-large"></i></a>
                         </div>
+                        <!--<div class="short-name">
+                            <span>Short By</span>
+                            <form class="name-ordering" method="post">
+                                <label>
+                                    <select name="order" class="orderby">
+                                        <option selected="selected" value="menu-order">Trier par</option>
+                                        <option value="popularity">Price: Low to High</option>
+                                        <option value="popularity">Price: High to Low</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>
+                        <div class="Show-item">
+                            <span>Afficher produits</span>
+                            <form class="woocommerce-ordering" method="post">
+                                <label>
+                                    <select name="order" class="orderby">
+                                        <option selected="selected" value="menu-order">xx produits</option>
+                                        <option value="popularity">popularity</option>
+                                        <option value="popularity">Average ration</option>
+                                        <option value="popularity">newness</option>
+                                        <option value="popularity">price</option>
+                                    </select>
+                                </label>
+                            </form>
+                        </div>-->
                     </div>
                     <!-- Product filter End -->
 
@@ -112,7 +145,12 @@
                         </ul>
                     </div><br /><br />
                     <!-- End Pagination -->
+<<<<<<< HEAD
                     {% if app.user %}
+=======
+
+
+>>>>>>> parent of ed21014... Changes V2 38
                     <div class="post-promo text-center">
                         <h2> Avez-vous quelque chose à vendre ? </h2>
                         <h5>Vendez vos produits en ligne. C'est plus facile que vous ne le pensez !</h5>
@@ -124,5 +162,8 @@
         </div>
     </div>
     <!-- Main container End -->  
+
+
+
 {% endblock %}
 

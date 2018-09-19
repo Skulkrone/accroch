@@ -34,8 +34,8 @@
         <!-- Hero Area End -->
     </div>
 
-    {#{% if app.user %}
-        <!--<br />
+    {% if app.user %}
+        <br />
         <br />
         <div class="container">
             <div class="card-deck mb-6 text-center">
@@ -76,6 +76,6 @@
             </div>
         </div>
         <br />
-        <br />-->
-    {% endif %}#}
+        <br />
+    {% endif %}
 {% endblock %}

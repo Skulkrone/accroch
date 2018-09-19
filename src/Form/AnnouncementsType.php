@@ -31,8 +31,8 @@ class AnnouncementsType extends AbstractType {
                     'label' => 'Catégorie : ',
                 ))
                 ->add('Price', TextType::class, array('label' => 'Prix du matériel'))
-                ->add('Size', TextType::class, array('label' => 'Taille du matériel'))
-                ->add('Weight', TextType::class, array('label' => 'Poids du matériel'))
+                ->add('Size', TextType::class, array('label' => 'Taille du matériel (h x l cm)'))
+                ->add('Weight', TextType::class, array('label' => 'Poids du matériel (en kg)'))
                 ->add('Quality', TextType::class, array('label' => 'Qualité du matériel'))
                 ->add('Specifications', TextareaType::class, array('label' => 'Détail du matériel'))
                 ->add('isOnSale')
